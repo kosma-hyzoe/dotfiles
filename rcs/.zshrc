@@ -13,6 +13,9 @@ HISTFILE=~/.zsh_history
 bindkey -v
 export KEYTIMEOUT=1
 
+## Reverse Search
+bindkey '^R' history-incremental-search-backward
+
 ## Use modern completion system
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -96,3 +99,7 @@ bindkey "^[[1;5D" backward-word
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
