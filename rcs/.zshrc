@@ -1,5 +1,18 @@
 ## Based on Luke Smith's and Ubuntu 22.04's default .zshrc
 
+# && [ -z "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
+
+
+if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then 
+   ZSH_TMUX_AUTOSTART=true
+else
+    ZSH_TMUX_AUTOSTART=false
+fi
+
+if [ "$ZSH_TMUX_AUTOSTART" = true ] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 ## Configure PATH
 export PATH=$HOME/.local/share/JetBrains/Toolbox/scripts:/home/kosma/.local/bin:$HOME/.cargo/bin:$PATH
 

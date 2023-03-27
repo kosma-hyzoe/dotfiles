@@ -1,3 +1,15 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+
+" highlight column right after max text width
+set colorcolumn=+1
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" Disable vertical line at max string length in NERDTree
+autocmd FileType * setlocal colorcolumn=+1
+autocmd FileType nerdtree setlocal colorcolumn=""
+
+set colorcolumn=80
 " Comfy ctrl+c/ctrl+v
 vnoremap <C-c> "+y
 map <C-v> "+p
@@ -8,16 +20,14 @@ let &t_EI = "\e[2 q"
 set ttimeoutlen=50
 " Enable the use of the backspace key
 set backspace=indent,eol,start
-" Be a grown-ass adult, use the mouse if you need to
-set mouse=a
 
+" Spellchecking
+set spell spelllang=en_us,pl
 
 " Have the prompt 5 lines above the file ends when scrolling 
 set scrolloff=5 
 " Sane encoding
 set encoding=utf-8 
-" For speed
-set noswapfile
 " split tabs at the bottom and on the right
 set splitbelow splitright 
 " ctrl+n autocompletion
