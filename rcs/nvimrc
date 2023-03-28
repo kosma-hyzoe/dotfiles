@@ -1,6 +1,8 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
+set termguicolors
+
 " highlight column right after max text width
 set colorcolumn=+1
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
