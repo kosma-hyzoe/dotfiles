@@ -14,9 +14,13 @@ map \r <Action>(ReformatCode)
 "" Map <leader>d to start debug
 map <leader>d <Action>(Debug)
 
-"" Map \b to toggle the breakpoint on the current line
-map \b <Action>(ToggleLineBreakpoint)
-map \j <Action>(JoinLines)
 
+map \j <Action>(JoinLines)
+nnoremap <c-z> <Action>(ToggleDistractionFreeMode)
+map <c--> <Action>(SplitHorizontally)
+map <c-\> <Action>(SplitVertically)
+map <c-t> <Action>(ActivateTerminalToolWindow)
 set clipboard+=ideaput
+
+
 
