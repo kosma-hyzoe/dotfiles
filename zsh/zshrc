@@ -1,6 +1,5 @@
 ## Based on Luke Smith's and Ubuntu 22.04's default .zshrc
 
-
 if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then 
    ZSH_TMUX_AUTOSTART=true
 else

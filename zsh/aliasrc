@@ -1,35 +1,21 @@
-## ls to exa
+# Heavily based on Luke Smith's aliasrc
 
-# Basic ls command
-alias ls='exa'
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	rsync="rsync -vrPlu" \
+	mkd="mkdir -pv" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ytt="yt --skip-download --write-thumbnail" \
+	ffmpeg="ffmpeg -hide_banner"
 
-# Show hidden files
-alias ls-a='exa -a'
-
-# Show details
-alias ls-l='exa -l'
-
-# Show more details
-alias ls-la='exa -la'
-
-# Show details with human-readable file sizes
-alias ls-lh='exa -lh'
-
-# Show more details with human-readable file sizes
-alias ls-lha='exa -lha'
-
-# Show tree view
-alias ls-T='exa -T'
-
-# Show tree view with hidden files
-alias ls-Ta='exa -Ta'
-
-# Show tree view with details
-alias ls-Tl='exa -Tl'
-
-# Show tree view with more details
-alias ls-Tla='exa -Tla'
-
-# Show tree view with details and human-readable file sizes
-alias ls-Tlh='exa -Tlh'
-
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	ip="ip -color=auto"
