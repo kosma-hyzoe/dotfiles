@@ -1,0 +1,26 @@
+## Use lf to switch directories and bind it to ctrl-o
+lfcd() {
+  tmp="$(mktemp)"
+  lf -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")"
+    rm -f "$tmp"
+    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+  fi
+}
+bindkey -s '^o' 'lfcd\n'
+
+## Bind ctrl + arrow right/left arrow keys to forward-word/backward word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+## Use exa wrapper
+if command -v exa >/dev/null; then
+    alias els='els.sh'
+else
+    alias els='/bin/ls $LS_OPTIONS'
+fi
+
+qcom() {
+  git add . && git commit -m "automated quick commit"
+}
