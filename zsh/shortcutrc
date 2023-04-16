@@ -14,7 +14,7 @@ bindkey -s '^o' 'lfcd\n'
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-## Use exa wrapper
+## Use exa-wrapper.sh (renamed to els here) if possible
 if command -v exa >/dev/null; then
     alias els='els.sh'
 else
