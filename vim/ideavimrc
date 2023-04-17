@@ -1,25 +1,25 @@
 source ~/.vimrc
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+set clipboard+=ideaput
 
-"" enable plugins
+"" Enable plugins
 set sneak
 set ideajoin
+set quickscope
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" map \r to the Reformat Code action
+"" Actions
 map \r <Action>(ReformatCode)
-
-"" use :actionlist to check search actions
 map <leader>d <Action>(Debug)
-
 map \j <Action>(JoinLines)
 map <c-z> <Action>(ToggleDistractionFreeMode)
 map <c--> <Action>(SplitHorizontally)
 map <c-\> <Action>(SplitVertically)
-map <c-t> <Action>(ActivateTerminalToolWindow)
-set clipboard+=ideaput
+map <leader>e <Action>(EditSourceInNewWindow)
 
-
-
+"" Window Switching
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k

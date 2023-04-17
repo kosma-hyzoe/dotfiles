@@ -1,3 +1,6 @@
+## Add misc shortcuts and scripts to path
+export PATH=$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/Projects/Exercism/scripts:$PATH
+
 ## Use lf to switch directories and bind it to ctrl-o
 lfcd() {
   tmp="$(mktemp)"
@@ -21,6 +24,11 @@ else
     alias els='/bin/ls $LS_OPTIONS'
 fi
 
+##
 qcom() {
   git add . && git commit -m "automated quick commit"
 }
+
+## Add exercism scripts to path
+
+
