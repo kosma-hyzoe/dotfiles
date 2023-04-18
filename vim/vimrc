@@ -53,8 +53,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
-set textwidht=80
-formatoptions=tcqj
+set textwidth=80
+set formatoptions=tcqj
 
 " Comfy ctrl+c/ctrl+v
 vnoremap <C-c> "+y
