@@ -1,0 +1,12 @@
+" Enable the use of the leader key
+let mapleader = "," 
+
+" Source .vimrc/init.vim
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" Comfy ctrl+c/ctrl+v
+vnoremap <C-c> "+y
+map <C-v> "+p

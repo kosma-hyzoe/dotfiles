@@ -1,64 +1,33 @@
-"" Plugins 
-if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
-	autocmd VimEnter * PlugInstall
-endif
-
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
-Plug 'preservim/nerdtree'
-Plug 'machakann/vim-highlightedyank'
-call plug#end()
+source ~/.vim/pluginrc
+source ~/.vim/bindingsrc
 
 
 "" Vanilla cursor shapes
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-"" Basics
+
+"" Should-be-defaults 
 set backspace=indent,eol,start
+set ruler
 set mouse=a
 set encoding=utf-8
-filetype plugin on
 set number relativenumber
 set nocompatible
 
 
-"" Others
-" Have the prompt 5 lines above the file ends when scrolling
-set scrolloff=5
-" split tabs at the bottom and on the right
-set splitbelow splitright
-" ctrl+n autocompletion
-set wildmode=longest,list,full
-" Enable line wrapping
-set wrap
-" No wrapping around 'words'
-set linebreak
-" Highlight search results
-set hlsearch
-" Enable incremental searching
-set incsearch
-" Enable smart case searching
-set smartcase
-
-" Enable the use of the leader key
-let mapleader = ","
-
-" Source .vimrc/init.vim
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+" Style and formatting 
 set textwidth=80
 set formatoptions=tcqj
 
-" Comfy ctrl+c/ctrl+v
-vnoremap <C-c> "+y
-map <C-v> "+p
 
 " For faster hjkl-ing around and stuff
 set ttimeoutlen=50
+
+
+set scrolloff=5 " scroll w/ 5 lines above cursor
+set splitbelow splitright " split tabs at the bottom and on the right
+set wildmode=longest,list,full " ctrl+n autocompletion
+set hlsearch
+set incsearch
+set smartcase
