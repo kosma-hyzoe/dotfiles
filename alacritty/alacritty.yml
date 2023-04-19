@@ -1,2 +1,6 @@
 import:
   - ~/.config/alacritty/themes/themes/github_dark.yaml
+shell:
+  program: /usr/bin/bash
+  args:
+    - --login
