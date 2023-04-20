@@ -41,4 +41,3 @@ gsettings set org.nemo.desktop show-desktop-icons false
 xdg-mime default nautilus.desktop inode/directory application/x-gnome-saved-search
 sudo apt purge nemo nemo*
 ```
-
