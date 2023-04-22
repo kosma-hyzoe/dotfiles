@@ -1,7 +1,17 @@
-## Add misc shortcuts and scripts to path
-export PATH=$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/Projects/Exercism/scripts:$PATH
+# reverse search
+bindkey '^R' history-incremental-search-backward
 
-## Use lf to switch directories and bind it to ctrl-o
+# configure PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
+
+bindkey -M menuselect "\H" vi-backward-char
+bindkey -M menuselect "\K" vi-up-line-or-history
+bindkey -M menuselect "\L" vi-forward-char
+bindkey -M menuselect "\J" vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+
+# use lf to switch directories and bind it to ctrl-o
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
@@ -13,22 +23,23 @@ lfcd() {
 }
 bindkey -s '^o' 'lfcd\n'
 
-## Bind ctrl + arrow right/left arrow keys to forward-word/backward word
+# bind ctrl + arrow right/left arrow keys to forward-word/backward word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-## Use exa-wrapper.sh (renamed to els here) if possible
+# use exa-wrapper.sh (renamed to els here) if possible
 if command -v exa >/dev/null; then
     alias els='els.sh'
 else
     alias els='/bin/ls $LS_OPTIONS'
 fi
 
-##
+
+# configure PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
+
+# quick commit
 qcom() {
   git add . && git commit -m "automated quick commit"
 }
-
-## Add exercism scripts to path
-
 
