@@ -10,3 +10,5 @@ map Q gq
 " Comfy ctrl+c/ctrl+v
 vnoremap <C-c> "+y
 map <C-v> "+p
+vnoremap <C-x> "+d
+
