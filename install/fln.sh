@@ -3,7 +3,7 @@
 # mv nvim.appimage nvim
 # chmod u+x nvim
 # mv -f nvim /usr/bin
-cd ..
+
 ln -f vim/vimrc ~/.vimrc
 ln -f vim/init.vim ~/.config/nvim
 ln -f vim/bindingsrc ~/.vim

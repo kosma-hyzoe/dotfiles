@@ -22,3 +22,4 @@ alias \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	ip="ip -color=auto"
+	valgrind="valgrind --color=yes"
