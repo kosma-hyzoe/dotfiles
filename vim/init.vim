@@ -7,7 +7,7 @@ source ~/.vim/bindingsrc
 
 set spell spelllang=en_us,pl
 set termguicolors
-set number relativenumber
+set number
 set mouse=a
 
 
