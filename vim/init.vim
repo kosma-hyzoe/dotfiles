@@ -21,7 +21,7 @@ hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set textwidth=80
 set formatoptions=tcqj
 
-
+set autoread
 set scrolloff=5 " scroll w/ 5 lines above cursor
 set splitbelow splitright " split tabs at the bottom and on the right
 set wildmode=longest,list,full " ctrl+n autocompletion
