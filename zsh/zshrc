@@ -18,8 +18,9 @@ HISTFILE=~/.zsh_history
 ## vi mode
 bindkey -v
 export KEYTIMEOUT=1
+command -v nvim &> /dev/null && export EDITOR=nvim
 
-# change cursor shape for different vi modes
+## change cursor shape for different vi modes
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
