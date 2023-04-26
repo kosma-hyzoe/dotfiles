@@ -20,14 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'terryma/vim-multiple-cursors'
-"  Plug 'preservim/nerdtree'
 Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
-" Disable vertical line at max string length in NERDTree
-autocmd FileType * setlocal colorcolumn=+1
-autocmd FileType nerdtree setlocal colorcolumn=""
-
 filetype plugin on
-
-let g:vimwiki_list = [{'path': '~/Workspace/'}]
