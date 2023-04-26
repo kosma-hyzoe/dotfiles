@@ -1,0 +1,5 @@
+" Check file in shellcheck:
+	map <leader>s :!clear && shellcheck -x %<CR>
+
+" Replace all is aliased to S.
+	nnoremap S :%s//g<Left><Left>
