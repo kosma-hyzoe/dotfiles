@@ -1,5 +1,5 @@
 source ~/.vim/pluginrc
-source ~/.vim/bindingsrc
+source ~/.vim/bindingrc
 
 
 "" Vanilla cursor shapes

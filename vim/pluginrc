@@ -30,3 +30,4 @@ autocmd FileType nerdtree setlocal colorcolumn=""
 
 filetype plugin on
 
+let g:vimwiki_list = [{'path': '~/Workspace/'}]

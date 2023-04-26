@@ -2,7 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
 source ~/.vim/pluginrc
-source ~/.vim/bindingsrc
+source ~/.vim/bindingrc
 
 
 set spell spelllang=en_us,pl

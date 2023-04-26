@@ -6,7 +6,7 @@
 
 ln -f vim/vimrc ~/.vimrc
 ln -f vim/init.vim ~/.config/nvim
-ln -f vim/bindingsrc ~/.vim
+ln -f vim/bindingrc ~/.vim
 ln -f vim/pluginrc ~/.vim
 ln -f vim/vscodevimrc ~/.vscodevimrc
 
