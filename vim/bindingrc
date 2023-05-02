@@ -2,13 +2,14 @@
 let mapleader = "," 
 
 " Source .vimrc/init.vim
-nnoremap <leader>sv :source $MYVIMRC<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
-" Comfy ctrl+c/ctrl+v
+" Comfy ctrl shortcuts 
 vnoremap <C-c> "+y
 map <C-v> "+p
 vnoremap <C-x> "+d
+nnoremap <C-A> ggVG
 

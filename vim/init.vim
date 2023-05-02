@@ -28,4 +28,3 @@ set wildmode=longest,list,full " ctrl+n autocompletion
 set hlsearch
 set incsearch
 set smartcase
-set syntax

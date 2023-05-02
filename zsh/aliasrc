@@ -3,6 +3,10 @@
 # Workarounds for technical issues
 alias fn="solaar config k780 fn-swap false"
 
+alias \
+	zshrc="${EDITOR} ~/.zshrc"
+	nvimrc="${EDITOR} ~/.config/nvim/init.vim"
+	
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \

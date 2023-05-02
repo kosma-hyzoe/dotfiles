@@ -1,4 +1,4 @@
-ksource ~/.vim/pluginrc
+source ~/.vim/pluginrc
 source ~/.vim/bindingrc
 
 
