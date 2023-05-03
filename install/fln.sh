@@ -6,7 +6,7 @@ NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvi
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
-NON_GUI_PROGRAMS="zsh tmux vim"
+NON_GUI_PROGRAMS="zsh tmux vim curl libfuse2"
 
 fln() {
   ln -f "${1}" "${2}"
@@ -14,6 +14,7 @@ fln() {
 
 main() {
   if [[ ${1} == "apt" ]]; then
+    sudo add-apt-repository universe
     sudo apt update && apt upgrade
     sudo apt install -y "${NON_GUI_PROGRAMS}"
   elif [[ ${1} == "pacman" ]]; then
@@ -65,7 +66,6 @@ main() {
   fln zsh/aliasrc ~/.config
   fln zsh/shortcutrc ~/.config
   git clone ${PURE_REPO_URL} ~/.config/zsh/pure 2>/dev/null
-
 }
 
 main "$@"
