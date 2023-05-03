@@ -9,13 +9,13 @@ ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
 NON_GUI_PROGRAMS="zsh tmux vim"
 
 fln() {
-  ln -f --nolink "${1}" "${2}"
+  ln -f "${1}" "${2}"
 }
 
 main() {
   if [[ ${1} == "apt" ]]; then
-    apt update && apt upgrade
-    apt install -y "${NON_GUI_PROGRAMS}"
+    sudo apt update && apt upgrade
+    sudo apt install -y "${NON_GUI_PROGRAMS}"
   elif [[ ${1} == "pacman" ]]; then
     pacman -Syu
     pacman -S --confirm "${NON_GUI_PROGRAMS}"
@@ -24,8 +24,8 @@ main() {
   # nvim + configs for vim and vscodevim
   if ! command -v nvim &>/dev/null; then
     wget -O nvim ${NVIM_DOWNLOAD_URL}
-    mv nvim /usr/bin
-    chmod u+x /usr/bin/nvim
+    sudo mv nvim /usr/bin
+    sudo chmod u+x /usr/bin/nvim
   fi
 
   mkdir -p ~/.vim
@@ -53,7 +53,7 @@ main() {
     cargo install alacritty
   fi
   mkdir -p ~/.config/alacritty/themes
-  git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes
+  git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes 2> /dev/null
   fln alacritty/alacritty.yml ~/.config/alacritty
 
   # tmux
@@ -64,7 +64,7 @@ main() {
   mkdir -p ~/.config/zsh
   fln zsh/aliasrc ~/.config
   fln zsh/shortcutrc ~/.config
-  git clone ${PURE_REPO_URL} ~/.config/zsh/pure 2>/dev/null
+  git clone ${PURE_REPO_URL} ~/.config/zsh/pure 2> /dev/null
 
 }
 
