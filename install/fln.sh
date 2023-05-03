@@ -41,9 +41,8 @@ main() {
   # lf
   if ! command -v lf &>/dev/null; then
     wget ${LF_DOWNLOAD_URL}
-    tar -xvzf lf*.tar.gz
+    sudo tar -xvzf lf*.tar.gz -C /usr/bin
     rm -f lf*.tar.gz
-    sudo mv -f lf /usr/bin
   fi
   mkdir -p ~/.config/lf
   fln lf/lfrc ~/.config/lf
