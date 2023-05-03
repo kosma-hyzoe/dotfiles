@@ -9,10 +9,11 @@ ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
 # TODO cargo install skip fetch?
 
   # vim config + nvim installation
-command -v nvim &> /dev/null && wget -P /usr/bin -O nvim ${NVIM_DOWNLOAD_URL} 
+command -v nvim &> /dev/null || wget -P /usr/bin -O nvim ${NVIM_DOWNLOAD_URL} 
 chmod u+x /usr/bin/nvim
 
 mkdir -p ~/.vim
+mkdir -p ~/.config/nvim
 
 link vim/vimrc ~/.vimrc
 link vim/init.vim ~/.config/nvim
@@ -21,10 +22,10 @@ link vim/pluginrc ~/.vim
 link vim/vscodevimrc ~/.vscodevimrc
 
 mkdir -p ~/.config/lf
-ln -f lf/lfrc ~/.config/lf
+link lf/lfrc ~/.config/lf
 
 # alacritty config + installation
-command -v cargo &> /dev/null && curl https://sh.rustup.rs -sSf | sh
+command -v cargo &> /dev/null || curl https://sh.rustup.rs -sSf | sh
 cargo install alacritty 
 mkdir -p ~/.config/alacritty/themes
 git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes
