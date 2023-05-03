@@ -1,5 +1,0 @@
-exa
-alacritty
-nvim
-alacritty themes
-pure

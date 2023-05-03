@@ -1,18 +1,5 @@
 ## GNOME
 
-## `gsettings`
-
-For faster hjkl-ing around and stuff.
-Best used in combo with `set ttimeoutlen=50` in your `.vimrc`.
-
-```
-gsettings set org.gnome.desktop.peripherals.keyboard delay 300 
-gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
-```
-
-Disable animations:
-	`gsettings set org.gnome.desktop.interface enable-animations false`
-
 ## Misc settings
 ---
 I change them in GUI 'cause I'm a noob

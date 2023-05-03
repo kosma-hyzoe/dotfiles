@@ -27,12 +27,6 @@ bindkey -s '^o' 'lfcd\n'
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-# use exa-wrapper.sh if possible
-if command -v exa >/dev/null; then
-    alias ls='els.sh'
-fi
-
-
 # configure PATH
 export PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
 
