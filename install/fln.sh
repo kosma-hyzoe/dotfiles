@@ -24,7 +24,7 @@ link vim/pluginrc ~/.vim
 link vim/vscodevimrc ~/.vscodevimrc
 
 # lf
-if ! command -v lf &> /dev/null then;
+if ! command -v lf &> /dev/null; then
   wget &{LF_DOWNLOAD_URL}
   tar -xvzf lf*.tar.gz
   rm -f lf*.tar.gz
