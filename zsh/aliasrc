@@ -4,9 +4,21 @@
 alias fn="solaar config k780 fn-swap false"
 
 alias \
-	zshrc="${EDITOR} ~/.zshrc"
-	nvimrc="${EDITOR} ~/.config/nvim/init.vim"
-	
+	zshrc="${EDITOR} ~/.zshrc" \
+	rezsh="source ~/.zshrc" \
+	nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
+	aliasrc="${EDITOR} ~/.config/aliasrc" \
+	shortcutrc="${EDITOR} ~/.config/shortcutrc" \
+
+
+# use exa-wrapper.sh if possible
+if command -v exa >/dev/null; then
+    alias ls='exa-wrapper.sh'
+    alias els="/usr/bin/\ls -hN --color=auto --group-directories-first"
+else
+    alias ls="ls -hN --color=auto --group-directories-first"
+fi
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
@@ -21,7 +33,6 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \

@@ -1,26 +1,21 @@
-## based on Luke Smith's zshrc
-
-
-## start with tmux if appropriate
+# start with tmux if appropriate
 if  command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] \
     && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
 
-
-## history
+# history
 setopt histignorealldups sharehistory
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-
-## vi mode
+# vi mode
 bindkey -v
 export KEYTIMEOUT=1
 command -v nvim &> /dev/null && export EDITOR=nvim
 
-## change cursor shape for different vi modes
+# change cursor shape for different vi modes
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
@@ -41,16 +36,15 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # use beam shape cursor on startup
 preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt
 
-
-## basic auto/tab complete
-autoload -U compinit
+# basic auto/tab complete
+autoload -Uz compinit 
 zstyle ':completion:*' menu select
 zmodload zsh/complist
+_comp_options+=(globdots) # include hidden files.
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 compinit
-_comp_options+=(globdots) # Include hidden files.
 
-
-## pure prompt 
+# pure prompt 
 fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 
@@ -62,8 +56,6 @@ zstyle :prompt:pure:suspended_jobs color '#FFAA00'
 
 prompt pure
 
-
-## load aliases and shortcuts if existent
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
+# load aliases and shortcuts if existent
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
-
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
