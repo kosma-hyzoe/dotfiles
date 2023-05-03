@@ -7,8 +7,8 @@ PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
 
 
-  # nvim + configs for vim and vscodevim 
-if ! command -v nvim &> /dev/null then;
+  # nvim + configs for vim and vscodevim   
+if ! command -v nvim &> /dev/null; then
   wget -O nvim ${NVIM_DOWNLOAD_URL} 
   mv nvim /usr/bin
   chmod u+x /usr/bin/nvim
