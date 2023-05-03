@@ -2,13 +2,14 @@
 
 # TODO exa, exa-wrapper
 # TODO libfuse on pacman
+# TODO if update, if apt, if alacritty
 
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 ALACRITTY_DEPENDENCIES=("cmake" "pkg-config" "libfreetype6-dev" "libfontconfig1-dev" "libxcb-xfixes0-dev" "libxkbcommon-dev" "python3")
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
-NON_GUI_PROGRAMS=("zsh" "tmux" "vim" "curl")
+NON_GUI_PROGRAMS=("zsh" "tmux" "vim.gtk" "curl" "git")
 
 fln() {
   ln -f "${1}" "${2}"
@@ -18,7 +19,7 @@ fln() {
 install() {
   if ! command -v "${1}" &> /dev/null; then
     echo "Installing ${1}"...
-    sudo apt-get install -y "${1}" > /dev/null
+    sudo apt-get install -y "${2}" > /dev/null
   fi 
 }
 
@@ -26,7 +27,8 @@ install_libfuse() {
   if ! dpkg -s libfuse2 &> /dev/null; then
     echo "Installing libfuse2..."
     sudo add-apt-repository -y universe &> /dev/null
-    install apt libfuse2 
+    # TODO problems with nesting install()?
+    sudo apt install libfuse2 
   fi
 }
 
@@ -97,7 +99,7 @@ main() {
   mkdir -p ~/.config/zsh
   fln zsh/aliasrc ~/.config
   fln zsh/shortcutrc ~/.config
-  git clone ${PURE_REPO_URL} ~/.config/zsh/pure 2>/dev/null
+  git clone ${PURE_REPO_URL} ~/.config/zsh
 }
 
 main "$@"
