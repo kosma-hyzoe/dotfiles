@@ -6,6 +6,7 @@
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
+ALACRITTY_DEPENDENCIES=("cmake" "pkg-config" "libfreetype6-dev" "libfontconfig1-dev" "libxcb-xfixes0-dev" "libxkbcommon-dev" "python3")
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
 NON_GUI_PROGRAMS=("zsh" "tmux" "vim" "curl")
 
@@ -28,6 +29,13 @@ install_libfuse() {
     install apt libfuse2 
   fi
 }
+
+install_alacritty_dependencies() {
+  for prog in "${ALACRITTY_DEPENDENCIES[@]}"; do
+      install "${prog}"
+  done
+}
+
 
 main() {
   if [[ ${1} == "apt" ]]; then
@@ -73,7 +81,9 @@ main() {
       # shellcheck source=/dev/null
       source "$HOME/.cargo/env"
     fi
-    cargo install alacritty
+    echo "Installing alacritty..."
+    install_alacritty_dependencies
+    cargo install alacritty > /dev/null
   fi
   mkdir -p ~/.config/alacritty/themes
   git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes 2>/dev/null
