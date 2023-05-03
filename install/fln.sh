@@ -1,25 +1,41 @@
 #!/usr/bin/bash
 
-# TODO exa, exa-wrapper, tmux
+# TODO exa, exa-wrapper
+# TODO libfuse on pacman
 
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
-NON_GUI_PROGRAMS="zsh tmux vim curl libfuse2"
+NON_GUI_PROGRAMS=("zsh" "tmux" "vim" "curl" "libfuse2")
 
 fln() {
   ln -f "${1}" "${2}"
 }
 
+
+install() {
+  if ! command -v "${1}" &> /dev/null; then
+    echo "Installing ${1}"...
+    sudo apt-get install -y "${1}" > /dev/null
+  fi 
+}
+
+install_libfuse() {
+  if ! dpkg -s libfuse2 &> /dev/null; then
+    sudo add-apt-repository -y universe &> /dev/null
+    install apt libfuse2 
+  fi
+}
+
 main() {
   if [[ ${1} == "apt" ]]; then
-    sudo add-apt-repository universe
-    sudo apt update && apt upgrade
-    sudo apt install -y "${NON_GUI_PROGRAMS}"
-  elif [[ ${1} == "pacman" ]]; then
-    pacman -Syu
-    pacman -S --confirm "${NON_GUI_PROGRAMS}"
+    echo "Adding repositories..."
+    echo "Running 'apt update && apt upgrade'..."
+    sudo apt-get update -y &> /dev/null && apt-get upgrade -y &> /dev/null
+    for prog in "${NON_GUI_PROGRAMS[@]}"; do
+       install "apt" "${prog}"
+    done
   fi
 
   # nvim + configs for vim and vscodevim
