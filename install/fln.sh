@@ -17,6 +17,9 @@ fln() {
   link vim/pluginrc ~/.vim
   link vim/vscodevimrc ~/.vscodevimrc
 
+  mkdir -p ~/.config/lf
+  ln -f lf/lfrc ~/.config/lf
+
 
   command -v cargo &> curl https://sh.rustup.rs -sSf | sh
   cargo install alacritty 
@@ -34,4 +37,9 @@ fln() {
   link zsh/aliasrc ~/.config
   link zsh/shortcutrc ~/.config
   git clone https://github.com/sindresorhus/pure.git ~/.config/zsh/pure 2>/dev/null
+  
+  ln -f misc/ipython_config.py ~/.ipython/profile_default
 }
+
+
+
