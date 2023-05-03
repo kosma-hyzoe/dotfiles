@@ -7,7 +7,7 @@ NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvi
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
-NON_GUI_PROGRAMS=("zsh" "tmux" "vim" "curl" "libfuse2")
+NON_GUI_PROGRAMS=("zsh" "tmux" "vim" "curl")
 
 fln() {
   ln -f "${1}" "${2}"
@@ -23,6 +23,7 @@ install() {
 
 install_libfuse() {
   if ! dpkg -s libfuse2 &> /dev/null; then
+    echo "Installing libfuse2..."
     sudo add-apt-repository -y universe &> /dev/null
     install apt libfuse2 
   fi
@@ -34,8 +35,9 @@ main() {
     echo "Running 'apt update && apt upgrade'..."
     sudo apt-get update -y &> /dev/null && apt-get upgrade -y &> /dev/null
     for prog in "${NON_GUI_PROGRAMS[@]}"; do
-       install "apt" "${prog}"
+      install "${prog}"
     done
+    install_libfuse
   fi
 
   # nvim + configs for vim and vscodevim
