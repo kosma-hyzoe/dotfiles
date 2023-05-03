@@ -5,6 +5,8 @@
 # TODO if update, if apt, if alacritty
 # TODO zsh autocomplete
 # TODO default shell, alacritty as default
+# TODO split to gui essentials
+# TODO split to link only
 
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
