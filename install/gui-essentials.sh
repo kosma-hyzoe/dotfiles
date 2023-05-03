@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # TODO pop shell
 
@@ -34,3 +34,5 @@ main() {
   mkdir -p ~/.config/alacritty/themes
   git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes 2>/dev/null
 }
+
+main "$@"
