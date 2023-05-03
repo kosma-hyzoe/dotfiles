@@ -67,7 +67,12 @@ main() {
 
   # alacritty
   if ! command -v alacritty &>/dev/null; then
-    command -v cargo &>/dev/null || curl https://sh.rustup.rs -sSf | sh
+    # install cargo if needed
+    if ! command -v cargo &>/dev/null; then
+      curl https://sh.rustup.rs -sSf | sh
+      # shellcheck source=/dev/null
+      source "$HOME/.cargo/env"
+    fi
     cargo install alacritty
   fi
   mkdir -p ~/.config/alacritty/themes
