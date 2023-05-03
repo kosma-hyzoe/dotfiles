@@ -3,47 +3,47 @@
 # TODO exa, exa-wrapper
 # TODO libfuse on pacman
 # TODO if update, if apt, if alacritty
+# TODO zsh autocomplete
+# TODO default shell, alacritty as default
 
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 ALACRITTY_DEPENDENCIES=("cmake" "pkg-config" "libfreetype6-dev" "libfontconfig1-dev" "libxcb-xfixes0-dev" "libxkbcommon-dev" "python3")
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
-NON_GUI_PROGRAMS=("zsh" "tmux" "vim.gtk" "curl" "git")
+NON_GUI_PROGRAMS=("zsh" "tmux" "vim.gtk3" "curl" "git")
 
 fln() {
   ln -f "${1}" "${2}"
 }
 
-
 install() {
-  if ! command -v "${1}" &> /dev/null; then
+  if ! command -v "${1}" &>/dev/null; then
     echo "Installing ${1}"...
-    sudo apt-get install -y "${2}" > /dev/null
-  fi 
+    sudo apt-get install -y "${2}" >/dev/null
+  fi
 }
 
 install_libfuse() {
-  if ! dpkg -s libfuse2 &> /dev/null; then
+  if ! dpkg -s libfuse2 &>/dev/null; then
     echo "Installing libfuse2..."
-    sudo add-apt-repository -y universe &> /dev/null
+    sudo add-apt-repository -y universe &>/dev/null
     # TODO problems with nesting install()?
-    sudo apt install libfuse2 
+    sudo apt install libfuse2
   fi
 }
 
 install_alacritty_dependencies() {
   for prog in "${ALACRITTY_DEPENDENCIES[@]}"; do
-      install "${prog}"
+    install "${prog}"
   done
 }
-
 
 main() {
   if [[ ${1} == "apt" ]]; then
     echo "Adding repositories..."
     echo "Running 'apt update && apt upgrade'..."
-    sudo apt-get update -y &> /dev/null && apt-get upgrade -y &> /dev/null
+    sudo apt-get update -y &>/dev/null && apt-get upgrade -y &>/dev/null
     for prog in "${NON_GUI_PROGRAMS[@]}"; do
       install "${prog}"
     done
@@ -85,7 +85,7 @@ main() {
     fi
     echo "Installing alacritty..."
     install_alacritty_dependencies
-    cargo install alacritty > /dev/null
+    cargo install alacritty >/dev/null
   fi
   mkdir -p ~/.config/alacritty/themes
   git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes 2>/dev/null
@@ -99,7 +99,7 @@ main() {
   mkdir -p ~/.config/zsh
   fln zsh/aliasrc ~/.config
   fln zsh/shortcutrc ~/.config
-  git clone ${PURE_REPO_URL} ~/.config/zsh
+  git clone ${PURE_REPO_URL} ~/.config/zsh/pure &>/dev/null
 }
 
 main "$@"
