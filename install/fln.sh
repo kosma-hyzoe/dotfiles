@@ -42,7 +42,7 @@ main() {
     wget ${LF_DOWNLOAD_URL}
     tar -xvzf lf*.tar.gz
     rm -f lf*.tar.gz
-    mv -f lf /usr/bin
+    sudo mv -f lf /usr/bin
   fi
   mkdir -p ~/.config/lf
   fln lf/lfrc ~/.config/lf
@@ -53,7 +53,7 @@ main() {
     cargo install alacritty
   fi
   mkdir -p ~/.config/alacritty/themes
-  git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes 2> /dev/null
+  git clone ${ALACRITTY_THEMES_REPO_URL} ~/.config/alacritty/themes 2>/dev/null
   fln alacritty/alacritty.yml ~/.config/alacritty
 
   # tmux
@@ -64,7 +64,7 @@ main() {
   mkdir -p ~/.config/zsh
   fln zsh/aliasrc ~/.config
   fln zsh/shortcutrc ~/.config
-  git clone ${PURE_REPO_URL} ~/.config/zsh/pure 2> /dev/null
+  git clone ${PURE_REPO_URL} ~/.config/zsh/pure 2>/dev/null
 
 }
 
