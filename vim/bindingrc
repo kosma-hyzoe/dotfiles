@@ -3,6 +3,7 @@ let mapleader = ","
 
 " Source .vimrc/init.vim
 noremap <leader>sv :source $MYVIMRC<CR>
+noremap <leader>nh :nohl<CR>
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq

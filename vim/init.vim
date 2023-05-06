@@ -4,18 +4,18 @@ let &packpath = &runtimepath
 source ~/.vim/pluginrc
 source ~/.vim/bindingrc
 
-
-set spell spelllang=en_us,pl
-set termguicolors
+" basics
 set number
 set mouse=a
 
+set spell spelllang=en_us,pl
+set termguicolors
+set nowrap
 
-" For faster hjkl-ing around and stuff
+" for faster hjkl-ing around
 set ttimeoutlen=50
 
-
-" Style and formatting 
+" style and formatting 
 set colorcolumn=81                                                            
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set textwidth=80
