@@ -4,6 +4,10 @@ if  command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] \
   exec tmux
 fi
 
+# defaults exports 
+command -v nvim &> /dev/null && export EDITOR=nvim
+command -v alacritty &> /dev/null && export TERMINAL=alacritty
+
 # history
 setopt histignorealldups sharehistory
 HISTSIZE=1000
@@ -13,7 +17,6 @@ HISTFILE=~/.zsh_history
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-command -v nvim &> /dev/null && export EDITOR=nvim
 
 # change cursor shape for different vi modes
 function zle-keymap-select {

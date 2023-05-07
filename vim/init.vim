@@ -4,6 +4,11 @@ let &packpath = &runtimepath
 source ~/.vim/pluginrc
 source ~/.vim/bindingrc
 
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
 " basics
 set number
 set mouse=a
