@@ -21,7 +21,7 @@ lfcd() {
   lf -last-dir-path="$tmp" "$@"
   if [ -f "$tmp" ]; then
     dir="$(cat "$tmp")"
-    rm -f "$tmp" &> /dev/null
+    rm -f "$tmp" 
     [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
   fi
 }
@@ -33,7 +33,7 @@ bindkey "^[[1;5D" backward-word
 
 
 # configure PATH
-export PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:$HOME/.local/bin:$PATH
 
 # quick commit
 qcom() {
