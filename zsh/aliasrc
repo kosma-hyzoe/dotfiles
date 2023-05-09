@@ -19,8 +19,12 @@ else
     alias ls="ls -hN --color=auto --group-directories-first"
 fi
 
-command -v nvim &> /dev/null && alias vim="nvim -u vimrc"
-
+# use nvim instead of vim if possible
+if command -v nvim &> /dev/null; then
+    alias vim="nvim -u ~/.vimrc"
+    alias ovim="/usr/bin/\vim"
+fi
+ 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
