@@ -25,6 +25,9 @@ set colorcolumn=81
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set textwidth=80
 set formatoptions=tcqj
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set autoread
 set scrolloff=5 " scroll w/ 5 lines above cursor
