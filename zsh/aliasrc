@@ -1,8 +1,4 @@
-# Heavily based on Luke Smith's aliasrc
-
-# Workarounds for technical issues
-alias fn="solaar config k780 fn-swap false"
-
+# rc shortcuts
 alias \
 	zshrc="${EDITOR} ~/.zshrc" \
 	rezsh="source ~/.zshrc" \
@@ -22,10 +18,10 @@ fi
 # use nvim instead of vim if possible
 if command -v nvim &> /dev/null; then
     alias vim="nvim -u ~/.vimrc"
-    alias ovim="/usr/bin/\vim"
+    alias bvim="/usr/bin/\vim" # "backup vim"
 fi
- 
-# Verbosity and settings that you pretty much just always are going to want.
+
+# verbosity settings that should be defaults
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
@@ -60,3 +56,7 @@ export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
+
+
+# temp workarounds for technical issues
+alias fn="solaar config k780 fn-swap false"

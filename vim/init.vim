@@ -28,6 +28,7 @@ set formatoptions=tcqj
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 set autoread
 set scrolloff=5 " scroll w/ 5 lines above cursor
