@@ -1,4 +1,6 @@
-# rc shortcuts
+# exports ands aliases
+
+## rc shortcuts
 alias \
 	zshrc="${EDITOR} ~/.zshrc" \
 	rezsh="source ~/.zshrc" \
@@ -7,7 +9,7 @@ alias \
 	shortcutrc="${EDITOR} ~/.config/shortcutrc" \
 
 
-# use exa-wrapper.sh if possible
+## use exa-wrapper.sh if possible
 if command -v exa >/dev/null; then
     alias ls='exa-wrapper.sh'
     alias els="/usr/bin/\ls -hN --color=auto --group-directories-first"
@@ -15,13 +17,13 @@ else
     alias ls="ls -hN --color=auto --group-directories-first"
 fi
 
-# use nvim instead of vim if possible
+## use nvim instead of vim if possible
 if command -v nvim &> /dev/null; then
     alias vim="nvim -u ~/.vimrc"
     alias bvim="/usr/bin/\vim" # "backup vim"
 fi
 
-# verbosity settings that should be defaults
+## verbosity settings that should be defaults
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
@@ -57,6 +59,5 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
-
-# temp workarounds for technical issues
+## temp workarounds for technical issues
 alias fn="solaar config k780 fn-swap false"
