@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO pop shell
-
 ALACRITTY_DEPENDENCIES=("cmake" "pkg-config" "libfreetype6-dev" "libfontconfig1-dev" "libxcb-xfixes0-dev" "libxkbcommon-dev" "python3")
 ALACRITTY_THEMES_REPO_URL="https://github.com/alacritty/alacritty-theme"
 
@@ -36,3 +34,4 @@ main() {
 }
 
 main "$@"
+
