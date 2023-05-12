@@ -8,7 +8,7 @@
     "explorer.confirmDelete": false,
 
 
-    /* code autocomplete and quality-of-life automation */
+    /* code autocomplete */
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "files.trimTrailingWhitespace": true,
@@ -71,24 +71,25 @@
             {
                 "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
                 "settings": {
-                    "foreground": "#0509e6",
+                    "foreground": "#0366d6",
                     "fontStyle": "bold",
                 }
             },
             {
                 "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
                 "settings": {
-                    "foreground": "#d183d4",
+                    "foreground": "#5a32a3",
                 }
             },
             {
                 "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
                 "settings": {
-                    "foreground": "#83d4c9",
+                    "foreground": "#0598bc",
                 }
             }
             ]
         },
+
     /* misc plugins and utils*/
     "terminal.integrated.defaultProfile.linux": "tmux",
     "cSpell.language": "en,pl",
