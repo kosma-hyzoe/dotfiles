@@ -2,8 +2,8 @@
 
 ## rc shortcuts
 alias \
-	zshrc="${EDITOR} ~/.zshrc" \
 	rezsh="source ~/.zshrc" \
+	zshrc="${EDITOR} ~/.zshrc" \
 	nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
 	aliasrc="${EDITOR} ~/.config/aliasrc" \
 	shortcutrc="${EDITOR} ~/.config/shortcutrc" \
@@ -23,6 +23,26 @@ if command -v nvim &> /dev/null; then
     alias bvim="/usr/bin/\vim" # "backup vim"
 fi
 
+
+## extra utilities
+alias \
+    myip="curl ipinfo.io/ip" \
+    untar="tar -zxvf" \
+    yt="yt-dlp --embed-metadata -i" \
+    yta="yt -x -f bestaudio/best" \
+    mkd="mkdir -pv" \
+
+## bat
+if command -v bat &> /dev/null; then
+    alias bcat="/usr/bin/\cat"
+    alias cat="bat"
+    alias npcat="bat --paging=never"
+    alias bathelp="bat --plain --language=help"
+    help() {
+	"$@" --help 2>&1 | bathelp
+    }
+fi
+
 ## verbosity settings that should be defaults
 alias \
 	cp="cp -iv" \
@@ -30,10 +50,6 @@ alias \
 	rm="rm -vI" \
 	bc="bc -ql" \
 	rsync="rsync -vrPlu" \
-	mkd="mkdir -pv" \
-	yt="yt-dlp --embed-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
-	ytt="yt --skip-download --write-thumbnail" \
 	ffmpeg="ffmpeg -hide_banner"
 
 alias \
