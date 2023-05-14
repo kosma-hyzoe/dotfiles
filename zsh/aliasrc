@@ -1,6 +1,6 @@
-# exports ands aliases
+# exports ans aliases
 
-## rc shortcuts
+## rc editing shortcuts
 alias \
 	rezsh="source ~/.zshrc" \
 	zshrc="${EDITOR} ~/.zshrc" \
@@ -23,18 +23,23 @@ if command -v nvim &> /dev/null; then
     alias bvim="/usr/bin/\vim" # "backup vim"
 fi
 
-
 ## extra utilities
 alias \
     myip="curl ipinfo.io/ip" \
     untar="tar -zxvf" \
-    yt="yt-dlp --embed-metadata -i" \
-    yta="yt -x -f bestaudio/best" \
     mkd="mkdir -pv" \
+
+## yt-dlp
+alias \
+    yt="yt-dlp --embed-metadata  --embed-thumbnail --embed-subs -i -o '%(title)s.%(ext)s'" \
+    yta="yt -x -f bestaudio/best --audio-format mp3" \
+    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
+    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
+    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
 ## bat
 if command -v bat &> /dev/null; then
-    alias bcat="/usr/bin/\cat"
+    alias bcat="/usr/bin/\cat" # TODO do I need this \cat?
     alias cat="bat"
     alias npcat="bat --paging=never"
     alias bathelp="bat --plain --language=help"

@@ -36,3 +36,13 @@ qcom() {
   git add . && git commit -m "automated quick commit"
 }
 
+hyphenate() {
+  for file in "$@"; do
+    new_name=$(echo "$file" | tr ' ' '-')
+    mv "$file" "$new_name"
+  done
+}
+
+cht() {
+  curl -s "cheat.sh/${1}"
+}
