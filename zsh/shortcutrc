@@ -43,6 +43,4 @@ hyphenate() {
   done
 }
 
-cht() {
-  curl -s "cheat.sh/${1}"
-}
+cht() {curl -s "cheat.sh/${1}"}

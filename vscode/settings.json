@@ -38,6 +38,7 @@
     "vim.mouseSelectionGoesIntoVisualMode": true,
     "vim.handleKeys": {
         "<C-k>": false,
+        "<C-q>": false,
         "<C-o>": true,
         "<C-b>": false,
         "<C-i>": false,
@@ -59,7 +60,7 @@
 
     /* appearance */
     "editor.lineNumbers": "on",
-    "workbench.colorTheme": "GitHub Light",
+    "workbench.colorTheme": "GitHub Light Default",
     "window.zoomLevel": -1,
     "editor.minimap.enabled": false,
     "editor.rulers": [
@@ -94,4 +95,7 @@
     "terminal.integrated.defaultProfile.linux": "tmux",
     "cSpell.language": "en,pl",
     "terminal.integrated.enableMultiLinePasteWarning": false,
+    "cSpell.userWords": [
+        "Bitmasks"
+    ],
 }
