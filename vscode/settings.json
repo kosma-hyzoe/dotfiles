@@ -60,8 +60,7 @@
 
     /* appearance */
     "editor.lineNumbers": "on",
-    "workbench.colorTheme": "GitHub Light Default",
-    "window.zoomLevel": -1,
+    "workbench.colorTheme": "GitHub Light",
     "editor.minimap.enabled": false,
     "editor.rulers": [
         80,
@@ -98,4 +97,6 @@
     "cSpell.userWords": [
         "Bitmasks"
     ],
+    "workbench.activityBar.visible": false,
+    "window.zoomLevel": 1,
 }
