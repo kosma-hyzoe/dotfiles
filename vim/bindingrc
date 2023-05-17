@@ -1,16 +1,18 @@
 " Enable the use of the leader key
-let mapleader = "," 
+let mapleader = ","
 
 " Source .vimrc/init.vim
 noremap <leader>sv :source $MYVIMRC<CR>
 noremap <leader>nh :nohl<CR>
 
-" Don't use Ex mode, use Q for formatting.
+" don't use ex mode, use Q for formatting
 map Q gq
 
-" Comfy ctrl shortcuts 
+" comfy ctrl shortcuts
 vnoremap <C-c> "+y
 map <C-v> "+p
 vnoremap <C-x> "+d
 nnoremap <C-A> ggVG
 
+" replace all
+nnoremap S :%s//g<Left><Left>

@@ -9,6 +9,16 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
+" deletes all trailing whitespace and newlines at end of file on
+" save and resets cursor position
+autocmd BufWritePre * let currPos = getpos(".")
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
+
+" save file as sudo on files that require root permission
+cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
 " basics
 set number
 set mouse=a
@@ -28,7 +38,6 @@ set formatoptions=tcqj
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 set autoread
 set scrolloff=5 " scroll w/ 5 lines above cursor
@@ -37,3 +46,4 @@ set wildmode=longest,list,full " ctrl+n autocompletion
 set hlsearch
 set incsearch
 set smartcase
+
