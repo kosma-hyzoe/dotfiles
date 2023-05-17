@@ -20,15 +20,15 @@ set nowrap
 " for faster hjkl-ing around
 set ttimeoutlen=50
 
-" style and formatting 
-set colorcolumn=81                                                            
+" style and formatting
+set colorcolumn=81
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set textwidth=80
 set formatoptions=tcqj
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+" set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 set autoread
 set scrolloff=5 " scroll w/ 5 lines above cursor
