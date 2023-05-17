@@ -15,4 +15,4 @@ vnoremap <C-x> "+d
 nnoremap <C-A> ggVG
 
 " replace all
-nnoremap S :%s//g<Left><Left>
+nnoremap <leader>S :%s//g<Left><Left>
