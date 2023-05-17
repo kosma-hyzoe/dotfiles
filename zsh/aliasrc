@@ -1,5 +1,7 @@
 # exports ans aliases
 
+alias auu="sudo apt update ; sudo apt upgrade -y"
+
 ## rc editing shortcuts
 alias \
 	rezsh="source ~/.zshrc" \
