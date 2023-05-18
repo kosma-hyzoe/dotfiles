@@ -93,7 +93,7 @@
         },
 
     /* misc plugins and utils*/
-    "terminal.integrated.defaultProfile.linux": "tmux",
+    "terminal.integrated.defaultProfile.linux": "zsh",
     "cSpell.language": "en,pl",
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "cSpell.userWords": [
@@ -109,6 +109,6 @@
         "workbench.action.quickOpenTerm",
         "workbench.action.increaseViewSize",
         "workbench.action.decreaseViewSize"
-],
-"workbench.activityBar.visible": false,
+    ],
+    "workbench.activityBar.visible": false
 }
