@@ -1,6 +1,8 @@
 # exports ans aliases
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
+alias gt="git status"
+
 
 ## rc editing shortcuts
 alias \
