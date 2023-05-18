@@ -1,6 +1,10 @@
 import:
   - ~/.config/alacritty/themes/themes/github_dark.yaml
 shell:
-  program: /usr/bin/zsh
+  program: /usr/bin/tmux
   args:
-    - --login
+    - new-session
+    - -A
+    - -D
+    - -s
+    - main

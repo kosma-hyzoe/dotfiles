@@ -10,7 +10,12 @@ main() {
   ln -f vim/init.vim ~/.config/nvim
   ln -f vim/bindingrc ~/.vim
   ln -f vim/pluginrc ~/.vim
-  ln -f vim/vscodevimrc ~/.vscodevimrc
+
+  # code
+  ln -f vscode/vscodevimrc ~/.vscodevimrc
+
+  # jebtrains
+  ln -f jetbrains/ideavimrc ~/.ideavimrc
 
   # lf
   mkdir -p ~/.config/lf
@@ -26,7 +31,7 @@ main() {
   ln -f zsh/zshrc ~/.zshrc
   ln -f zsh/aliasrc ~/.config
   ln -f zsh/shortcutrc ~/.config
-  
+
 
   # ipython
   mkdir -p ~/.ipython/profile_default

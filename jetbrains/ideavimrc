@@ -1,0 +1,31 @@
+source ~/.vimrc
+
+set clipboard+=ideaput
+
+"" Enable plugins
+set sneak
+set NERDTree
+set ideajoin
+set quickscope
+
+map <a-k> <Action>(MoveLineUp)
+map <a-j> <Action>(MoveLineDown)
+
+map \j <Action>(JoinLines)
+"" code diff
+nnoremap <a-s-h> <c-w>h
+nnoremap <a-s-l> <c-w>l
+nnoremap <a-s-j> <c-w>j
+nnoremap <a-s-k> <c-w>k
+
+"" editor navigation
+map <a--> <Action>(SplitHorizontally)
+map <a-\> <Action>(SplitVertically)
+sethandler <a-l> :ide
+
+
+map <c-s-i> <Action>(ReformatCode)
+
+map <leader>d <Action>(Debug)
+map <c-z> <Action>(ToggleDistractionFreeMode)
+map <leader>e <Action>(EditSourceInNewWindow)
