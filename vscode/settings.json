@@ -7,23 +7,28 @@
     "git.confirmSync": false,
     "explorer.confirmDelete": false,
 
+    /* disable the menu bar */
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "hidden",
 
     /* code autocomplete */
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "files.trimTrailingWhitespace": true,
-
+    "vim.autoindent": true,
 
     /*  vscode-vim */
     "keyboard.dispatch": "keyCode", // to fix esc/caps-lock remap
 
     // plugins
     "vim.easymotion": true,
-    "vim.incsearch": true,
-    "vim.hlsearch": true,
-    "vim.highlightedyank.duration": 100,
+    "vim.surround": true,
 
     // basic config
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.highlightedyank.duration": 150,
     "vim.overrideCopy": true,
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "~/.vscodevimrc",
@@ -62,10 +67,7 @@
     "editor.lineNumbers": "on",
     "workbench.colorTheme": "GitHub Light",
     "editor.minimap.enabled": false,
-    "editor.rulers": [
-        80,
-        120
-    ],
+    "editor.rulers": [80, 100],
     "editor.tokenColorCustomizations": {
             "textMateRules": [
             {
@@ -97,6 +99,16 @@
     "cSpell.userWords": [
         "Bitmasks"
     ],
-    "workbench.activityBar.visible": false,
-    "window.zoomLevel": 1,
+    /* prevent shell from capturing some of the keybindings */
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.explorer.fileView.focus",
+        "workbench.action.nextEditor",
+        "workbench.action.previousEditor",
+        "workbench.action.toggleActivityBarVisibility",
+        "workbench.action.quickOpenTerm",
+        "workbench.action.increaseViewSize",
+        "workbench.action.decreaseViewSize"
+],
+"workbench.activityBar.visible": false,
 }
