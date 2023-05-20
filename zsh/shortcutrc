@@ -33,7 +33,7 @@ bindkey "^[[1;5D" backward-word
 
 ## quick commit
 qcom() {
-  git add . && git commit -m "automated quick commit"
+  git add . && git commit -m "automated quick commit" && git push
 }
 
 hyphenate() {
