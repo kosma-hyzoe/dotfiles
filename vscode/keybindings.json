@@ -1,3 +1,4 @@
+// Place your key bindings in this file to override the defaults
 [
     /* move code selection */
     {
@@ -91,6 +92,10 @@
         "key": "alt+i",  // do i really need this?
         "command": "C_Cpp.RunCodeAnalysisOnActiveFile"
     },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
 
     /* quick open fix */
     {
@@ -98,24 +103,20 @@
         "command": "keyboard-quickfix.openQuickFix"
     },
     {
-    "key": "alt+i",
+        "key": "alt+i",
         "command": "workbench.action.quickOpenSelectNext"
     },
     {
         "key": "alt+u",
         "command": "workbench.action.quickOpenSelectPrevious"
     },
-
-
-    /* disables */
-    {
-        "key": "ctrl+q",
-        "command": "-workbench.action.quit"
-    },
     {
         "key": "ctrl+b",
         "command": "-workbench.action.toggleSidebarVisibility"
     },
+
+
+    /* disables */
     {
         "key": "ctrl+shift+`",
         "command": "-workbench.action.terminal.new",
@@ -160,5 +161,27 @@
         "key": "ctrl+`",
         "command": "-workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "-cmake.debugTarget",
+        "when": "cmake:enableFullFeatureSet && inCMakeProject && !cmake:hideDebugCommand && !inDebugMode"
+    },
+    {
+        "key": "shift+f5",
+        "command": "-cmake.launchTarget",
+        "when": "cmake:enableFullFeatureSet && !cmake:hideDebugCommand && !inDebugMode"
     },
 ]
