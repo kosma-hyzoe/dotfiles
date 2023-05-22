@@ -10,7 +10,7 @@ command -v nvim &> /dev/null && export EDITOR=nvim
 command -v alacritty &> /dev/null && export TERMINAL=alacritty
 
 # history
-setopt histignorealldups sharehistory
+setopt sharehistory
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history

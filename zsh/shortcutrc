@@ -31,16 +31,17 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 
-## quick commit
-qcom() {
-  git add . && git commit -m "automated quick commit" && git push
-}
-
 hyphenate() {
   for file in "$@"; do
     new_name=$(echo "$file" | tr ' ' '-')
     mv "$file" "$new_name"
   done
+}
+
+rdw() {
+  last_command=$(history | tail -n 2 | head -n 1 | sed 's/[0-9]*\s*//')
+  new_command=$1${last_command#* }
+  eval "$new_command"
 }
 
 cht() {curl -s "cheat.sh/${1}"}

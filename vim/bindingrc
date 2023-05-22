@@ -11,8 +11,11 @@ map Q gq
 " comfy ctrl shortcuts
 vnoremap <C-c> "+y
 map <C-v> "+p
+map <C-S-v> "+P
 vnoremap <C-x> "+d
 nnoremap <C-A> ggVG
 
 " replace all
 nnoremap S :%s//g<Left><Left>
+
+inoremap <c-e> <c-o>l

@@ -2,7 +2,10 @@
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias gt="git status"
-
+alias qcom="git add . && git commit -m 'automated quick commit'"
+alias qcomp="qcom&& git push"
+alias signals="man 7 signal"
+alias desktop="cd ~/media/.desktop"
 
 ## rc editing shortcuts
 alias \
@@ -35,7 +38,7 @@ alias \
 
 ## yt-dlp
 alias \
-    yt="yt-dlp --embed-metadata  --embed-thumbnail --embed-subs -i -o '%(title)s.%(ext)s'" \
+    yt="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
     yta="yt -x -f bestaudio/best --audio-format mp3" \
     yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
     yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \

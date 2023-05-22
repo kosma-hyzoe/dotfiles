@@ -103,11 +103,11 @@
         "command": "keyboard-quickfix.openQuickFix"
     },
     {
-        "key": "alt+i",
+        "key": "ctrl+alt+i",
         "command": "workbench.action.quickOpenSelectNext"
     },
     {
-        "key": "alt+u",
+        "key": "ctrl+alt+u",
         "command": "workbench.action.quickOpenSelectPrevious"
     },
     {
