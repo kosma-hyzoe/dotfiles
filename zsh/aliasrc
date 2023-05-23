@@ -3,7 +3,7 @@
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias gt="git status"
 alias qcom="git add . && git commit -m 'automated quick commit'"
-alias qcomp="qcom&& git push"
+alias qcomp="qcom && git push"
 alias signals="man 7 signal"
 alias desktop="cd ~/media/.desktop"
 
