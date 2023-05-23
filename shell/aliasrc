@@ -1,12 +1,12 @@
 # exports ans aliases
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
-alias gt="git status"
-alias qcom="git add . && git commit -m 'automated quick commit'"
-alias qcomp="qcom && git push"
-alias signals="man 7 signal"
-alias desktop="cd ~/media/.desktop"
-alias kas="tmux kill-ses -a"
+
+## git
+alias \
+    gt="git status" \
+    qcom="git add . && git commit -m 'automated quick commit'" \
+    qcomp="qcom && git push" \
 
 ## rc editing shortcuts
 alias \
@@ -90,5 +90,3 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
-## temp workarounds for technical issues
-alias fn="solaar config k780 fn-swap false"

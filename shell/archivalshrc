@@ -1,14 +1,9 @@
+alias fn="solaar config k780 fn-swap false"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-if [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then 
-   USING_JETBRAINS_IDE=true
-else
-    USING_JETBRAINS_IDE=false
-fi
 
 rangercd () {
     tmp="$(mktemp)"
@@ -19,3 +14,12 @@ rangercd () {
         [ --datadir "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+
+start with tmux if appropriate
+if  command -v tmux &> /dev/null \
+    && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] \
+    && [ -z "$TMUX" ] && [ -n "$PS1" ] \
+    && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
+  exec tmux
+fi

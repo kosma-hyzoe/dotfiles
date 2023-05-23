@@ -1,0 +1,4 @@
+alias signals="man 7 signal"
+alias kas="tmux kill-ses -a"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

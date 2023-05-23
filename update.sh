@@ -29,11 +29,11 @@ main() {
   # tmux
   ln -f tmux/tmux.conf ~/.tmux.conf
 
-  # zsh
-  ln -f zsh/zshrc ~/.zshrc
-  ln -f zsh/aliasrc ~/.config
-  ln -f zsh/shortcutrc ~/.config
-
+  # shell
+  ln -f shell/zshrc ~/.zshrc
+  ln -f shell/aliasrc ~/.config
+  ln -f shell/shortcutrc ~/.config
+  ln -f shell/tempshrc ~/.config
 
   # ipython
   mkdir -p ~/.ipython/profile_default

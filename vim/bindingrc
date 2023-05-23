@@ -18,4 +18,6 @@ nnoremap <c-a> ggVG
 " replace all
 nnoremap <c-s> :%s//g<Left><Left>
 
-inoremap <c-e> <c-o>l
+" search word and WORD
+nnoremap <leader>sw viw"ty/<c-r>t<enter>
+nnoremap <leader>sW viW"ty/<c-r>t<enter>
