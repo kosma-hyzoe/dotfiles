@@ -35,6 +35,7 @@ hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set mouse=a
 set scrolloff=5
 set splitbelow splitright
+set number
 set autoread
 
 set spell spelllang=en_us,pl

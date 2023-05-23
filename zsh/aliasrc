@@ -6,6 +6,7 @@ alias qcom="git add . && git commit -m 'automated quick commit'"
 alias qcomp="qcom && git push"
 alias signals="man 7 signal"
 alias desktop="cd ~/media/.desktop"
+alias kas="tmux kill-ses -a"
 
 ## rc editing shortcuts
 alias \
