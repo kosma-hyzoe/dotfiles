@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-  git pull 1> /dev/null || { echo "git pull failed. exiting fln..." && exit 1 }
+  git pull &> /dev/null || { echo "git pull failed. exiting..." && exit 1; }
 
   mkdir -p ~/.config
 
