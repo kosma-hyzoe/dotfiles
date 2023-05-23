@@ -5,16 +5,17 @@ alias auu="sudo apt update ; sudo apt upgrade -y"
 ## git
 alias \
     gt="git status" \
+    gp="git pull" \
     qcom="git add . && git commit -m 'automated quick commit'" \
     qcomp="qcom && git push" \
 
 ## rc editing shortcuts
 alias \
-	rezsh="source ~/.zshrc" \
-	zshrc="${EDITOR} ~/.zshrc" \
-	nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
-	aliasrc="${EDITOR} ~/.config/aliasrc" \
-	shortcutrc="${EDITOR} ~/.config/shortcutrc" \
+    rezsh="source ~/.zshrc" \
+    zshrc="${EDITOR} ~/.zshrc" \
+    nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
+    aliasrc="${EDITOR} ~/.config/aliasrc" \
+    shortcutrc="${EDITOR} ~/.config/shortcutrc" \
 
 
 ## use exa-wrapper.sh if possible
