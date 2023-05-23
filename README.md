@@ -28,3 +28,4 @@ For now, the `cli-essentials.sh` install script covers:
 * Install history script
 * `fln.sh` -> `lnocp.sh`
 * non-appimage nvim?
+
