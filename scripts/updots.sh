@@ -2,8 +2,6 @@
 
 main() {
   cd $(dirname "$0")/..
-  echo $(pwd)
-  exit
 
   git pull &> /dev/null || { echo "git pull failed. exiting..." && exit 1; }
 
