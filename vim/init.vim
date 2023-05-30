@@ -30,6 +30,7 @@ set expandtab
 
 set colorcolumn=81
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+hi SpellBad gui=underline
 
 " misc
 set mouse=a
