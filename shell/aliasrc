@@ -25,6 +25,7 @@ if command -v exa >/dev/null; then
 else
     alias ls="ls -hN --color=auto --group-directories-first"
 fi
+alias bls="/usr/bin/\ls"
 
 ## use nvim instead of vim if possible
 if command -v nvim &> /dev/null; then
