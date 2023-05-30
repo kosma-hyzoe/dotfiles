@@ -1,6 +1,7 @@
-CARGO_PROGRAMS=("bat" "tldr" "lsd" "fd")
-
 #!/bin/bash
+
+CARGO_PROGRAMS=("bat" "tealdeer" "lsd" "cargo-update")
+
 main() {
   # cargo
   if ! command -v cargo &>/dev/null; then
