@@ -6,12 +6,12 @@
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
-NON_GUI_PROGRAMS=("zsh" "tmux" "vim.gtk3" "curl" "git")
+APT_PROGRAMS=("zsh" "tmux" "vim.gtk3" "curl" "fuse")
 
 install() {
   if ! command -v "${1}" &>/dev/null; then
     echo "Installing ${1}"...
-    sudo apt-get install -y "${2}" >/dev/null
+    sudo apt-get install -y "${1}" >/dev/null
   fi
 }
 
@@ -26,7 +26,7 @@ install_libfuse() {
 main() {
   echo "Running 'apt update && apt upgrade'..."
   sudo apt-get update -y &>/dev/null && apt-get upgrade -y &>/dev/null
-  for prog in "${NON_GUI_PROGRAMS[@]}"; do
+  for prog in "${APT_PROGRAMS[@]}"; do
     install "${prog}"
   done
   install_libfuse
@@ -48,17 +48,5 @@ main() {
   # zsh
   mkdir -p ~/.config/zsh
   git clone ${PURE_REPO_URL} ~/.config/zsh/pure &>/dev/null
-
- # bat and cargo
- if ! command -v bat &>/dev/null; then
-    # install cargo if needed
-    if ! command -v cargo &>/dev/null; then
-      curl https://sh.rustup.rs -sSf | sh
-      # shellcheck source=/dev/null
-      source "$HOME/.cargo/env"
-    fi
-    echo "Installing bat..."
-    cargo install bat >/dev/null
-  fi
 }
 main "$@"
