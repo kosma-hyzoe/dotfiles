@@ -1,7 +1,6 @@
 alias signals="man 7 signal"
 alias kas="tmux kill-ses -a"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias \
     yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
     yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
