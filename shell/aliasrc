@@ -45,7 +45,7 @@ if command -v bat &> /dev/null; then
     alias pcat="cat --plain"
     alias bathelp="bat --plain --theme=ansi --language=help"
     belp() {
-	"$@" --help 2>&1 | bathelp
+	  "$@" --help 2>&1 | bathelp
     }
 fi
 
