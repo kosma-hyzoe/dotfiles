@@ -1,6 +1,13 @@
 # defaults exports
 command -v nvim &> /dev/null && export EDITOR=nvim
-command -v alacritty &> /dev/null && export TERMINAL=alacritty
+
+# start with tmux if appropriate
+if  command -v tmux &> /dev/null \
+    && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] \
+    && [ -z "$TMUX" ] && [ -n "$PS1" ] \
+    && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
+  exec tmux
+fi
 
 # history
 setopt sharehistory
