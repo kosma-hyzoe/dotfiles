@@ -1,3 +1,28 @@
+" for faster hjkl-ing around
+set ttimeoutlen=50
+
+" style and formatting
+set textwidth=80
+set formatoptions=tcqj
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" misc
+set mouse=a
+set scrolloff=5
+set splitbelow splitright
+set number
+set autoread
+
+set wildmode=longest,list,full
+set termguicolors
+set nowrap
+set hlsearch
+set incsearch
+set smartcase
+
 " Enable the use of the leader key
 let mapleader = ","
 
@@ -21,3 +46,4 @@ nnoremap <c-s> :%s//g<Left><Left>
 " search word and WORD
 nnoremap <leader>sw viw"ty/<c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
+
