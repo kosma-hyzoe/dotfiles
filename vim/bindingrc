@@ -21,3 +21,4 @@ nnoremap <c-s> :%s//g<Left><Left>
 " search word and WORD
 nnoremap <leader>sw viw"ty/<c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
+
