@@ -69,3 +69,4 @@ export PATH=$HOME/.cargo/bin:$HOME/bin:$HOME/.local/bin:$HOME/dotfiles/scripts:$
 [ -f "$HOME/.config/tempshrc" ] && source "$HOME/.config/tempshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

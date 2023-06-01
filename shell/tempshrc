@@ -1,3 +1,5 @@
+export PATH="$HOME/.tools/platform-tools:$PATH"
+
 alias signals="man 7 signal"
 alias kas="tmux kill-ses -a"
 
