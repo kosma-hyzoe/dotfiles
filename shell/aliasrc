@@ -3,6 +3,7 @@
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias els="exa"
 alias ls="ls -hN --color=auto --group-directories-first"
+alias whichv="apt-cache policy"
 
 ## git
 alias \
