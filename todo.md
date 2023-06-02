@@ -1,5 +1,7 @@
 # TODO
 
+* updots
+    * echo changes
 * jetbrains
     * line length hint and formatting
     * java formatting

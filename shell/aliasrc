@@ -2,8 +2,9 @@
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias els="exa"
-alias ls="ls -hN --color=auto --group-directories-first"
 alias whichv="apt-cache policy"
+alias hdi="howdoi"
+alias procp="rsync --progress"
 
 ## git
 alias \
@@ -60,7 +61,9 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 alias \
-	grep="grep --color=auto" \
+	bls="/usr/bin/ls" \
+    ls="ls -hN --color=auto --group-directories-first" \
+    grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	ip="ip -color=auto"

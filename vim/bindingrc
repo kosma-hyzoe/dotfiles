@@ -1,4 +1,3 @@
-" Enable the use of the leader key
 let mapleader = ","
 
 noremap <leader>sv :source $MYVIMRC<CR>
@@ -14,6 +13,9 @@ map <c-v> "+p
 map <c-s-v> "+P
 vnoremap <c-x> "+d
 nnoremap <c-a> ggVG
+
+" extra ctrl shortcuts
+nnoremap <c-d> <c-v>
 
 " replace all
 nnoremap <c-s> :%s//g<Left><Left>
