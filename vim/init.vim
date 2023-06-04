@@ -15,7 +15,7 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 
 " save file as sudo on files that require root permission
-cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+cabbrev w!! !sudo -S tee %
 
 " appearance, style and formatting
 set textwidth=80
