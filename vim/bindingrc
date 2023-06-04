@@ -2,7 +2,6 @@ let mapleader = ","
 
 noremap <leader>sv :source $MYVIMRC<CR>
 noremap <leader>nh :nohl<CR>
-" map <leader>nn :
 
 " don't use ex mode, use Q for formatting
 map Q gq
@@ -24,3 +23,5 @@ nnoremap <c-s> :%s//g<Left><Left>
 nnoremap <leader>sw viw"ty/<c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
 
+" TODO
+"" map <leader>nn :

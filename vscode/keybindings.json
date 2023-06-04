@@ -118,6 +118,25 @@
 
     /* disables */
     {
+        "key": "alt+3",
+        "command": "-workbench.action.openEditorAtIndex3"
+    },
+    {
+        "key": "alt+4",
+        "command": "-workbench.action.openEditorAtIndex4"
+    },
+    {
+        "key": "alt+6",
+        "command": "-workbench.action.openEditorAtIndex6"
+    },
+    {
+        "key": "alt+7",
+        "command": "-workbench.action.openEditorAtIndex7"
+    },
+    {
+        "key": "alt+8",
+        "command": "-workbench.action.openEditorAtIndex8"
+    },{
         "key": "ctrl+shift+`",
         "command": "-workbench.action.terminal.new",
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
@@ -246,26 +265,7 @@
         "command": "workbench.action.debug.stop",
         "when": "inDebugMode && !focusedSessionIsAttach"
     },
-    {
-        "key": "alt+3",
-        "command": "-workbench.action.openEditorAtIndex3"
-    },
-    {
-        "key": "alt+4",
-        "command": "-workbench.action.openEditorAtIndex4"
-    },
-    {
-        "key": "alt+6",
-        "command": "-workbench.action.openEditorAtIndex6"
-    },
-    {
-        "key": "alt+7",
-        "command": "-workbench.action.openEditorAtIndex7"
-    },
-    {
-        "key": "alt+8",
-        "command": "-workbench.action.openEditorAtIndex8"
-    },
+
     {
         "key": "alt+2",
         "command": "renameFile",

@@ -31,6 +31,8 @@ else
     alias v="vim"
 fi
 alias vw="v ~/index.md"
+alias week="v ~/backpack/week.md"
+alias day="v ~/backpack/day.md"
 
 ## extra utilities
 alias \
