@@ -6,6 +6,7 @@ alias whichv="apt-cache policy"
 alias hdi="howdoi"
 alias procp="rsync --progress"
 
+
 ## git
 alias \
     gt="git status" \
@@ -23,9 +24,13 @@ alias \
 
 ## use nvim instead of vim if possible
 if command -v nvim &> /dev/null; then
+    alias v="nvim"
     alias vim="nvim -u ~/.vimrc"
     alias bvim="/usr/bin/\vim" # "backup vim"
+else
+    alias v="vim"
 fi
+alias vw="v ~/index.md"
 
 ## extra utilities
 alias \

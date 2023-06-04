@@ -2,31 +2,31 @@ source ~/.vim/pluginrc
 source ~/.vim/bindingrc
 
 
-"" Vanilla cursor shapes
+"" vanilla cursor shapes
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-
-"" Should-be-defaults 
-set backspace=indent,eol,start
-set ruler
-set mouse=a
-set encoding=utf-8
-set number
+" neovim defaults
 set nocompatible
-
-
-" Style and formatting 
-set textwidth=80
-set formatoptions=tcqj
-
-
-" For faster hjkl-ing around and stuff
+set autoindent
+set autoread
+set backspace=indent,eol,start
+set belloff=all
+set encoding=utf-8
+set ruler
 set ttimeoutlen=50
-
-set scrolloff=5 " scroll w/ 5 lines above cursor
-set splitbelow splitright " split tabs at the bottom and on the right
-set wildmode=longest,list,full " ctrl+n autocompletion
 set hlsearch
 set incsearch
+set history=10000
+set formatoptions=tcqj
+set number
+
+" appearance, style and formatting
+set textwidth=80
+set scrolloff=5 " scroll w/ 5 lines above cursor
+set splitbelow splitright " split tabs at the bottom and on the right
+set nowrap
+
+" interface 
+set mouse=a
 set smartcase
