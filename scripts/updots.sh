@@ -5,6 +5,9 @@ main() {
 
   git pull &> /dev/null || { echo "git pull failed. exiting..." && exit 1; }
 
+  mkdir -p ~/.local/scripts
+  cp -f scripts/* ~/.local/scripts
+
   mkdir -p ~/.config
 
   # vim
