@@ -1,11 +1,10 @@
 # exports ans aliases
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
-alias els="exa"
-alias whichv="apt-cache policy"
 alias hdi="howdoi"
-alias procp="rsync --progress"
 
+alias whichv="apt-cache policy"
+alias procp="rsync --progress"
 
 ## git
 alias \
@@ -24,15 +23,15 @@ alias \
 
 ## use nvim instead of vim if possible
 if command -v nvim &> /dev/null; then
-    alias v="nvim"
-    alias vim="nvim -u ~/.vimrc"
+    alias vim="nvim"
+    alias mvim="nvim -u ~/.vimrc" # "minimal vim"
     alias bvim="/usr/bin/\vim" # "backup vim"
-else
-    alias v="vim"
 fi
-alias vw="v ~/index.md"
-alias week="v ~/backpack/week.md"
-alias day="v ~/backpack/day.md"
+
+alias vw="vim ~/index.md"
+alias week="vim ~/backpack/week.md"
+alias day="vim ~/backpack/day.md"
+alias ocd="vim ~/backpack/ocdeter/ocdeter.md"
 
 ## extra utilities
 alias \
