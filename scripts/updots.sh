@@ -31,8 +31,8 @@ main() {
   # alacritty
   ln -f alacritty/alacritty.yml ~/.config/alacritty
 
-  # tmux
-  ln -f tmux/tmux.conf ~/.tmux.conf
+  # tmux, with a workaround for my Ubuntu 20.04 virtual machine
+  [[ $(tmux -V) != "tmux 3.0a" ]] && ln -f tmux/tmux.conf ~/.tmux.conf
 
   # shell
   ln -f shell/zshrc ~/.zshrc
