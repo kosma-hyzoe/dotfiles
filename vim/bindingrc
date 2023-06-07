@@ -1,27 +1,26 @@
-let mapleader = ","
-
-noremap <leader>sv :source $MYVIMRC<CR>
-noremap <leader>nh :nohl<CR>
-
-" don't use ex mode, use Q for formatting
-map Q gq
-
-" comfy ctrl shortcuts
+" ctrl bindings, mostly comfy non-vim defaults
 vnoremap <c-c> "+y
 map <c-v> "+p
 map <c-s-v> "+P
 vnoremap <c-x> "+d
 nnoremap <c-a> ggVG
+"" remap VISUAL BLOCK mode to ctrl+i
+nnoremap <c-i> <c-v>
+nnoremap <c-d> :q<CR>
+nnoremap <c-s> :w<CR>
+nnoremap <c-e> ge
 
-" extra ctrl shortcuts
-nnoremap <c-d> <c-v>
-
-" replace all
-nnoremap <c-s> :%s//g<Left><Left>
+" leader bindings
+let mapleader = ","
+noremap <leader>sv :source $MYVIMRC<CR>
+noremap <leader>nh :nohl<CR>
 
 " search word and WORD
-nnoremap <leader>sw viw"ty/<c-r>t<enter>
+nnoremap <leader>sw viw"ty/c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
+" toggle number and relative number
+nnoremap <leader>n :set number!<CR>
+nnoremap <leader>rn :set relativenumber!<CR>
 
-" TODO
-"" map <leader>nn :
+" Other keys
+map Q :%s//g<Left><Left>

@@ -33,12 +33,14 @@ hi SpellBad cterm=underline
 " interface
 set mouse=a
 set smartcase
-set number relativenumber
+set number
 
 " syntax, lsp, spellcheck etc.
 set tabstop=4
-set shiftwidth=4
 set expandtab
+set shiftwidth=4
+set autoindent
+set smartindent
 set spell spelllang=en_us,pl
 set wildmode=longest,list,full
 set ignorecase

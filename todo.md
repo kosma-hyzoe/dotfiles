@@ -10,3 +10,4 @@
     * vmoptions for disable splash nad google java
 * scripts
     * cargo installs
+    * vim -u $(curl my.vim)

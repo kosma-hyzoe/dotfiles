@@ -19,16 +19,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'vimwiki/vimwiki'
 Plug 'preservim/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lambdalisue/suda.vim'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 filetype plugin on
 filetype indent on
 
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-map <leader>v :VimwikiIndex<CR>
-let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vim_markdown_folding_disabled = 1
+
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S

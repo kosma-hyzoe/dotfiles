@@ -2,6 +2,7 @@
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias hdi="howdoi"
+fman() {man "${1}" | grep -w -A1 "${2}"}
 
 alias whichv="apt-cache policy"
 alias procp="rsync --progress"
@@ -27,11 +28,6 @@ if command -v nvim &> /dev/null; then
     alias mvim="nvim -u ~/.vimrc" # "minimal vim"
     alias bvim="/usr/bin/\vim" # "backup vim"
 fi
-
-alias vw="vim ~/index.md"
-alias week="vim ~/backpack/week.md"
-alias day="vim ~/backpack/day.md"
-alias ocd="vim ~/backpack/ocdeter/ocdeter.md"
 
 ## extra utilities
 alias \
@@ -68,11 +64,14 @@ alias \
 
 alias \
 	bls="/usr/bin/ls" \
-    ls="ls -hN --color=auto --group-directories-first" \
-    grep="grep --color=auto" \
+	ls="ls -hN --color=auto --group-directories-first" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	ip="ip -color=auto"
+# grep
+alias \
+    grep="grep --color=auto" \
+
 
 
 ## colored less
