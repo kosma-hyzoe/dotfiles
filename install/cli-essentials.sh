@@ -6,7 +6,7 @@
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
-APT_PROGRAMS=("zsh" "tmux" "vim.gtk3" "curl" "fuse" "gh")
+APT_PROGRAMS=("zsh" "tmux" "vim.gtk3" "curl" "fuse" "gh" "htop")
 
 install() {
   if ! command -v "${1}" &>/dev/null; then

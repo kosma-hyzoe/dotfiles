@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CARGO_PROGRAMS=("bat" "tealdeer" "lsd" "cargo-update" "ripgrep")
+CARGO_PROGRAMS=("bat" "tealdeer" "exa" "cargo-update" "ripgrep" "zoxide" "exa")
 
 main() {
   # cargo

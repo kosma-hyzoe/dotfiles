@@ -2,6 +2,7 @@
 
 main() {
   cd $(dirname "$0")/..
+  git pull || exit 1
 
   mkdir -p ~/.local/scripts
   cp -f scripts/* ~/.local/scripts
