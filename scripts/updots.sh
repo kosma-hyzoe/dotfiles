@@ -3,10 +3,10 @@
 main() {
   cd $(dirname "$0")/..
 
-  git_pull_output = $(git pull)
-  [[ !$? ]] && [[ $output != "Already up to date." ]] && exit 1
+  git_pull_output=$(git pull)
+  [[ !$? ]] && [[ "${git_pull_output}" != "Already up to date." ]] && exit 1
 
-    mkdir -p ~/.local/scripts
+  mkdir -p ~/.local/scripts
   cp -f scripts/* ~/.local/scripts
 
   mkdir -p ~/.config
