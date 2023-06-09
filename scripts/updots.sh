@@ -37,9 +37,8 @@ main() {
 
   # shell
   ln -f shell/zshrc ~/.zshrc
+  ln -f shell/bashrc ~/.bashrc
   ln -f shell/aliasrc ~/.config
-  ln -f shell/shortcutrc ~/.config
-  ln -f shell/tempshrc ~/.config
 
   # ipython
   mkdir -p ~/.ipython/profile_default
