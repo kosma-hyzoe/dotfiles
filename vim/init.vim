@@ -2,8 +2,8 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
-source ~/.vim/pluginrc
-source ~/.vim/bindingrc
+source ~/.vim/plugins.vim
+source ~/.vim/bindings.vim
 
 " retain cursor position
 autocmd BufReadPost *

@@ -16,8 +16,8 @@ main() {
   mkdir -p ~/.config/nvim
   ln -f vim/vimrc ~/.vimrc
   ln -f vim/init.vim ~/.config/nvim
-  ln -f vim/bindingrc ~/.vim
-  ln -f vim/pluginrc ~/.vim
+  ln -f vim/bindings.vim ~/.vim
+  ln -f vim/plugins.vim ~/.vim
 
   # code
   ln -f vscode/vscodevimrc ~/.vscodevimrc

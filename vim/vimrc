@@ -1,5 +1,5 @@
-source ~/.vim/pluginrc
-source ~/.vim/bindingrc
+source ~/.vim/plugins.vim
+source ~/.vim/bindings.vim
 
 " neovim diff
 
