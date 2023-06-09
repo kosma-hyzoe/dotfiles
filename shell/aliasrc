@@ -49,8 +49,7 @@ if command -v bat &> /dev/null; then
     alias cat="bat --theme=ansi --style='changes'"
     alias scat="cat --paging=never"
     alias pcat="cat --plain"
-    alias bathelp="bat --plain --theme=ansi --language=help"
-    belp() { "$@" --help 2>&1 | bathelp; }
+    belp() { "$@" --help 2>&1 | bat --plain --theme=ansi --language=help; }
 fi
 
 ## verbosity settings that should be defaults
