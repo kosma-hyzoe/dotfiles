@@ -1,7 +1,7 @@
 # a wourkaround to set zsh as default when i'm not on the users list
 # if [ -z "$BASH_EXECUTION_STRING" ]; then exec /usr/bin/zsh; fi
 
-# PS1="\n\w\n\$ "
+# export PS1="\n\w\n\$ "
 export PS1="\[\033[36m\]\n\w\n\[\033[38;2;255;170;0m\]\$ \[\033[0m\]"
 
 # defaults exports
