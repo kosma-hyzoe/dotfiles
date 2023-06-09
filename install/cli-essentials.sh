@@ -1,8 +1,5 @@
 #!/usr/bin/bash
 
-# TODO if update, if apt
-# TODO zsh autocomplete
-
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
