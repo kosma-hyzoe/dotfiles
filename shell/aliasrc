@@ -1,4 +1,5 @@
-# exports ans aliases
+# exports, aliases and micro functions
+command -v nvim &> /dev/null && export EDITOR=nvim
 
 alias make="make -j $(nproc)"
 alias auu="sudo apt update ; sudo apt upgrade -y"
@@ -20,7 +21,6 @@ alias \
     zshrc="${EDITOR} ~/.zshrc" \
     nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
-    shortcutrc="${EDITOR} ~/.config/shortcutrc" \
 
 ## use nvim instead of vim if possible
 if command -v nvim &> /dev/null; then
@@ -42,15 +42,13 @@ alias \
 
 ## bat
 if command -v bat &> /dev/null; then
-    alias bcat="/usr/bin/\cat" # TODO do I need this \cat?
+    alias bcat="/usr/bin/\cat"
     alias vcat="bat --theme=ansi"
     alias cat="bat --theme=ansi --style='changes'"
     alias scat="cat --paging=never"
     alias pcat="cat --plain"
     alias bathelp="bat --plain --theme=ansi --language=help"
-    belp() {
-	  "$@" --help 2>&1 | bathelp
-    }
+    belp() { "$@" --help 2>&1 | bathelp }
 fi
 
 ## verbosity settings that should be defaults
@@ -61,18 +59,14 @@ alias \
 	bc="bc -ql" \
 	rsync="rsync -vrPlu" \
 	ffmpeg="ffmpeg -hide_banner"
-
+## colors and other conveniences for common programs
 alias \
-	bls="/usr/bin/ls" \
-	ls="ls -hN --color=auto --group-directories-first" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	ip="ip -color=auto"
-# grep
-alias \
-    grep="grep --color=auto" \
-
-
+	bls="/usr/bin/ls" \
+	ls="ls -hN --color=auto --group-directories-first" \
+    grep="grep --color=auto"
 
 ## colored less
 export LESS="--RAW-CONTROL-CHARS"
@@ -90,3 +84,17 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# shortucts and microfunctions
+cht() { curl cheat.sh/$1 }
+
+# recent additions I'm still uncertain of
+alias signals="man 7 signal"
+alias kas="tmux kill-ses -a"
+
+alias \
+    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
+    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
+    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"

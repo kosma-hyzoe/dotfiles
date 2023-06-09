@@ -1,12 +1,13 @@
 source ~/.vim/pluginrc
 source ~/.vim/bindingrc
 
+" neovim diff
 
 "" vanilla cursor shapes
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-" neovim defaults
+"" neovim defaults
 set nocompatible
 set autoindent
 set autoread
@@ -21,6 +22,47 @@ set history=10000
 set formatoptions=tcqj
 set number
 
+set clipboard+=unnamedplus
+
+" retain cursor position
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" deletes all trailing whitespaces on save retaining the cursor position
+autocmd BufWritePre * let currPos = getpos(".")
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
+
+" appearance, style and formatting
+set textwidth=80
+set scrolloff=5
+set splitbelow splitright
+set nowrap
+
+set colorcolumn=81
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+hi clear SpellBad
+hi clear SpellLocal
+hi clear SpellCap
+hi SpellBad cterm=underline
+
+" interface
+set mouse=a
+set smartcase
+set number
+set ignorecase
+
+" syntax, lsp, spellcheck etc.
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set autoindent
+set smartindent
+set spell spelllang=en_us,pl
+set wildmode=longest,list,full
+
 " appearance, style and formatting
 set textwidth=80
 set tabstop=4
@@ -32,7 +74,3 @@ set scrolloff=5 " scroll w/ 5 lines above cursor
 set splitbelow splitright " split tabs at the bottom and on the right
 set nowrap
 
-" interface
-set mouse=a
-set smartcase
-set ignorecase

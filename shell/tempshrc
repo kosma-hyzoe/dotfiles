@@ -1,7 +1,0 @@
-alias signals="man 7 signal"
-alias kas="tmux kill-ses -a"
-
-alias \
-    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
-    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
-    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
