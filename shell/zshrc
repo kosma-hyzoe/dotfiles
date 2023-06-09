@@ -1,3 +1,8 @@
+command -v nvim &> /dev/null && export EDITOR=nvim
+
+setopt autocd
+stty stop undef # Disable ctrl-s to freeze terminal
+
 # start with tmux if appropriate
 if  command -v tmux &> /dev/null \
     && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] \
