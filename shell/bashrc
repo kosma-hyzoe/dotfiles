@@ -1,6 +1,8 @@
+# a wourkaround to set zsh as default when i'm not on the users list
 # if [ -z "$BASH_EXECUTION_STRING" ]; then exec /usr/bin/zsh; fi
 
-PS1="\n\w\n\$ "
+# PS1="\n\w\n\$ "
+export PS1="\[\033[36m\]\n\w\n\[\033[38;2;255;170;0m\]\$ \[\033[0m\]"
 
 # defaults exports
 command -v nvim &> /dev/null && export EDITOR=nvim
@@ -23,7 +25,7 @@ lfcd() {
     [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
   fi
 }
-bindkey -s '^o' 'lfcd\n'
+bind '"\C-o":"lfcd\C-m"'
 
 #
 # UBUNTU 20.04 DEFAULTS
@@ -70,16 +72,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# End ofUbuntu 20.04 defaults
+# End of Ubuntu 20.04 defaults
 
 
 # configure PATH
 export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$PATH
 
 # load aliases and shortcuts if existent
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
-[ -f "$HOME/.config/tempshrc" ] && source "$HOME/.config/tempshrc"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

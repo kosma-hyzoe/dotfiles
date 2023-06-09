@@ -79,7 +79,6 @@ bindkey -M menuselect "\L" vi-forward-char
 bindkey -M menuselect "\J" vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-
 ## use lf to switch directories and bind it to ctrl-o
 lfcd() {
   tmp="$(mktemp)"

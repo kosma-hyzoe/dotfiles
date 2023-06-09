@@ -19,6 +19,8 @@ alias \
 alias \
     rezsh="source ~/.zshrc" \
     zshrc="${EDITOR} ~/.zshrc" \
+    bashrc="${EDITOR} ~/.bashrc" \
+    rebash="source ~/.bashrc" \
     nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
 
@@ -48,7 +50,7 @@ if command -v bat &> /dev/null; then
     alias scat="cat --paging=never"
     alias pcat="cat --plain"
     alias bathelp="bat --plain --theme=ansi --language=help"
-    belp() { "$@" --help 2>&1 | bathelp }
+    belp() { "$@" --help 2>&1 | bathelp; }
 fi
 
 ## verbosity settings that should be defaults
@@ -88,7 +90,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # shortucts and microfunctions
-cht() { curl cheat.sh/$1 }
+cht() { curl cheat.sh/$1; }
 
 # recent additions I'm still uncertain of
 alias signals="man 7 signal"
