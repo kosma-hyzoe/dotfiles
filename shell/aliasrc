@@ -2,7 +2,6 @@
 
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias hdi="howdoi"
-fman() {man "${1}" | grep -w -A1 "${2}"}
 
 alias whichv="apt-cache policy"
 alias procp="rsync --progress"
