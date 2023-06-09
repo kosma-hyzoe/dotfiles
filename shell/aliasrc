@@ -1,5 +1,6 @@
 # exports ans aliases
 
+alias make="make -j $(nproc)"
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias hdi="howdoi"
 
