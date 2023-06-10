@@ -29,9 +29,6 @@ main() {
   mkdir -p ~/.config/lf
   ln -f lf/lfrc ~/.config/lf
 
-  # alacritty
-  ln -f alacritty/alacritty.yml ~/.config/alacritty
-
   # tmux, with a workaround for my Ubuntu 20.04 virtual machine
   [[ $(tmux -V) != "tmux 3.0a" ]] && ln -f tmux/tmux.conf ~/.tmux.conf
 
