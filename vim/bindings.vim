@@ -7,8 +7,9 @@ map <c-s-v> "+P
 inoremap <c-s-v> <esc>"+Pa
 vnoremap <c-x> "+d
 nnoremap <c-a> ggVG
-nnoremap <c-d> :q<CR>
-nnoremap <c-s> :w<CR>
+" vim surround
+nmap <c-s> ysiw
+nmap <c-d> ysiW
 "" remap VISUAL BLOCK mode to ctrl+i
 nnoremap <c-i> <c-v>
 "" use ctrl+e for `ge`
@@ -17,7 +18,7 @@ nnoremap <c-e> ge
 " leader bindings
 let mapleader = ","
 noremap <leader>sv :source $MYVIMRC<CR>
-noremap <leader>nh :nohighlight<CR>
+noremap <leader>nh :nohl<CR>
 " search word and WORD
 nnoremap <leader>sw viw"ty/<c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
