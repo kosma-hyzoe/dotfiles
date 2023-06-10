@@ -52,7 +52,7 @@ if command -v bat &> /dev/null; then
     belp() { "$@" --help 2>&1 | bat --plain --theme=ansi --language=help; }
 fi
 
-## verbosity settings that should be defaults
+## verbosity settings
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
