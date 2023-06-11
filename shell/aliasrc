@@ -80,7 +80,6 @@ alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
 alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
 alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
-export LESS="--RAW-CONTROL-CHARS"
 
 ## colored less
 export LESS="--RAW-CONTROL-CHARS"
