@@ -1,7 +1,7 @@
-command -v nvim &> /dev/null && export EDITOR=nvim
-
+# cd by typing directories
 setopt autocd
-stty stop undef # Disable ctrl-s to freeze terminal
+# disable ctrl-s to freeze terminal
+stty stop undef
 
 # start with tmux if appropriate
 if  command -v tmux &> /dev/null \
@@ -16,6 +16,13 @@ setopt sharehistory
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
+
+# set vim/neovim as default editor
+if command -v nvim &> /dev/null; then
+    export EDITOR=nvim
+elif command -v vim &> /dev/null; then
+    export EDITOR=vim
+fi
 
 # vi mode
 bindkey -v
@@ -63,7 +70,7 @@ zstyle :prompt:pure:suspended_jobs color '#FFAA00'
 prompt pure
 
 # configure PATH
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/dotfiles/scripts:$PATH
 
 
 ## reverse search

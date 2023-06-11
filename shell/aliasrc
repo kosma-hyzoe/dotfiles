@@ -40,16 +40,15 @@ alias \
 ## yt-dlp
 alias \
     yt="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
-    yta="yt -x -f bestaudio/best --audio-format mp3" \
+    yta="yt -x -f bestaudio/best --audio-format mp4" \
 
 ## bat
 if command -v bat &> /dev/null; then
     alias bcat="/usr/bin/\cat"
-    alias vcat="bat --theme=ansi"
-    alias cat="bat --theme=ansi --style='changes'"
+    alias vcat="bat"
+    alias cat="bat --style='changes'"
     alias scat="cat --paging=never"
     alias pcat="cat --plain"
-    belp() { "$@" --help 2>&1 | bat --plain --theme=ansi --language=help; }
 fi
 
 ## verbosity settings
@@ -60,14 +59,28 @@ alias \
 	bc="bc -ql" \
 	rsync="rsync -vrPlu" \
 	ffmpeg="ffmpeg -hide_banner"
+
+
 ## colors and other conveniences for common programs
-alias \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi" \
-	ip="ip -color=auto"
-	bls="/usr/bin/ls" \
-	ls="ls -hN --color=auto --group-directories-first" \
-    grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+alias ip="ip -color=auto"
+alias bls="/usr/bin/ls"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias grep="grep --color=auto"
+
+# shortucts and microfunctions
+cht() { curl cheat.sh/$1; }
+
+# recent additions I'm still uncertain of
+alias signals="man 1 signal"
+alias kas="tmux kill-ses -a"
+
+alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
+alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
+alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
+
+export LESS="--RAW-CONTROL-CHARS"
 
 ## colored less
 export LESS="--RAW-CONTROL-CHARS"
@@ -84,18 +97,5 @@ export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
+#export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# shortucts and microfunctions
-cht() { curl cheat.sh/$1; }
-
-# recent additions I'm still uncertain of
-alias signals="man 7 signal"
-alias kas="tmux kill-ses -a"
-
-alias \
-    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
-    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
-    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
