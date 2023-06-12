@@ -50,6 +50,19 @@ if command -v bat &> /dev/null; then
     alias scat="cat --paging=never"
     alias pcat="cat --plain"
 fi
+# this bit seems to break when put inside if...
+alias bathelp='bat --plain --language=help'
+belp() {
+    "$@" --help 2>&1 | bathelp
+}
+
+# exa/ls
+alias bls="/usr/bin/ls"
+if command -v exa &> /dev/null; then
+    alias ls="exa"
+else
+    alias ls="ls -hN --color=auto --group-directories-first"
+fi
 
 ## verbosity settings
 alias \
@@ -66,7 +79,6 @@ alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias ip="ip -color=auto"
 alias bls="/usr/bin/ls"
-alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 
 # shortucts and microfunctions
