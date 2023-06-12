@@ -31,7 +31,7 @@ main() {
 
   # shell
   ln -f shell/zshrc ~/.zshrc
-  ln -f shell/bashrc ~/.bashrc
+  cp -f shell/bashrc ~/.bashrc
   ln -f shell/aliasrc ~/.config
 
   # ipython
