@@ -25,6 +25,8 @@ nnoremap <leader>sW viW"ty/<c-r>t<enter>
 " toggle number and relative number
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>rn :set relativenumber!<CR>
+" show changes
+nnoremap <leader>sd :w !diff % -<CR>
 
 " Other keys
 "" Q for "quick replace all"

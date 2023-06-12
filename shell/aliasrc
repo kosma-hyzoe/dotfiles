@@ -1,6 +1,4 @@
-# exports, aliases and micro functions
-command -v nvim &> /dev/null && export EDITOR=nvim
-
+## shorcuts and mnemonics
 alias make="make -j $(nproc)"
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias hdi="howdoi"
@@ -8,12 +6,31 @@ alias hdi="howdoi"
 alias whichv="apt-cache policy"
 alias procp="rsync --progress"
 
+## vim/nvim
+if command -v nvim &> /dev/null; then
+    export EDITOR=nvim
+    alias bvim="$(which vim)" # "backup vim"
+    alias vim="nvim"
+    alias mvim="nvim -u ~/.vimrc" # "minimal vim"
+elif command -v vim &> /dev/null; then
+    export EDITOR=vim
+    alias nvim="$(which vim)" # it's stupid but i tend to type nvim a lot :p
+fi
+
 ## git
+qcom() {
+    if [ -z "$1" ]; then
+        git add . && git commit -m 'automated quick commit'
+    else
+        git add . && git commit -m "$1"
+    fi
+}
+qcomp() {
+    qcom "$@" && git push
+}
 alias \
     gt="git status" \
     gp="git pull" \
-    qcom="git add . && git commit -m 'automated quick commit'" \
-    qcomp="qcom && git push" \
 
 ## rc editing shortcuts
 alias \
@@ -23,13 +40,6 @@ alias \
     rebash="source ~/.bashrc" \
     nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
-
-## use nvim instead of vim if possible
-if command -v nvim &> /dev/null; then
-    alias vim="nvim"
-    alias mvim="nvim -u ~/.vimrc" # "minimal vim"
-    alias bvim="/usr/bin/\vim" # "backup vim"
-fi
 
 ## extra utilities
 alias \
@@ -50,13 +60,13 @@ if command -v bat &> /dev/null; then
     alias scat="cat --paging=never"
     alias pcat="cat --plain"
 fi
-# this bit seems to break when put inside if...
+# this bit seems to break when put inside an if statement...
 alias bathelp='bat --plain --language=help'
 belp() {
     "$@" --help 2>&1 | bathelp
 }
 
-# exa/ls
+## exa/ls
 alias bls="/usr/bin/ls"
 if command -v exa &> /dev/null; then
     alias ls="exa"
@@ -73,25 +83,22 @@ alias \
 	rsync="rsync -vrPlu" \
 	ffmpeg="ffmpeg -hide_banner"
 
+## ls/exa
+alias bls="/usr/bin/ls"
+if command -v exa &> /dev/null; then
+    alias ls="exa"
+else
+    alias ls="ls -hN --color=auto --group-directories-first"
+fi
 
 ## colors and other conveniences for common programs
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias ip="ip -color=auto"
-alias bls="/usr/bin/ls"
 alias grep="grep --color=auto"
 
-# shortucts and microfunctions
+## shortucts and microfunctions
 cht() { curl cheat.sh/$1; }
-
-# recent additions I'm still uncertain of
-alias signals="man 1 signal"
-alias kas="tmux kill-ses -a"
-
-alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
-alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
-alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
-
 
 ## colored less
 export LESS="--RAW-CONTROL-CHARS"
@@ -108,5 +115,14 @@ export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
-#export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
+# for konsole and gnome-terminal? not sure if necessary
+export GROFF_NO_SGR=1
+
+## recent additions I'm still uncertain of
+alias signals="man 1 signal"
+alias kas="tmux kill-ses -a"
+
+alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
+alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
+alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
