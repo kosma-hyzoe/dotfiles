@@ -9,7 +9,7 @@ case $- in
 esac
 
 # a wourkaround to set zsh as default when i'm not on the users list
-# if [ -z "$BASH_EXECUTION_STRING" ]; then exec /usr/bin/zsh; fi
+if [ -z "$BASH_EXECUTION_STRING" ]; then exec /usr/bin/zsh; fi
 
 FORCE_PROMPT_COLOR=
 
@@ -22,14 +22,6 @@ case "$TERM" in
         export PS1="\n\w\n\$ "
         ;;
 esac
-
-
-# set vim/neovim as default editor
-if command -v nvim &> /dev/null; then
-    export EDITOR=nvim
-elif command -v vim &> /dev/null; then
-    export EDITOR=vim
-fi
 
 # start with tmux if appropriate
 if  command -v tmux &> /dev/null \

@@ -1,5 +1,13 @@
-# exports, aliases and micro functions
-command -v nvim &> /dev/null && export EDITOR=nvim
+# vim/nvim
+if command -v nvim &> /dev/null; then
+    export EDITOR=nvim
+    alias bvim="/usr/bin/vim" # "backup vim"
+    alias vim="nvim"
+    alias mvim="nvim -u ~/.vimrc" # "minimal vim"
+elif command -v vim &> /dev/null; then
+    export EDITOR=vim
+    alias nvim="vim" # it's stupid but i tend to type nvim a lot :p
+fi
 
 alias make="make -j $(nproc)"
 alias auu="sudo apt update ; sudo apt upgrade -y"
@@ -23,13 +31,6 @@ alias \
     rebash="source ~/.bashrc" \
     nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
-
-## use nvim instead of vim if possible
-if command -v nvim &> /dev/null; then
-    alias vim="nvim"
-    alias mvim="nvim -u ~/.vimrc" # "minimal vim"
-    alias bvim="/usr/bin/\vim" # "backup vim"
-fi
 
 ## extra utilities
 alias \
@@ -60,13 +61,18 @@ alias \
 	rsync="rsync -vrPlu" \
 	ffmpeg="ffmpeg -hide_banner"
 
+## ls/exa
+alias bls="/usr/bin/ls"
+if command -v exa &> /dev/null; then
+    alias ls="exa"
+else
+    alias ls="ls -hN --color=auto --group-directories-first"
+fi
 
 ## colors and other conveniences for common programs
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias ip="ip -color=auto"
-alias bls="/usr/bin/ls"
-alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 
 # shortucts and microfunctions
