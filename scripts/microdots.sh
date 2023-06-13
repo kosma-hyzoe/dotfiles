@@ -25,7 +25,6 @@ main() {
   # shell
   cp -f shell/bashrc ~/.bashrc
   cp -f shell/aliasrc ~/.config
-  cp -f shell/tempshrc ~/.config
 }
 
 main "$@"
