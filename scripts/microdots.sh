@@ -9,9 +9,9 @@ main() {
 
   # vim
   mkdir -p ~/.vim
-  ln -f vim/vimrc ~/.vimrc
-  ln -f vim/bindings.vim ~/.vim
-  ln -f vim/plugins.vim ~/.vim
+  cp -f vim/vimrc ~/.vimrc
+  cp -f vim/bindings.vim ~/.vim
+  cp -f vim/plugins.vim ~/.vim
 
   # lf
   if ! command -v lf &>/dev/null; then
@@ -20,13 +20,13 @@ main() {
     rm -f lf*.tar.gz
   fi
   mkdir -p ~/.config/lf
-  ln -f lf/lfrc ~/.config/lf
+  cp -f lf/lfrc ~/.config/lf
 
   # shell
-  ln -f shell/bashrc ~/.bashrc
-  ln -f shell/aliasrc ~/.config
-  ln -f shell/shortcutrc ~/.config
-  ln -f shell/tempshrc ~/.config
+  cp -f shell/bashrc ~/.bashrc
+  cp -f shell/aliasrc ~/.config
+  cp -f shell/shortcutrc ~/.config
+  cp -f shell/tempshrc ~/.config
 }
 
 main "$@"
