@@ -3,14 +3,6 @@ setopt autocd
 # disable ctrl-s to freeze terminal
 stty stop undef
 
-# start with tmux if appropriate
-# if  command -v tmux &> /dev/null \
-#     && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] \
-#     && [ -z "$TMUX" ] && [ -n "$PS1" ] \
-#     && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
-#   exec tmux
-# fi
-
 # history
 setopt sharehistory
 HISTSIZE=1000

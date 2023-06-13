@@ -8,9 +8,6 @@ case $- in
       *) return;;
 esac
 
-# a wourkaround to set zsh as default when i'm not on the users list
-if [ -z "$BASH_EXECUTION_STRING" ]; then exec /usr/bin/zsh; fi
-
 FORCE_PROMPT_COLOR=
 
 # set up the prompt
@@ -22,14 +19,6 @@ case "$TERM" in
         export PS1="\n\w\n\$ "
         ;;
 esac
-
-# start with tmux if appropriate
-if  command -v tmux &> /dev/null \
-    && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] \
-    && [ -z "$TMUX" ] && [ -n "$PS1" ] \
-    && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
-    exec tmux
-fi
 
 ## use lf to switch directories and bind it to ctrl-o
 lfcd() {

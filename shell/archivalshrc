@@ -1,9 +1,13 @@
 alias fn="solaar config k780 fn-swap false"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+start with tmux if appropriate
+if  command -v tmux &> /dev/null \
+    && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] \
+    && [ -z "$TMUX" ] && [ -n "$PS1" ] \
+    && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
+  exec tmux
+fi
+
 
 rangercd () {
     tmp="$(mktemp)"
@@ -13,6 +17,13 @@ rangercd () {
         rm -f "$tmp"
         [ --datadir "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
+}
+
+hyphenate() {
+  for file in "$@"; do
+    new_name=$(echo "$file" | tr ' ' '-')
+    mv "$file" "$new_name"
+  done
 }
 
 
