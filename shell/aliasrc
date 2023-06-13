@@ -2,6 +2,7 @@
 alias make="make -j $(nproc)"
 alias auu="sudo apt update ; sudo apt upgrade -y"
 alias hdi="howdoi"
+alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 
 alias whichv="apt-cache policy"
 alias procp="rsync --progress"

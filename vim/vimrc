@@ -10,6 +10,7 @@ let &t_EI = "\e[2 q"
 "" neovim defaults
 set nocompatible
 set autoindent
+set showcmd
 set autoread
 set backspace=indent,eol,start
 set belloff=all
@@ -60,7 +61,7 @@ set expandtab
 set shiftwidth=4
 set autoindent
 set smartindent
-set spell spelllang=en_us,pl
+set spell spelllang=en_us
 set wildmode=longest,list,full
 
 " appearance, style and formatting

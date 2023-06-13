@@ -6,6 +6,9 @@ inoremap <c-v> <esc>"+pa
 map <c-s-v> "+P
 inoremap <c-s-v> <esc>"+Pa
 vnoremap <c-x> "+d
+nnoremap <leader>a <c-a>
+nnoremap <leader>x <c-x>
+map <c-a> <Nop>
 nnoremap <c-a> ggVG
 " vim surround
 nmap <c-s> ysiw
