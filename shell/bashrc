@@ -74,7 +74,7 @@ fi
 # End of Ubuntu 20.04 defaults
 
 # configure PATH
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$HOME/bin:$PATH
 
 # load aliases and shortcuts if existent
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
