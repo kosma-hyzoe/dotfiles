@@ -5,7 +5,6 @@ alias hdi="howdoi"
 alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 
 alias whichv="apt-cache policy"
-alias procp="rsync --progress"
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -77,20 +76,16 @@ fi
 
 ## verbosity settings
 alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
+	scp="cp" \
+    cp="cp -iv" \
+    alias procp="rsync --progress" \
+	rsync="rsync -vrPlu" \
+	smv="mv" \
+    mv="mv -iv" \
+    srm="rm" \
 	rm="rm -vI" \
 	bc="bc -ql" \
-	rsync="rsync -vrPlu" \
 	ffmpeg="ffmpeg -hide_banner"
-
-## ls/exa
-alias bls="/usr/bin/ls"
-if command -v exa &> /dev/null; then
-    alias ls="exa"
-else
-    alias ls="ls -hN --color=auto --group-directories-first"
-fi
 
 ## colors and other conveniences for common programs
 alias diff="diff --color=auto"
