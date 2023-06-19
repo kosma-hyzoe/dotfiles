@@ -69,6 +69,7 @@ belp() {
 ## exa/ls
 alias bls="/usr/bin/ls"
 if command -v exa &> /dev/null; then
+    alias els="ls -hN --color=auto --group-directories-first"
     alias ls="exa"
 else
     alias ls="ls -hN --color=auto --group-directories-first"
