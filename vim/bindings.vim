@@ -6,15 +6,15 @@ inoremap <c-v> <esc>"+pa
 map <c-s-v> "+P
 inoremap <c-s-v> <esc>"+Pa
 vnoremap <c-x> "+d
-nnoremap <leader>a <c-a>
 nnoremap <leader>x <c-x>
-map <c-a> <Nop>
-nnoremap <c-a> ggVG
+nnoremap <c-a> <Nop>
+map <c-a> ggVG
 " vim surround
 nmap <c-s> ysiw
 nmap <c-d> ysiW
 "" remap VISUAL BLOCK mode to ctrl+i
 nnoremap <c-i> <c-v>
+nnoremap <leader>cv <c-v>
 "" use ctrl+e for `ge`
 nnoremap <c-e> ge
 
@@ -22,6 +22,7 @@ nnoremap <c-e> ge
 let mapleader = ","
 noremap <leader>sv :source $MYVIMRC<CR>
 noremap <leader>nh :nohl<CR>
+noremap <leader>cv <c-v>
 " search word and WORD
 nnoremap <leader>sw viw"ty/<c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
