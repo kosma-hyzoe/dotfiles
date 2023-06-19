@@ -35,6 +35,6 @@ nnoremap <leader>sd :w !diff % -<CR>
 " Other keys
 "" Q for "quick replace all"
 map Q :%s//g<Left><Left>
-
-" perform dot commands over visual blocks
+"" perform dot commands over visual blocks:
 vnoremap . :normal .<CR>
+

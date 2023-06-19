@@ -12,9 +12,9 @@ main() {
   mkdir -p ~/.vim
   mkdir -p ~/.config/nvim
   ln -f vim/vimrc ~/.vimrc
-  ln -f vim/init.vim ~/.config/nvim
-  ln -f vim/bindings.vim ~/.vim
-  ln -f vim/plugins.vim ~/.vim
+  ln -f vim/init.vim ~/.config/nvim/init.vim
+  ln -f vim/bindings.vim ~/.vim/bindings.bim
+  ln -f vim/plugins.vim ~/.vim/plugins.vim
 
   # code
   ln -f vscode/vscodevimrc ~/.vscodevimrc
