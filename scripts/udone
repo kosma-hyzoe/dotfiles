@@ -1,0 +1,28 @@
+#!/usr/bin/python3.11
+
+import sys
+import subprocess
+import time
+import os
+
+def udone(command):
+    try:
+        subprocess.check_call(command, shell=True)
+        time.sleep(1)
+    except subprocess.CalledProcessError:
+        os.system(f'notify-send "\'{command}\' has returned with a non-zero exit status."')
+        return
+
+
+    os.system(f'notify-send "\'{command}\' has returned."')
+
+
+
+if __name__ == "__main__":
+    if len(sys.argv) >= 2:
+        command = " ".join(sys.argv[1:])
+        udone(command)
+    else:
+        print(f"Usage: {sys.argv[0]} <command>")
+        sys.exit(1)
+
