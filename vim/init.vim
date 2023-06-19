@@ -5,6 +5,9 @@ let &packpath = &runtimepath
 source ~/.vim/plugins.vim
 source ~/.vim/bindings.vim
 
+" disables automatic commenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " retain cursor position
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
