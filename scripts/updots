@@ -13,7 +13,7 @@ main() {
   mkdir -p ~/.config/nvim
   ln -f vim/vimrc ~/.vimrc
   ln -f vim/init.vim ~/.config/nvim/init.vim
-  ln -f vim/bindings.vim ~/.vim/bindings.bim
+  ln -f vim/bindings.vim ~/.vim/bindings.vim
   ln -f vim/plugins.vim ~/.vim/plugins.vim
 
   # code
