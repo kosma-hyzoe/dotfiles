@@ -39,10 +39,10 @@ set number
 set ignorecase
 
 " syntax, lsp, spellcheck etc.
-set tabstop=4
-set expandtab
-set shiftwidth=4
 set smartindent
 set spell spelllang=en_us,pl
 set wildmode=longest,list,full
-
+"" indentation
+set tabstop=4
+set shiftwidth=4
+set noexpandtab

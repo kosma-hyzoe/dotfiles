@@ -79,12 +79,12 @@ fi
 alias \
 	scp="cp" \
     cp="cp -iv" \
-    alias procp="rsync --progress" \
+    procp="rsync --progress" \
 	rsync="rsync -vrPlu" \
 	smv="mv" \
     mv="mv -iv" \
     srm="rm" \
-	rm="rm -vI" \
+	rm="rm -v" \
 	bc="bc -ql" \
 	ffmpeg="ffmpeg -hide_banner"
 
