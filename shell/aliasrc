@@ -1,10 +1,14 @@
 ## shorcuts and mnemonics
 alias make="make -j $(($(nproc)/2))"
-alias auu="sudo apt update ; sudo apt upgrade -y"
+alias auu="sudo apt update ; sudo apt upgrade -y --allow-downgrades"
 alias hdi="howdoi"
 alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 
 alias whichv="apt-cache policy"
+
+texport () {
+	export $1
+}
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -83,7 +87,7 @@ alias \
 	rsync="rsync -vrPlu" \
 	smv="mv" \
     mv="mv -iv" \
-    srm="rm" \
+    srm="$(which rm)" \
 	rm="rm -v" \
 	bc="bc -ql" \
 	ffmpeg="ffmpeg -hide_banner"
