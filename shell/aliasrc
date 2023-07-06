@@ -1,5 +1,5 @@
 ## shorcuts and mnemonics
-alias make="make -j $(($(nproc)/2))"
+alias make="make -j$(($(nproc)/2))"
 alias auu="sudo apt update ; sudo apt upgrade -y --allow-downgrades"
 alias hdi="howdoi"
 alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
