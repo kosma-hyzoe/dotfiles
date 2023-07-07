@@ -2,6 +2,8 @@
 setopt autocd
 # disable ctrl-s to freeze terminal
 stty stop undef
+# turn on bash-style comments
+setopt interactivecomments
 
 # history
 setopt sharehistory
