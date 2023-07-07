@@ -35,8 +35,9 @@ map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
 " vimwiki
-"" disable all bindings
-let g:vimwiki_key_mappings = { 'all_maps': 0, }
 "" use markdown like a grown ass adult
-let g:vimwiki_list = [{'path': '~/.local/share/nvim/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+"" remaps
+let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]
+" map <c-k> <Plug>VimwikiFollowLink
