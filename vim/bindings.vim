@@ -9,9 +9,10 @@ vnoremap <c-x> "+d
 nnoremap <leader>x <c-x>
 nnoremap <c-a> <Nop>
 map <c-a> ggVG
+nmap <c-d> :q<CR>
 " vim surround
 nmap <c-s> ysiw
-nmap <c-d> ysiW
+nmap <c-s-s> ysiW
 "" remap VISUAL BLOCK mode to ctrl+i
 nnoremap <c-i> <c-v>
 nnoremap <leader>cv <c-v>
