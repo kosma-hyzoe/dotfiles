@@ -23,7 +23,6 @@ Plug 'preservim/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lambdalisue/suda.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
