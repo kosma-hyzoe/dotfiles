@@ -3,7 +3,7 @@ source ~/.vimrc
 set clipboard+=ideaput
 
 "" Enable plugins
-set sneak
+" set sneak
 set NERDTree
 set ideajoin
 set quickscope

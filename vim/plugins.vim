@@ -31,8 +31,8 @@ filetype plugin on
 filetype indent on
 
 " sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
+" map f <Plug>Sneak_s
+" map F <Plug>Sneak_S
 
 " vimwiki
 "" disable all bindings
