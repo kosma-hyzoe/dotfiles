@@ -14,12 +14,12 @@ texport () {
 ## vim/nvim
 if command -v nvim &> /dev/null; then
     export EDITOR=nvim
-    alias bvim="$(which vim)" # "backup vim"
+    alias bvim="/usr/bin/vim" # "backup vim"
     alias vim="nvim"
     alias mvim="nvim -u ~/.vimrc" # "minimal vim"
 elif command -v vim &> /dev/null; then
     export EDITOR=vim
-    alias nvim="$(which vim)" # it's stupid but i tend to type nvim a lot :p
+    alias nvim="/usr/bin/vim" # it's stupid but i tend to type nvim a lot :p
 fi
 
 ## git
@@ -88,7 +88,7 @@ alias \
 	rsync="rsync -vrPlu" \
 	smv="mv" \
     mv="mv -iv" \
-    srm="$(which rm)" \
+    srm="/usr/bin/rm" \
 	rm="rm -v" \
 	bc="bc -ql" \
 	ffmpeg="ffmpeg -hide_banner"
