@@ -1,7 +1,6 @@
 source ~/.vimrc
 
 "" Enable plugins
-set sneak
 set NERDTree
 set ideajoin
 set quickscope

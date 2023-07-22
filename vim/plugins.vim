@@ -23,7 +23,6 @@ Plug 'preservim/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lambdalisue/suda.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -31,8 +30,8 @@ filetype plugin on
 filetype indent on
 
 " sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
+" map f <Plug>Sneak_s
+" map F <Plug>Sneak_S
 
 " vimwiki
 "" use markdown like a grown ass adult

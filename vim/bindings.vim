@@ -24,18 +24,19 @@ let mapleader = ","
 noremap <leader>sv :source $MYVIMRC<CR>
 noremap <leader>nh :nohl<CR>
 noremap <leader>cv <c-v>
-" search word and WORD
+"" search word and WORD
 nnoremap <leader>sw viw"ty/<c-r>t<enter>
 nnoremap <leader>sW viW"ty/<c-r>t<enter>
-" toggle number and relative number
+"" toggle number and relative number
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>rn :set relativenumber!<CR>
-" show changes
+"" show changes
 nnoremap <leader>sd :w !diff % -<CR>
+"" close buffer
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Other keys
 "" Q for "quick replace all"
 map Q :%s//g<Left><Left>
 "" perform dot commands over visual blocks:
 vnoremap . :normal .<CR>
-
