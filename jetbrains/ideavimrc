@@ -1,7 +1,5 @@
 source ~/.vimrc
 
-set clipboard+=ideaput
-
 "" Enable plugins
 set NERDTree
 set ideajoin
