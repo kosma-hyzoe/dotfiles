@@ -50,7 +50,8 @@ alias \
 ## extra utilities
 alias \
     myip="curl ipinfo.io/ip" \
-    untar="tar -zxvf" \
+    untar="tar xvf" \
+	untarg="tar xvfz" \
     mkd="mkdir -pv" \
 
 ## yt-dlp
