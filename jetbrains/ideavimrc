@@ -6,6 +6,7 @@ set ideajoin
 set quickscope
 clipboard+=ideaput
 
+
 map <a-k> <Action>(MoveLineUp)
 map <a-j> <Action>(MoveLineDown)
 
@@ -20,7 +21,6 @@ nnoremap <a-s-k> <c-w>k
 map <a--> <Action>(SplitHorizontally)
 map <a-\> <Action>(SplitVertically)
 sethandler <a-l> :ide
-
 
 map <c-s-i> <Action>(ReformatCode)
 
