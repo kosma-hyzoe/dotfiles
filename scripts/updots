@@ -10,14 +10,14 @@ main() {
 
   # vim
   mkdir -p ~/.vim
-  mkdir -p ~/.config/nvim
-  ln -f vim/vimrc ~/.vimrc
-  ln -f vim/init.vim ~/.config/nvim/init.vim
-  ln -f vim/bindings.vim ~/.vim/bindings.vim
-  ln -f vim/plugins.vim ~/.vim/plugins.vim
+  ln -f vim/vimrc ~/.vim
+  ln -f vim/bindings.vim ~/.vim
+  ln -f vim/plugins.vim ~/.vim
 
-  # code
-  ln -f vscode/vscodevimrc ~/.vscodevimrc
+  # nvim
+  mkdir -p ~/.config/nvim
+  ln -f vim/init.vim ~/.vim # a workaround before my lua config matures
+  ln -f nvim/init.lua ~/.config/nvim
 
   # jebtrains
   ln -f jetbrains/ideavimrc ~/.ideavimrc

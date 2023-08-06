@@ -1,4 +1,5 @@
 ## shorcuts and mnemonics
+alias chrm="pycharm"
 alias make="make -j$(($(nproc)/2))"
 alias auu="sudo apt update ; sudo apt upgrade -y --allow-downgrades"
 alias hdi="howdoi"
@@ -11,6 +12,7 @@ alias whichv="apt-cache policy"
 texport () {
 	export $1
 }
+
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -50,8 +52,7 @@ alias \
 ## extra utilities
 alias \
     myip="curl ipinfo.io/ip" \
-    untar="tar xvf" \
-	untarg="tar xvfz" \
+    untar="tar -zxvf" \
     mkd="mkdir -pv" \
 
 ## yt-dlp
