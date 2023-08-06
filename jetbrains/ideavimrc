@@ -4,6 +4,7 @@ source ~/.vimrc
 set NERDTree
 set ideajoin
 set quickscope
+clipboard+=ideaput
 
 map <a-k> <Action>(MoveLineUp)
 map <a-j> <Action>(MoveLineDown)

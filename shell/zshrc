@@ -56,11 +56,12 @@ zstyle :prompt:pure:suspended_jobs color '#FFAA00'
 
 prompt pure
 
-# configure PATH
+# configure PATH and similar variables
 export JAVA_HOME=~/.jdks
 export PATH=$PATH:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:\
 $HOME/dotfiles/scripts:\
-$JAVA_HOME/openjdk-20.0.1/bin
+$JAVA_HOME/openjdk-20.0.1/bin:\
+/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
 
 
 # reverse search

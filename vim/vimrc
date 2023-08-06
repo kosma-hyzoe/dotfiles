@@ -8,7 +8,6 @@ let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
 "" neovim defaults
-path=.,,
 set nocompatible
 set autoindent
 set showcmd
@@ -23,8 +22,6 @@ set incsearch
 set history=10000
 set formatoptions=tcqj
 set number
-
-set clipboard+=unnamedplus
 
 " retain cursor position
 autocmd BufReadPost *
