@@ -57,7 +57,6 @@ set ignorecase
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set autoindent
 set smartindent
 set spell spelllang=en_us
 set wildmode=longest,list,full
