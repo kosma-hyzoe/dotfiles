@@ -1,13 +1,14 @@
 source ~/.vim/plugins.vim
 source ~/.vim/bindings.vim
+source ~/.vim/colorscheme.vim
 
-" neovim diff
+" Neovim diff
 
-"" vanilla cursor shapes
+"" Vanilla cursor shapes
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-"" neovim defaults
+"" Neovim defaults
 set nocompatible
 set autoindent
 set showcmd
@@ -23,52 +24,50 @@ set history=10000
 set formatoptions=tcqj
 set number
 
-" retain cursor position
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+" Sets
 
-" deletes all trailing whitespaces on save retaining the cursor position
-autocmd BufWritePre * let currPos = getpos(".")
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
+"" Indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
 
-" appearance, style and formatting
-set textwidth=80
-set scrolloff=5
-set splitbelow splitright
-set nowrap
-
+"" Interface
 set colorcolumn=81
+set mouse=a
+set smartcase
+set number
+set ignorecase
+set splitbelow splitright
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 hi clear SpellBad
 hi clear SpellLocal
 hi clear SpellCap
 hi SpellBad cterm=underline
 
-" interface
-set mouse=a
-set smartcase
-set number
-set ignorecase
-
-" syntax, lsp, spellcheck etc.
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set smartindent
+"" Spellcheck
 set spell spelllang=en_us
 set wildmode=longest,list,full
 
-" appearance, style and formatting
-set textwidth=80
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set autoindent
-set smartindent
-set scrolloff=5 " scroll w/ 5 lines above cursor
-set splitbelow splitright " split tabs at the bottom and on the right
+"" Other
+set scrolloff=5
 set nowrap
+set updatetime=1000
+
+" autocmd's
+
+"" disables automatic commenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+"" Retains cursor position
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+"" Deletes all trailing whitespaces on save retaining the cursor position
+autocmd BufWritePre * let currPos = getpos(".")
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 

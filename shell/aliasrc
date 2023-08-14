@@ -46,7 +46,7 @@ alias \
     zshrc="${EDITOR} ~/.zshrc" \
     bashrc="${EDITOR} ~/.bashrc" \
     rebash="source ~/.bashrc" \
-    nvimrc="${EDITOR} ~/.config/nvim/init.vim" \
+    nvimrc="${EDITOR} ~/.config/nvim/init.lua" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
 
 ## extra utilities

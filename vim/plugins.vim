@@ -16,10 +16,9 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'preservim/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lambdalisue/suda.vim'
@@ -29,14 +28,9 @@ call plug#end()
 filetype plugin on
 filetype indent on
 
-" sneak
-" map f <Plug>Sneak_s
-" map F <Plug>Sneak_S
-
 " vimwiki
 "" use markdown like a grown ass adult
 let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 "" remaps
 let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]
-" map <c-k> <Plug>VimwikiFollowLink

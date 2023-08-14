@@ -11,22 +11,14 @@ main() {
   # vim
   mkdir -p ~/.vim
   ln -f vim/vimrc ~/.vim
-  ln -f vim/bindings.vim ~/.vim
+  ln -f vim/remap.vim ~/.vim
   ln -f vim/plugins.vim ~/.vim
-
-  # nvim
-  mkdir -p ~/.config/nvim
-  ln -f vim/init.vim ~/.vim # a workaround before my lua config matures
-  ln -f nvim/init.lua ~/.config/nvim
-
-  # jebtrains
-  ln -f jetbrains/ideavimrc ~/.ideavimrc
 
   # lf
   mkdir -p ~/.config/lf
   ln -f lf/lfrc ~/.config/lf
 
-  # tmux, with a workaround for my Ubuntu 20.04 virtual machine
+  # tmux, with a workaround for older versions
   [[ $(tmux -V) != "tmux 3.0a" ]] && ln -f tmux/tmux.conf ~/.tmux.conf
 
   # shell
