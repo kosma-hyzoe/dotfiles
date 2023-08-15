@@ -1,4 +1,5 @@
 ## shorcuts and mnemonics
+alias nvh="cd ~/.config/nvim" 
 alias chrm="pycharm"
 alias make="make -j$(($(nproc)/2))"
 alias auu="sudo apt update ; sudo apt upgrade -y --allow-downgrades"
