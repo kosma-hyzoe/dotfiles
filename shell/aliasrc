@@ -86,7 +86,7 @@ fi
 
 ## verbosity settings
 alias \
-	scp="cp" \
+	silcp="cp" \
     cp="cp -iv" \
     procp="rsync --progress" \
 	rsync="rsync -vrPlu" \
