@@ -26,6 +26,9 @@ nnoremap <leader>sr :set relativenumber!<CR>
 nnoremap <leader>nw viw"ty/<c-r>t<CR>
 nnoremap <leader>nW viW"ty/<c-r>t<CR>
 
+" Source vimrc
+noremap <leader>sv :source $MYVIMRC<CR>
+
 " Show diff
 nnoremap <leader>sd :w !diff % -<CR>
 

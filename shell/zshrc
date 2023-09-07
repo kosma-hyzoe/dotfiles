@@ -88,8 +88,7 @@ lfcd() {
   fi
 }
 bindkey -s '^o' 'lfcd\n'
-# fzf and zoxide configs
-[ -f "$HOME/.config/zoxiderc" ] && source "$HOME/.config/zoxiderc" 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bind ctrl + arrow right/left arrow keys to forward-word/backward word
@@ -98,4 +97,4 @@ bindkey "^[[1;5D" backward-word
 
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
-
+eval "$(zoxide init zsh)"

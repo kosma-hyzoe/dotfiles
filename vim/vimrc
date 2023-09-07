@@ -1,5 +1,5 @@
 source ~/.vim/plugins.vim
-source ~/.vim/bindings.vim
+source ~/.vim/remaps.vim
 source ~/.vim/colorscheme.vim
 
 " Neovim diff
