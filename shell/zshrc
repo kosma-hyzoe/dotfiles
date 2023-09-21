@@ -48,15 +48,12 @@ compinit
 fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 
-PURE_PROMPT_SYMBOL="$"
-PURE_PROMPT_VICMD_SYMBOL="%%"
-zstyle :prompt:pure:path color cyan
-zstyle ':prompt:pure:prompt:*' color '#FFAA00'
-zstyle :prompt:pure:suspended_jobs color '#FFAA00'
-
 prompt pure
 
 # configure PATH and similar variables
+# export XDG_DATA_DIRS=$XDG_DATA_DIRS:"/var/lib/flatpak/exports/share":\
+#   "/home/kosma/.local/share/flatpak/exports/share"
+
 export JAVA_HOME=~/.jdks
 export PATH=$PATH:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:\
 $HOME/dotfiles/scripts:\
