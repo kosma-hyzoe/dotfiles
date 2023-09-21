@@ -1,11 +1,13 @@
 #!/usr/bin/bash
 
 source $(dirname "$0")/header
+TMUX_DOWNLOAD_LINK="https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz"
 
-ill libevent-dev libncurses5-dev
+ill libevent-dev ncurses-dev build-essential bison pkg-config
 
-git clone https://github.com/tmux/tmux
-cd tmux
+wget $TMUX_DOWNLOAD_LINK
+tar xf tmux-*
+rm -rf tmux-*tar.gz
+cd tmux-*
 ./configure && make
 sudo make install
-cd ..
