@@ -82,3 +82,4 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$HOME/bin:$PA
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"

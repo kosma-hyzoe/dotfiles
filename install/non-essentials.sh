@@ -1,6 +1,7 @@
 #!/bin/bash
 
-CARGO_PROGRAMS=("bat" "tealdeer" "exa" "cargo-update" "ripgrep" "exa" "zoxide")
+CARGO_PROGRAMS=("bat" "alacritty" "exa" "cargo-update" "ripgrep" \
+  "teeldear" "zoxide")
 # "git-delta" "duf" "dust" "procs" "sd" "du" "bandwhich"
 
 # cargo
@@ -18,8 +19,8 @@ if ! command -v prog &>/dev/null; then
 fi
 done
 
-# fzf
-if ! command -v fzf &>/dev/null; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
-fi
+# set alacritty as default
+sudo update-alternatives --install /usr/bin/x-terminal-emulator \
+    x-terminal-emulator $(which alacritty) 50
+sudo update-alternatives --config x-terminal-emulator
+
