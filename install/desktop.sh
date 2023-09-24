@@ -18,7 +18,7 @@ sudo apt remove libreoffice-common libreoffice-core libreoffice-gnome \
 
 ill flatpak gnome-software-plugin-flatpak
 flatpak install \
-    spotify keepassxc qbittorrent libreoffice
+    spotify keepassxc qbittorrent libreoffice stretchly
 
 
 # syncthing
@@ -28,5 +28,16 @@ echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://
 sudo apt-get update
 sudo apt-get install syncthing
 
-# :D 
+# appearance
 ill neofetch
+
+sudo sh -c "echo 'deb http://ppa.launchpad.net/papirus/papirus/ubuntu jammy main' > /etc/apt/sources.list.d/papirus-ppa.list"
+sudo wget -qO /etc/apt/trusted.gpg.d/papirus-ppa.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9461999446FAF0DF770BFC9AE58A9D36647CAE7F'
+sudo apt-get update
+ill papirus-icon-theme
+
+git clone https://github.com/horst3180/arc-theme.git
+cd arc-theme
+./autogen.sh --prefix=/usr --disable-cinnamon --disable-metacity \
+  --disable-xfwm --disable-unity --with-gnome=3.22
+sudo make install && cd .. && rm arc-theme
