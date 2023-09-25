@@ -1,3 +1,6 @@
+#!/usr/bin/bash
+
+
 ## shorcuts and mnemonics
 alias nvh="cd ~/.config/nvim"
 alias chrm="pycharm"
@@ -141,3 +144,13 @@ alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
 alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
 alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
+vim_lock () {
+  ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
+    sudo mkdir -p /usr/local/share/kbd/keymaps/ && \
+    sudo touch /usr/local/share/kbd/keymaps/caps_to_esc && \
+    sudo echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" > \
+      /usr/local/share/kbd/keymaps/caps_to_esc
+    
+    sudo loadkeys $! 
+}
+alias vim_unlock="sudo loadkeys -d /usr/local/share/kbd/keymaps/caps_to_esc"
