@@ -1,21 +1,11 @@
 #!/usr/bin/bash
 
-
 ## shorcuts and mnemonics
 alias nvh="cd ~/.config/nvim"
-alias chrm="pycharm"
 alias make="make -j$(($(nproc)/2))"
-alias auu="sudo apt update && sudo apt upgrade -y --allow-downgrades"
-alias hdi="howdoi"
 alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 alias files="xdg-open"
 alias cores="cd /var/lib/apport/coredump"
-
-
-texport () {
-	export $1
-}
-
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -35,12 +25,11 @@ qcom() {
         git add . && git commit -m "$1"
     fi
 }
-qcomp() {
-    qcom "$@" && git push
-}
+qcomp() { qcom "$@" && git push; };
 alias \
     gt="git status" \
     gp="git pull" \
+    gd="git diff"
 
 ## apt
 alias whichv="apt-cache policy"
@@ -52,6 +41,9 @@ lill () {
     fi
   done
 }
+alias \
+    apt="apt-get" \
+    auu="sudo apt update && sudo apt upgrade -y --allow-downgrades"
 
 ## rc editing shortcuts
 alias \
@@ -59,7 +51,6 @@ alias \
     zshrc="${EDITOR} ~/.zshrc" \
     bashrc="${EDITOR} ~/.bashrc" \
     rebash="source ~/.bashrc" \
-    nvimrc="${EDITOR} ~/.config/nvim/init.lua" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
 
 ## extra utilities
@@ -70,7 +61,8 @@ alias \
 
 ## yt-dlp
 alias \
-    yt="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
+    yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
+    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
     yta="yt -x -f bestaudio/best --audio-format mp4" \
 
 ## bat
@@ -154,3 +146,4 @@ vim_lock () {
     sudo loadkeys $! 
 }
 alias vim_unlock="sudo loadkeys -d /usr/local/share/kbd/keymaps/caps_to_esc"
+alias bemchmark="sysbench cpu --cpu-max-prime=200000 --threads=1 --validate run"

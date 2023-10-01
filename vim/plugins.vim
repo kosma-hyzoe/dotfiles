@@ -22,15 +22,8 @@ Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lambdalisue/suda.vim'
-Plug 'vimwiki/vimwiki'
 call plug#end()
 
 filetype plugin on
 filetype indent on
 
-" vimwiki
-"" use markdown like a grown ass adult
-let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-"" remaps
-let g:vimwiki_list = [{'path': '~', 'syntax': 'markdown', 'ext': '.md'}]

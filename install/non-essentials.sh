@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname "$0")/header
+
 CARGO_PROGRAMS=("bat" "alacritty" "exa" "cargo-update" "ripgrep" \
   "teeldear" "zoxide")
 # "git-delta" "duf" "dust" "procs" "sd" "du" "bandwhich"
@@ -10,6 +12,9 @@ curl https://sh.rustup.rs -sSf | sh
 # shellcheck source=/dev/null
 source "$HOME/.cargo/env"
 fi
+
+# for cargo-update
+ill libssl-dev
 
 # programs from cargo
 for prog in "${CARGO_PROGRAMS[@]}"; do
