@@ -43,6 +43,8 @@ vnoremap . :normal .<CR>
 
 " Recent additions
 
+nnoremap m *
+
 " Spellcheck
 map <leader>o :setlocal spell! spelllang=en_us,pl<CR>
 
