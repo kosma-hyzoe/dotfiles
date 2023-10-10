@@ -3,5 +3,4 @@ shell:
 window:
   decorations: None
   padding:
-    x: 9
-    y: 9
+    x: 2
