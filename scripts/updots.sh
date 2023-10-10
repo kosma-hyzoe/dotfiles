@@ -16,8 +16,8 @@ main() {
   mkdir -p ~/.config/lf
   ln -f lf/lfrc ~/.config/lf
 
-  # tmux, with a workaround for older versions
-  [[ $(tmux -V) != "tmux 3.0a" ]] && ln -f tmux/tmux.conf ~/.tmux.conf
+  # tmux
+  ln -f tmux/tmux.conf ~/.tmux.conf
 
   # shell
   ln -f shell/zshrc ~/.zshrc
@@ -27,6 +27,12 @@ main() {
   # ipython
   mkdir -p ~/.ipython/profile_default
   ln -f misc/ipython_config.py ~/.ipython/profile_default
+  
+  # alacritty
+  mkdir -p ~/.config/alacritty
+  ln -f alacritty/alacritty.yml ~/.config/alacritty
+
+  cd -
 }
 
 main "$@"
