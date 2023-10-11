@@ -32,7 +32,7 @@ main() {
   mkdir -p ~/.config/alacritty
   ln -sf alacritty/alacritty.yml ~/.config/alacritty
 
-  cd -
+  cd - > /dev/null
 }
 
 main "$@"
