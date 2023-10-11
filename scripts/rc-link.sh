@@ -4,7 +4,7 @@ main() {
   cd $(dirname "$0")/..
 
   # vim
-  mkdir  ~/.vim
+  mkdir -p ~/.vim
   ln -sf vim/vimrc ~/.vim
   ln -sf vim/colorscheme.vim ~/.vim
   ln -sf vim/remaps.vim ~/.vim
@@ -15,9 +15,9 @@ main() {
   ln -sf lf/lfrc ~/.config/lf
 
   # tmux
-  [[ $(uname -v) == "*Ubuntu*" ]] &>/dev/null && \
-      ln -sf tmux/corp-tmux.conf ~/.tmux.conf || \
-      ln -sf tmux/tmux.conf ~/.tmux.conf
+  [[ $(uname -v) != *Ubuntu* ]] &>/dev/null && \
+      ln -sf tmux/tmux.conf ~/.tmux.conf || \
+      ln -sf tmux/corp-tmux.conf ~/.tmux.conf
 
   # shell
   ln -sf shell/zshrc ~/.zshrc
