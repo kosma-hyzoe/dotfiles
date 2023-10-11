@@ -5,32 +5,32 @@ main() {
 
   # vim
   mkdir -p ~/.vim
-  ln -sf vim/vimrc ~/.vim
-  ln -sf vim/colorscheme.vim ~/.vim
-  ln -sf vim/remaps.vim ~/.vim
-  ln -sf vim/plugins.vim ~/.vim
+  ln -f vim/vimrc ~/.vim
+  ln -f vim/colorscheme.vim ~/.vim
+  ln -f vim/remaps.vim ~/.vim
+  ln -f vim/plugins.vim ~/.vim
 
   # lf
   mkdir -p ~/.config/lf
-  ln -sf lf/lfrc ~/.config/lf
+  ln -f lf/lfrc ~/.config/lf
 
   # tmux
   [[ $(uname -v) != *Ubuntu* ]] &>/dev/null && \
-      ln -sf tmux/tmux.conf ~/.tmux.conf || \
-      ln -sf tmux/corp-tmux.conf ~/.tmux.conf
+      ln -f tmux/tmux.conf ~/.tmux.conf || \
+      ln -f tmux/corp-tmux.conf ~/.tmux.conf
 
   # shell
-  ln -sf shell/zshrc ~/.zshrc
-  ln -sf shell/bashrc ~/.bashrc
-  ln -sf shell/aliasrc ~/.config
+  ln -f shell/zshrc ~/.zshrc
+  ln -f shell/bashrc ~/.bashrc
+  ln -f shell/aliasrc ~/.config
 
   # ipython
   mkdir -p ~/.ipython/profile_default
-  ln -sf misc/ipython_config.py ~/.ipython/profile_default
+  ln -f misc/ipython_config.py ~/.ipython/profile_default
   
   # alacritty
   mkdir -p ~/.config/alacritty
-  ln -sf alacritty/alacritty.yml ~/.config/alacritty
+  ln -f alacritty/alacritty.yml ~/.config/alacritty
 
   cd - > /dev/null
 }
