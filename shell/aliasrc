@@ -2,10 +2,12 @@
 
 ## shorcuts and mnemonics
 alias nvh="cd ~/.config/nvim"
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias make="make -j$(($(nproc)/2))"
 alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 alias files="xdg-open"
 alias cores="cd /var/lib/apport/coredump"
+alias kas="tmux kill-ses -a"
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -18,6 +20,14 @@ elif command -v vim &> /dev/null; then
     alias vi="vim"
     alias nvim="/usr/bin/vim" # it's stupid but i tend to type nvim a lot :p
 fi
+
+## grep
+alias \
+    grep='grep --color=auto' \
+    fgrep='fgrep --color=auto' \
+    egrep='egrep --color=auto'
+
+
 
 ## git
 qcom() {
@@ -32,6 +42,7 @@ alias \
     gt="git status" \
     gp="git pull" \
     gd="git diff" \
+    gg="git grep" \
     gclean="git clean -fdx"
 
 
@@ -87,12 +98,20 @@ belp() {
 alias bls="/usr/bin/ls"
 if command -v exa &> /dev/null; then
     alias els="ls -hN --color=auto --group-directories-first"
-    alias ls="exa"
+    alias ls="exa -F"
+    alias l='exa'
+    alias la='l -a'
+    alias ll='l -l'
+    alias lal='l -al'
 else
-    alias ls="ls -hN --color=auto --group-directories-first"
+    alias l="ls -hN --color=auto --group-directories-first"
+    alias ls='l -CF'
+    alias la='l -A'
+    alias ll='l -l'
+    alias lal='l -Al'
 fi
 
-## verbosity settings
+## verbosity and colors settings
 alias \
 	silcp="/usr/bin/cp" \
     cp="cp -iv" \
@@ -109,7 +128,6 @@ alias \
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias ip="ip -color=auto"
-alias grep="grep --color=auto"
 
 ## shortucts and microfunctions
 cht() { curl cheat.sh/$1; }
@@ -134,20 +152,20 @@ export GROFF_NO_SGR=1
 
 ## recent additions I'm still uncertain of
 alias signals="man 1 signal"
-alias kas="tmux kill-ses -a"
 
-alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
-alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
-alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
+alias \
+    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
+    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
+    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
 vim_lock () {
   ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
     sudo mkdir -p /usr/local/share/kbd/keymaps/ && \
     sudo touch /usr/local/share/kbd/keymaps/caps_to_esc && \
-    sudo echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" > \
-      /usr/local/share/kbd/keymaps/caps_to_esc
+    echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" \
+      | sudo tee -a /usr/local/share/kbd/keymaps/caps_to_esc > /dev/null
     
-    sudo loadkeys $! 
+    sudo loadkeys /usr/local/share/kbd/keymaps/caps_to_esc
 }
 alias vim_unlock="sudo loadkeys -d /usr/local/share/kbd/keymaps/caps_to_esc"
 alias bemchmark="sysbench cpu --cpu-max-prime=200000 --threads=1 --validate run"
