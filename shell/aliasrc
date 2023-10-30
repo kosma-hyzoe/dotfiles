@@ -8,6 +8,7 @@ alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 alias files="xdg-open"
 alias cores="cd /var/lib/apport/coredump"
 alias kas="tmux kill-ses -a"
+alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
