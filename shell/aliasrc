@@ -95,6 +95,10 @@ belp() {
     "$@" --help 2>&1 | bathelp
 }
 
+## cd
+alias qcd='alias cd="pushd >/dev/null" cdb="popd >/dev/null"'
+alias dqcd="unalias cd cdb"
+
 ## exa/ls
 alias bls="/usr/bin/ls"
 if command -v exa &> /dev/null; then
