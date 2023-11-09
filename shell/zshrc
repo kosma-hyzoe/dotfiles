@@ -1,8 +1,8 @@
-# cd by typing directories
-setopt autocd
+## basic settings
+
 # disable ctrl-s to freeze terminal
 stty stop undef
-# turn on bash-style comments
+# enable bash-style comments
 setopt interactivecomments
 
 # history
@@ -51,15 +51,13 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # configure PATH and similar variables
-# export XDG_DATA_DIRS=$XDG_DATA_DIRS:"/var/lib/flatpak/exports/share":\
-#   "/home/kosma/.local/share/flatpak/exports/share"
-
 export JAVA_HOME=~/.jdks
 export PATH=$PATH:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:\
 $HOME/dotfiles/scripts:\
 $JAVA_HOME/openjdk-20.0.1/bin:\
 /usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
 
+## bindings
 
 # reverse search
 bindkey '^R' history-incremental-search-backward
@@ -85,13 +83,14 @@ lfcd() {
   fi
 }
 bindkey -s '^o' 'lfcd\n'
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bind ctrl + arrow right/left arrow keys to forward-word/backward word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+## sourcing other files
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)" &> /dev/null
