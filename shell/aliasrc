@@ -9,6 +9,7 @@ alias files="xdg-open"
 alias cores="cd /var/lib/apport/coredump"
 alias kas="tmux kill-ses -a"
 alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
+alias sven="source venv/bin/activate"
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -176,3 +177,4 @@ vim_lock () {
 alias vim_unlock="sudo loadkeys /usr/local/share/kbd/keymaps/default"
 
 alias bemchmark="sysbench cpu --cpu-max-prime=200000 --threads=1 --validate run"
+
