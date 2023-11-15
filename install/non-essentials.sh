@@ -3,7 +3,7 @@
 source $(dirname "$0")/header
 
 CARGO_PROGRAMS=("bat" "alacritty" "exa" "cargo-update" "ripgrep" \
-  "teeldear" "zoxide")
+  "teeldear" "zoxide" "tree-sitter-cli")
 # "git-delta" "duf" "dust" "procs" "sd" "du" "bandwhich"
 
 # cargo
