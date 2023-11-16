@@ -2,14 +2,18 @@
 
 ## shorcuts and mnemonics
 alias nvh="cd ~/.config/nvim"
+alias files="xdg-open"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias kas="tmux kill-ses -a"
+
+alias sven="source venv/bin/activate"
+qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
+
 alias make="make -j$(($(nproc) - 2))"
 alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
-alias files="xdg-open"
 alias cores="cd /var/lib/apport/coredump"
-alias kas="tmux kill-ses -a"
 alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
-alias sven="source venv/bin/activate"
+
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -41,10 +45,12 @@ qcom() {
         git add . && git commit -m "$1"
     fi
 }
+
+
 qcomp() { qcom "$@" && git push; };
 alias \
     gt="git status" \
-    gp="git pull" \
+    gp="git pull && [[ $PWD == *dotfiles* ] && ~/dotfiles/scripts/rc-link.sh" \
     gd="git diff" \
     gg="git grep" \
     gcm="git commit" \
