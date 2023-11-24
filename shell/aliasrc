@@ -28,6 +28,10 @@ elif command -v vim &> /dev/null; then
     alias nvim="/usr/bin/vim"
 fi
 
+p4u() {
+    picocom -b 115200 "/dev/ttyUSB${1}"
+}
+
 ## grep
 alias \
     grep='grep --color=auto' \
