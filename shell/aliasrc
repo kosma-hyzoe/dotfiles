@@ -88,7 +88,7 @@ alias \
     myip="curl ipinfo.io/ip" \
     untar="tar -zxvf" \
     mkd="mkdir -pv" \
-    
+
 
 ## yt-dlp
 alias \
@@ -130,7 +130,7 @@ fi
 ## verbosity and colors settings
 alias \
 	silcp="/usr/bin/cp" \
-    cp="cp -iv" \
+    cp="cp -i" \
     procp="rsync --progress" \
 	rsync="rsync -vrPlu" \
 	smv="/usr/bin/mv" \
@@ -181,10 +181,9 @@ vim_lock () {
     sudo touch /usr/local/share/kbd/keymaps/caps_to_esc && \
     echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" \
       | sudo tee -a /usr/local/share/kbd/keymaps/caps_to_esc > /dev/null
-    
+
     sudo loadkeys /usr/local/share/kbd/keymaps/caps_to_esc
 }
 alias vim_unlock="sudo loadkeys /usr/local/share/kbd/keymaps/default"
 
 alias bemchmark="sysbench cpu --cpu-max-prime=200000 --threads=1 --validate run"
-
