@@ -126,6 +126,9 @@ else
     alias ll='l -l'
     alias lal='l -Al'
 fi
+lsa() {
+    echo $(pwd)$/$(ls $1)
+}
 
 ## verbosity and colors settings
 alias \
