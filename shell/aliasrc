@@ -119,6 +119,7 @@ if command -v exa &> /dev/null; then
     alias la='l -a'
     alias ll='l -l'
     alias lal='l -al'
+    alias tree='exa --tree'
 else
     alias l="ls -hN --color=auto --group-directories-first"
     alias ls='l -CF'
