@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 DEFAULT_BIN_PATH="~/.local/bin"
-APT_PROGRAMS=("git" "vim-gtk3" "curl" "wget" "gh" "vim" "htop" "xclip")
 if [[ $(uname -m) == "x86_64" ]]; then
     ARCH="amd64"
 elif [[ $(uname -m) == "aarch64" ]]; then
@@ -9,22 +8,22 @@ elif [[ $(uname -m) == "aarch64" ]]; then
 else
     ARCH="arm"
 fi
-LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-$(ARCH).tar.gz"
+LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-${ARCH}.tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 
 source $(dirname "$0")/header
 
 echo "Running 'apt update && apt upgrade'..."
 sudo apt-get update -y &>/dev/null && apt-get upgrade -y &>/dev/null
-ill $APT_PROGRAMS
+ill "git" "vim-gtk3" "curl" "wget" "gh" "vim" "htop" "xclip"
 
 
-mkdir -p DEFAULT_BIN_PATH
+mkdir -p $DEFAULT_BIN_PATH
 
 # lf
 if ! command -v lf &>/dev/null; then
     wget ${LF_DOWNLOAD_URL}
-    tar -xvzf lf*.tar.gz -C DEFAULT_BIN_PATH
+    tar -xvzf lf*.tar.gz -C $DEFAULT_BIN_PATH
     rm -f lf*.tar.gz
 fi
 

@@ -81,4 +81,4 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$HOME/bin:$PA
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(zoxide init bash)" &> /dev/null
+eval "$(zoxide init bash)"

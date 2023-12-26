@@ -10,4 +10,4 @@ tar xf tmux-*
 rm -rf tmux-*tar.gz
 cd tmux-*
 ./configure && make
-sudo make install
+sudo make install && cd .. && rm -rf tmux-*

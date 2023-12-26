@@ -1,3 +1,6 @@
-source $(dirname "$0")/header
+#!/usr/bin/bash
 
-ill sway waybar swaylock swayidle
+source $(dirname "$0")/header
+DEPS=("swaylock" "swayidle" "sway-backgrounds" "swaybg" "xdg-desktop-portal-wlr" "xwayland")
+
+ille $DEPS

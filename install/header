@@ -1,11 +1,10 @@
-#!/usr/bin/bash
-
 ill() {
+    sudo apt-get install -y $1
+}
 
-  for prog in "${@}"; do
-    if ! command -v "${prog}" &>/dev/null; then
-      echo "Installing ${prog}"...
-      sudo apt-get install -y "${prog}" >/dev/null
-    fi
-  done
+
+ille () {
+    for pkg in "$@"; do
+        ill $pkg
+    done
 }
