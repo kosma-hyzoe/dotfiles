@@ -2,7 +2,14 @@
 
 DEFAULT_BIN_PATH="~/.local/bin"
 APT_PROGRAMS=("git" "vim-gtk3" "curl" "wget" "gh" "vim" "htop" "xclip")
-LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-amd64.tar.gz"
+if [[ $(uname -m) == "x86_64" ]]; then
+    ARCH="amd64"
+elif [[ $(uname -m) == "aarch64" ]]; then
+    ARCH="arm64"
+else
+    ARCH="arm"
+fi
+LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-$(ARCH).tar.gz"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 
 source $(dirname "$0")/header
