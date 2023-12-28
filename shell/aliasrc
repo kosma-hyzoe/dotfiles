@@ -140,9 +140,12 @@ alias \
 	smv="/usr/bin/mv" \
     mv="mv -iv" \
     srm="/usr/bin/rm" \
-	rm="rm -v" \
 	bc="bc -ql" \
 	ffmpeg="ffmpeg -hide_banner"
+
+## rm
+command -v trash && alias rm="trash" || alias rm="rm -Iv"
+alias srm="rm -I"
 
 ## colors and other conveniences for common programs
 alias diff="diff --color=auto"

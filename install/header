@@ -1,10 +1,26 @@
-ill() {
-    sudo apt-get install -y $1
+#!/usr/bin/bash
+
+distro=$(uname -v)
+if [[ $distro == "Debian|Ubuntu" ]]; then
+    pkgm="apt-get"
+fi
+
+_ill () {
+    if ! command -v $2; then
+        echo "Installing $2..."
+        sudo $1 install -y $2
+    fi
 }
 
-
-ille () {
-    for pkg in "$@"; do
-        ill $pkg
-    done
+# ill foo bar
+ill () {
+    if [[ $1 == *" "* ]]; then
+        for pkg in "$1"; do
+            _ill $pkgm $pkg
+        done
+    else
+        for pkg in $@; do
+            _ill $pkgm $pkg
+        done
+    fi
 }

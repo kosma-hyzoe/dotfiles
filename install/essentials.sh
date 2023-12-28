@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 
+source $(dirname "$0")/header
+
+APT_PKGS="git vim-gtk3 curl wget gh vim htop xclip"
 DEFAULT_BIN_PATH="~/.local/bin"
+PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 if [[ $(uname -m) == "x86_64" ]]; then
     ARCH="amd64"
 elif [[ $(uname -m) == "aarch64" ]]; then
@@ -9,13 +13,11 @@ else
     ARCH="arm"
 fi
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-${ARCH}.tar.gz"
-PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 
-source $(dirname "$0")/header
 
 echo "Running 'apt update && apt upgrade'..."
 sudo apt-get update -y &>/dev/null && apt-get upgrade -y &>/dev/null
-ill "git" "vim-gtk3" "curl" "wget" "gh" "vim" "htop" "xclip"
+ill APT_PKGS
 
 
 mkdir -p $DEFAULT_BIN_PATH
