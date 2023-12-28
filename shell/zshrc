@@ -1,14 +1,14 @@
-# cd by typing directories
-setopt autocd
+## basic settings
+
 # disable ctrl-s to freeze terminal
 stty stop undef
-# turn on bash-style comments
+# enable bash-style comments
 setopt interactivecomments
 
 # history
 setopt sharehistory
 HISTSIZE=1000
-SAVEHIST=1000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # vi mode
@@ -48,12 +48,6 @@ compinit
 fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 
-PURE_PROMPT_SYMBOL="$"
-PURE_PROMPT_VICMD_SYMBOL="%%"
-zstyle :prompt:pure:path color cyan
-zstyle ':prompt:pure:prompt:*' color '#FFAA00'
-zstyle :prompt:pure:suspended_jobs color '#FFAA00'
-
 prompt pure
 
 # configure PATH and similar variables
@@ -63,6 +57,7 @@ $HOME/dotfiles/scripts:\
 $JAVA_HOME/openjdk-20.0.1/bin:\
 /usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
 
+## bindings
 
 # reverse search
 bindkey '^R' history-incremental-search-backward
@@ -88,13 +83,14 @@ lfcd() {
   fi
 }
 bindkey -s '^o' 'lfcd\n'
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bind ctrl + arrow right/left arrow keys to forward-word/backward word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+## sourcing other files
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 eval "$(zoxide init zsh)"

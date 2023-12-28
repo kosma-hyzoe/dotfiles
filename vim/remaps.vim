@@ -43,6 +43,18 @@ vnoremap . :normal .<CR>
 
 " Recent additions
 
+nnoremap m *
+
+" Spellcheck
+map <leader>o :setlocal spell! spelllang=en_us,pl<CR>
+
+" Split navigation
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Move selection up/down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv

@@ -1,0 +1,10 @@
+ill() {
+    sudo apt-get install -y $1
+}
+
+
+ille () {
+    for pkg in "$@"; do
+        ill $pkg
+    done
+}

@@ -1,0 +1,6 @@
+shell:
+  program: tmux
+window:
+  decorations: None
+  padding:
+    x: 2

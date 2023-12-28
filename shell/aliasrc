@@ -1,18 +1,18 @@
+#!/usr/bin/bash
+
 ## shorcuts and mnemonics
-alias nvh="cd ~/.config/nvim" 
-alias chrm="pycharm"
-alias make="make -j$(($(nproc)/2))"
-alias auu="sudo apt update ; sudo apt upgrade -y --allow-downgrades"
-alias hdi="howdoi"
-alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
+alias nvh="cd ~/.config/nvim"
 alias files="xdg-open"
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias kas="tmux kill-ses -a"
+
+alias sven="source venv/bin/activate"
+qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
+
+alias make="make -j$(($(nproc) - 2))"
+alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 alias cores="cd /var/lib/apport/coredump"
-
-alias whichv="apt-cache policy"
-
-texport () {
-	export $1
-}
+alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
 
 
 ## vim/nvim
@@ -20,11 +20,26 @@ if command -v nvim &> /dev/null; then
     export EDITOR=nvim
     alias bvim="/usr/bin/vim" # "backup vim"
     alias vim="nvim"
-    alias mvim="nvim -u ~/.vimrc" # "minimal vim"
+    alias vi="vim"
 elif command -v vim &> /dev/null; then
     export EDITOR=vim
-    alias nvim="/usr/bin/vim" # it's stupid but i tend to type nvim a lot :p
+    alias vi="vim"
+    # it's stupid but i tend to type nvim a lot :p
+    alias nvim="/usr/bin/vim"
 fi
+
+p4u() {
+    picocom -b 115200 "/dev/ttyUSB${1}"
+}
+
+## grep
+alias \
+    grep='grep --color=auto' \
+    fgrep='fgrep --color=auto' \
+    egrep='egrep --color=auto'
+
+## zoxide
+command -v zoxide &> /dev/null && alias bcd="\cd" cd="z"
 
 ## git
 qcom() {
@@ -34,12 +49,31 @@ qcom() {
         git add . && git commit -m "$1"
     fi
 }
-qcomp() {
-    qcom "$@" && git push
-}
+
+
+qcomp() { qcom "$@" && git push; };
 alias \
     gt="git status" \
-    gp="git pull" \
+    gp="git pull && [[ $PWD == *dotfiles* ] && ~/dotfiles/scripts/rc-link.sh" \
+    gd="git diff" \
+    gg="git grep" \
+    gcm="git commit" \
+    gclean="git clean -fdx"
+
+
+## apt
+alias whichv="apt-cache policy"
+lill () {
+  for prog in "${@}"; do
+    if ! command -v "${prog}" &>/dev/null; then
+      echo "Installing ${prog}"...
+      sudo apt-get install -y "${prog}"
+    fi
+  done
+}
+alias \
+    apt="apt-get" \
+    auu="sudo apt update && sudo apt upgrade -y --allow-downgrades"
 
 ## rc editing shortcuts
 alias \
@@ -47,7 +81,6 @@ alias \
     zshrc="${EDITOR} ~/.zshrc" \
     bashrc="${EDITOR} ~/.bashrc" \
     rebash="source ~/.bashrc" \
-    nvimrc="${EDITOR} ~/.config/nvim/init.lua" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
 
 ## extra utilities
@@ -56,9 +89,11 @@ alias \
     untar="tar -zxvf" \
     mkd="mkdir -pv" \
 
+
 ## yt-dlp
 alias \
-    yt="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
+    yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
+    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
     yta="yt -x -f bestaudio/best --audio-format mp4" \
 
 ## bat
@@ -78,19 +113,31 @@ belp() {
 ## exa/ls
 alias bls="/usr/bin/ls"
 if command -v exa &> /dev/null; then
-    alias els="ls -hN --color=auto --group-directories-first"
-    alias ls="exa"
+    alias els="bls -hN --color=auto --group-directories-first"
+    alias ls="exa -F"
+    alias l='exa'
+    alias la='l -a'
+    alias ll='l -l'
+    alias lal='l -al'
+    alias tree='exa --tree'
 else
-    alias ls="ls -hN --color=auto --group-directories-first"
+    alias l="ls -hN --color=auto --group-directories-first"
+    alias ls='l -CF'
+    alias la='l -A'
+    alias ll='l -l'
+    alias lal='l -Al'
 fi
+lsa() {
+    echo $(pwd)$/$(ls $1)
+}
 
-## verbosity settings
+## verbosity and colors settings
 alias \
-	silcp="cp" \
-    cp="cp -iv" \
+	silcp="/usr/bin/cp" \
+    cp="cp -i" \
     procp="rsync --progress" \
 	rsync="rsync -vrPlu" \
-	smv="mv" \
+	smv="/usr/bin/mv" \
     mv="mv -iv" \
     srm="/usr/bin/rm" \
 	rm="rm -v" \
@@ -101,7 +148,6 @@ alias \
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias ip="ip -color=auto"
-alias grep="grep --color=auto"
 
 ## shortucts and microfunctions
 cht() { curl cheat.sh/$1; }
@@ -126,9 +172,22 @@ export GROFF_NO_SGR=1
 
 ## recent additions I'm still uncertain of
 alias signals="man 1 signal"
-alias kas="tmux kill-ses -a"
 
-alias yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'"
-alias yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'"
-alias yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
+alias \
+    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
+    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
+    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
+vim_lock () {
+  ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
+    sudo mkdir -p /usr/local/share/kbd/keymaps/ && \
+    sudo dumpkeys > /usr/local/share/kbd/keymaps/default && \
+    sudo touch /usr/local/share/kbd/keymaps/caps_to_esc && \
+    echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" \
+      | sudo tee -a /usr/local/share/kbd/keymaps/caps_to_esc > /dev/null
+
+    sudo loadkeys /usr/local/share/kbd/keymaps/caps_to_esc
+}
+alias vim_unlock="sudo loadkeys /usr/local/share/kbd/keymaps/default"
+
+alias bemchmark="sysbench cpu --cpu-max-prime=200000 --threads=1 --validate run"
