@@ -2,13 +2,15 @@
 
 distro=$(uname -v)
 if [[ $distro == "Debian|Ubuntu" ]]; then
-    pkgm="apt-get"
+    pkgm="apt-get install"
+elif [[ $distro == "SMP PREEMPT" ]]; then
+    pkgm="pkg install"
 fi
 
 _ill () {
     if ! command -v $2; then
         echo "Installing $2..."
-        sudo $1 install -y $2
+        sudo $1 -y $2
     fi
 }
 

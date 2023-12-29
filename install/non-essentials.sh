@@ -3,7 +3,8 @@
 source $(dirname "$0")/header
 
 CARGO_PROGRAMS=("bat" "alacritty" "exa" "cargo-update" "ripgrep" \
-  "teeldear" "zoxide" "tree-sitter-cli")
+  "teeldear" "zoxide" "tree-sitter-cli" "fd")
+PIPX_PROGRAMS="speedtest-cli trash-cli"
 # "git-delta" "duf" "dust" "procs" "sd" "du" "bandwhich"
 
 # cargo
@@ -19,8 +20,11 @@ ill libssl-dev
 # programs from cargo
 for prog in "${CARGO_PROGRAMS[@]}"; do
 if ! command -v prog &>/dev/null; then
-  echo "Installing ${prog}"...
+  echo "Installing ${prog}..."
   cargo install "${prog}" >/dev/null
 fi
 done
 
+# pip/pipx
+ill pipx
+pipx install --user --upgrade pynvim

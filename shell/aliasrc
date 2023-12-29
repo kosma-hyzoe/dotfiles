@@ -14,6 +14,7 @@ alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 alias cores="cd /var/lib/apport/coredump"
 alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
 
+alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 ## vim/nvim
 if command -v nvim &> /dev/null; then
@@ -144,7 +145,7 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 ## rm
-command -v trash && alias rm="trash" || alias rm="rm -Iv"
+command -v trash &> /dev/null && alias rm="trash" || alias rm="rm -Iv"
 alias srm="rm -I"
 
 ## colors and other conveniences for common programs

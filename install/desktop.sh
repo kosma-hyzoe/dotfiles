@@ -5,6 +5,8 @@ source $(dirname "$0")/header
 sudo flatpak remote-add --if-not-exists \
     flathub https://flathub.org/repo/flathub.flatpakrepo
 
+flatpak install flathub org.wezfurlong.wezterm
+
 # chromium
 ill chromium
 sudo apt remove firefox-esr
