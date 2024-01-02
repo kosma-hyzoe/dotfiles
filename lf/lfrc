@@ -3,6 +3,8 @@ map . set hidden!
 # open file in VS Code
 map <c-v> $code $f
 
+# $$OPENER wezterm start nvim $PWD/$f
+
 cmd delete ${{
     rm -r $fx
     lf -remote "send $id load"

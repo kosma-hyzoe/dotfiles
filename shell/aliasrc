@@ -14,8 +14,6 @@ alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
 alias cores="cd /var/lib/apport/coredump"
 alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
 
-alias wezterm='flatpak run org.wezfurlong.wezterm'
-
 ## vim/nvim
 if command -v nvim &> /dev/null; then
     export EDITOR=nvim

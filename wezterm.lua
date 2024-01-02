@@ -14,10 +14,6 @@ end
 
 c.enable_tab_bar = false
 c.window_decorations = "NONE"
-c.window_frame = {
-  border_bottom_height = '0.00cell',
-  border_top_height = '0.00cell',
-}
 c.window_close_confirmation = "NeverPrompt"
 
 -- and finally, return the configuration to wezterm

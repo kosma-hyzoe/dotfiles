@@ -27,10 +27,9 @@ main() {
   # ipython
   mkdir -p ~/.ipython/profile_default
   ln -f misc/ipython_config.py ~/.ipython/profile_default
-  
+
   # alacritty
-  mkdir -p ~/.config/alacritty
-  ln -f alacritty/alacritty.yml ~/.config/alacritty
+  ln -f wezterm.lua ~/.wezterm.lua
 
   cd - > /dev/null
 }
