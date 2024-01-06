@@ -1,2 +1,0 @@
-pipx install --user --upgrade pynvim
-sudo apt install fd
