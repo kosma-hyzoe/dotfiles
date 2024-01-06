@@ -12,7 +12,8 @@ main() {
 
   # lf
   mkdir -p ~/.config/lf
-  ln -f lf/lfrc ~/.config/lf
+  ln -f lfrc ~/.config/lf
+
 
   # tmux
   [[ $(uname -v) != *Ubuntu* ]] &>/dev/null && \
@@ -28,8 +29,9 @@ main() {
   mkdir -p ~/.ipython/profile_default
   ln -f misc/ipython_config.py ~/.ipython/profile_default
 
-  # alacritty
-  ln -f wezterm.lua ~/.wezterm.lua
+  # kitty
+  mkdir -p ~/.config/kitty
+  ln -f kitty.conf ~/.config/kitty
 
   cd - > /dev/null
 }
