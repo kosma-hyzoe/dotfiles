@@ -29,7 +29,6 @@ main() {
   mkdir -p ~/.ipython/profile_default
   ln -f python/ipython_config.py ~/.ipython/profile_default
   ln -f python/flake8 ~/.config
-  ln -f python/pycodestyle ~/.config
 
   # kitty
   mkdir -p ~/.config/kitty
