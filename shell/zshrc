@@ -76,7 +76,7 @@ bindkey -M menuselect "\J" vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # lf + zoxide = <3
-command -v zoxide && eval "$(zoxide init zsh)"
+command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"

@@ -21,7 +21,7 @@ case "$TERM" in
 esac
 
 ## lf + zoxide = <3
-command -v zoxide && eval "$(zoxide init bash)"
+command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
