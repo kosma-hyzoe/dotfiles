@@ -20,8 +20,8 @@ case "$TERM" in
         ;;
 esac
 
-## use lf to switch directories and bind it to ctrl-o
-eval "$(zoxide init bash)"
+## lf + zoxide = <3
+eval "$(zoxide init bash)" &> /dev/null
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
