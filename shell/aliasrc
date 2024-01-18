@@ -55,6 +55,7 @@ alias \
     gt="git status" \
     gp="git pull && [[ $PWD == *dotfiles* ] && ~/dotfiles/scripts/rc-link.sh" \
     gd="git diff" \
+	gr="git restore" \
     gg="git grep" \
     gcm="git commit" \
     gclean="git clean -fdx"

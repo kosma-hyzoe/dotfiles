@@ -49,6 +49,8 @@ fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 
 prompt pure
+PURE_PROMPT_SYMBOL=$
+PURE_PROMPT_VICMD_SYMBOL=V
 
 # configure PATH and similar variables
 export JAVA_HOME=~/.jdks

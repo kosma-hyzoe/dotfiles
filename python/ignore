@@ -1,0 +1,7 @@
+pycodestyle
+W291	trailing whitespace
+W292	no newline at enf of file
+W293	blank line contains whitespace
+
+flake8
+F403	'import *' used, unable to detect undefined names
