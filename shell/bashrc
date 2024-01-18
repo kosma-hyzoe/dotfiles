@@ -21,6 +21,7 @@ case "$TERM" in
 esac
 
 ## use lf to switch directories and bind it to ctrl-o
+eval "$(zoxide init bash)"
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
@@ -73,12 +74,16 @@ if ! shopt -oq posix; then
 fi
 # End of Ubuntu 20.04 defaults
 
-# configure PATH
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/scripts:$HOME/bin:$PATH
+# configure PATH and similar variables
+export JAVA_HOME=~/.jdks
+export PATH="$PATH:"\
+"$HOME/.cargo/bin:"\
+"$HOME/.local/bin:"\
+"$JAVA_HOME/openjdk-20.0.1/bin:"\
+"/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin"
 
 # load aliases and shortcuts if existent
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(zoxide init bash)"

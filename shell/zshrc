@@ -54,10 +54,11 @@ PURE_PROMPT_VICMD_SYMBOL=V
 
 # configure PATH and similar variables
 export JAVA_HOME=~/.jdks
-export PATH=$PATH:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:\
-$HOME/dotfiles/scripts:\
-$JAVA_HOME/openjdk-20.0.1/bin:\
-/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
+export PATH="$PATH:"\
+"$HOME/.cargo/bin:"\
+"$HOME/.local/bin:"\
+"$JAVA_HOME/openjdk-20.0.1/bin:"\
+"/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin"
 
 ## bindings
 
@@ -75,6 +76,7 @@ bindkey -M menuselect "\J" vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # use lf to switch directories and bind it to ctrl-o
+eval "$(zoxide init zsh)"
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
@@ -95,4 +97,3 @@ bindkey "^[[1;5D" backward-word
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
-eval "$(zoxide init zsh)"
