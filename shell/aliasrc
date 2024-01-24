@@ -100,9 +100,9 @@ alias \
 if command -v bat &> /dev/null; then
     alias bcat="/usr/bin/\cat"
     alias vat="bat"
-    alias pat="pat --style=plain"
+    alias pat="bat --style=plain"
     alias cat="bat --style=changes"
-    alias sat="cat --paging=never"
+    alias sat="pat --paging=never"
 fi
 # this bit seems to break when put inside an if statement...
 alias bathelp='bat --plain --language=help'

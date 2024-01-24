@@ -18,7 +18,9 @@ main() {
   # tmux
   [[ $(uname -v) != *Ubuntu* ]] &>/dev/null && \
       ln -f tmux/tmux.conf ~/.tmux.conf || \
-      ln -f tmux/corp-tmux.conf ~/.tmux.conf
+      [[ $(uname -r) != *5.15* ]] &>/dev/null && \
+      ln -f tmux/corp-tmux.conf ~/.tmux.conf || \
+      ln -f tmux/bs-tmux.conf ~/.tmux.conf
 
   # shell
   ln -f shell/zshrc ~/.zshrc
