@@ -95,5 +95,5 @@ bindkey "^[[1;5D" backward-word
 ## sourcing other files
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
