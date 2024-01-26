@@ -17,7 +17,6 @@ main() {
 
   # tmux
   if [[ $(uname -v) != *Ubuntu* ]] &>/dev/null; then
-      echo foo
       ln -f tmux/tmux.conf ~/.tmux.conf
   elif [[ $(uname -r) != *5.15* ]] &>/dev/null; then
       ln -f tmux/corp-tmux.conf ~/.tmux.conf
