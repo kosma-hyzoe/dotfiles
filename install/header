@@ -15,7 +15,7 @@ else
 fi
 
 _ill () {
-    if command -v ${!#}; then
+    if command -v ${!#} &> /dev/null; then
         echo "${!#} already installed. Skipping..."
     elif  [[ $SKIP_LIST == "*${!#}*" ]]; then
         "${!#} in skip list. Skipping..."
