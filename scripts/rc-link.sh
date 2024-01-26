@@ -16,11 +16,14 @@ main() {
 
 
   # tmux
-  [[ $(uname -v) != *Ubuntu* ]] &>/dev/null && \
-      ln -f tmux/tmux.conf ~/.tmux.conf || \
-      [[ $(uname -r) != *5.15* ]] &>/dev/null && \
-      ln -f tmux/corp-tmux.conf ~/.tmux.conf || \
+  if [[ $(uname -v) != *Ubuntu* ]] &>/dev/null; then
+      echo foo
+      ln -f tmux/tmux.conf ~/.tmux.conf
+  elif [[ $(uname -r) != *5.15* ]] &>/dev/null; then
+      ln -f tmux/corp-tmux.conf ~/.tmux.conf
+  else
       ln -f tmux/bs-tmux.conf ~/.tmux.conf
+  fi
 
   # shell
   ln -f shell/zshrc ~/.zshrc
