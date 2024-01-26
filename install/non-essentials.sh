@@ -2,12 +2,12 @@
 
 source $(dirname "$0")/header
 
-DEPENDENCIES="libssl-dev pipx"
-CARGO_PROGRAMS="bat exa zoxide cargo-update ripgrep tree-sitter-cli fd teeldeer"
+DEPENDENCIES="pipx build-essential"
+CARGO_PROGRAMS="bat exa zoxide ripgrep tree-sitter-cli tealdeer fd-find"
 PIPX_PROGRAMS="speedtest-cli trash-cli pynvim"
 
 ill $DEPENDENCIES
-pipx ensurepath $> /dev/null || echo "Failed to setup pipx"
+pipx ensurepath > /dev/null || echo "Failed to setup pipx"
 
 ## CARGO
 if ! command -v cargo &>/dev/null; then
@@ -16,11 +16,11 @@ if ! command -v cargo &>/dev/null; then
 fi
 
 
-EXT_PKGM="cargo install"
+EXT_PKGM="cargo install --locked"
 source $(dirname "$0")/header
 ill $CARGO_PROGRAMS
 
 # for pip
-EXT_PKGM="pip install --user --upgrade"
+EXT_PKGM="pipx install --user --upgrade"
 source $(dirname "$0")/header
 ill $PIP_PROGRAMS
