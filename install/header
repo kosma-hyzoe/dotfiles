@@ -18,10 +18,10 @@ _ill () {
     if command -v ${!#}; then
         echo "${!#} already installed. Skipping..."
     elif  [[ $SKIP_LIST == "*${!#}*" ]]; then
-        echo "${!#} in skip list. Skipping..."
+        "${!#} in skip list. Skipping..."
     else
         echo "Attempting to install ${!#}..."
-        echo $@ || "Failed to install ${!#}."
+        $@ $>/dev/null || "Failed to install ${!#}."
     fi
 }
 
