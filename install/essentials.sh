@@ -2,7 +2,7 @@
 
 source $(dirname "$0")/header
 
-DEF_PKGM_PKGS="git curl wget gh vim htop xclip tmux"
+DEF_PKGM_PKGS="git curl wget vim htop xclip tmux"
 DEFAULT_BIN_PATH="$HOME/.local/bin"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 if [[ $(uname -m) == "x86_64" ]]; then

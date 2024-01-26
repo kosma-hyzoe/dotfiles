@@ -21,7 +21,7 @@ _ill () {
         "${!#} in skip list. Skipping..."
     else
         echo "Attempting to install ${!#}..."
-        $@ $>/dev/null || "Failed to install ${!#}."
+        $@ >/dev/null && echo "${!#} installed."
     fi
 }
 
