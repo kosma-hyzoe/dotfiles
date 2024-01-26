@@ -1,20 +1,30 @@
 #!/usr/bin/bash
 
-distro=$(uname -v)
-if [[ $distro == "Debian|Ubuntu" ]]; then
-    pkgm="apt-get install"
-elif [[ $distro == "SMP PREEMPT" ]]; then
-    pkgm="pkg install"
+if [[ -n $EXT_PKGM ]]; then
+    pkgm=$EXT_PKGM
+elif command -v apt &> /dev/null; then
+    pkgm="sudo apt-get install -y"
+else
+    distro=$(uname -v)
+    if [[ $distro == "SMP PREEMPT" ]]; then
+        pkgm="pkg install"
+    else
+        echo "Failed to setup the 'pkgm' variable. Exiting..."
+        exit 1
+    fi
 fi
 
 _ill () {
-    if ! command -v $2; then
-        echo "Installing $2..."
-        sudo $1 -y $2
+    if command -v ${!#}; then
+        echo "${!#} already installed. Skipping..."
+    elif  [[ $SKIP_LIST == "*${!#}*" ]]; then
+        echo "${!#} in skip list. Skipping..."
+    else
+        echo "Attempting to install ${!#}..."
+        echo $@ || "Failed to install ${!#}."
     fi
 }
 
-# ill foo bar
 ill () {
     if [[ $1 == *" "* ]]; then
         for pkg in "$1"; do

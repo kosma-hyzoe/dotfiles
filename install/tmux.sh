@@ -1,9 +1,11 @@
 #!/usr/bin/bash
 
+command -v tmux $> /dev/null  || echo "tmux already installed." ; exit 1
+
 source $(dirname "$0")/header
 TMUX_DOWNLOAD_LINK="https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz"
 
-ill libevent-dev ncurses-dev build-essential bison pkg-config
+ill "libevent-dev ncurses-dev build-essential bison pkg-config"
 
 wget $TMUX_DOWNLOAD_LINK
 tar xf tmux-*
