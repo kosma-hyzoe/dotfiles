@@ -15,7 +15,7 @@ fi
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-${ARCH}.tar.gz"
 
 
-ill DEF_PKGM_PKGS
+ill $DEF_PKGM_PKGS
 
 
 mkdir -p $DEFAULT_BIN_PATH
