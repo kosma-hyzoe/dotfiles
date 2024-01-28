@@ -1,39 +1,33 @@
 #!/usr/bin/bash
 
-## shorcuts and mnemonics
-alias nvh="cd ~/.config/nvim"
-alias files="xdg-open"
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias kas="tmux kill-ses -a"
+## general shorcuts and mnemonics
+alias nvh="cd ~/.config/nvim" \
+    files="xdg-open" \
+    kas="tmux kill-ses -a" \
+    alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" \
+    "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+cht() { curl cheat.sh/$1; }
 
-alias sven="source venv/bin/activate"
+# development-specific
 qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
-
-alias make="make -j$(($(nproc) - 2))"
-alias makemods="make -C /lib/modules/$(uname -r)/build M=$PWD modules"
-alias cores="cd /var/lib/apport/coredump"
-alias armcc="export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-"
+p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
+alias make="make -j$(($(nproc) - 2))" \
+    sven="source venv/bin/activate"
 
 ## vim/nvim
-if command -v nvim &> /dev/null; then
+if command -v nvim &>/dev/null; then
     export EDITOR=nvim
-    alias bvim="/usr/bin/vim" # "backup vim"
-    alias vim="nvim"
-    alias vi="vim"
-elif command -v vim &> /dev/null; then
+    alias bvim="/usr/bin/vim" \
+        vim="nvim" \
+        vi="vim"
+elif command -v vim &>/dev/null; then
     export EDITOR=vim
-    alias vi="vim"
-    # it's stupid but i tend to type nvim a lot :p
-    alias nvim="/usr/bin/vim"
+    alias vi="vim" \
+        nvim="/usr/bin/vim"
 fi
 
-p4u() {
-    picocom -b 115200 "/dev/ttyUSB${1}"
-}
-
 ## grep
-alias \
-    grep='grep --color=auto' \
+alias grep='grep --color=auto' \
     fgrep='fgrep --color=auto' \
     egrep='egrep --color=auto'
 
@@ -51,8 +45,7 @@ qcom() {
 
 
 qcomp() { qcom "$@" && git push; };
-alias \
-    gt="git status" \
+alias gt="git status" \
     gp="git pull && [[ $PWD == *dotfiles* ] && ~/dotfiles/scripts/rc-link.sh" \
     gd="git diff" \
 	gr="git restore" \
@@ -62,7 +55,6 @@ alias \
 
 
 ## apt
-alias whichv="apt-cache policy"
 lill () {
   for prog in "${@}"; do
     if ! command -v "${prog}" &>/dev/null; then
@@ -71,69 +63,59 @@ lill () {
     fi
   done
 }
-alias \
-    apt="apt-get" \
+alias apt="apt-get" \
+    whichv="apt-cache policy" \
     auu="sudo apt update && sudo apt upgrade -y --allow-downgrades"
 
 ## rc editing shortcuts
-alias \
+alias zshrc="${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
-    zshrc="${EDITOR} ~/.zshrc" \
-    bashrc="${EDITOR} ~/.bashrc" \
     rebash="source ~/.bashrc" \
+    bashrc="${EDITOR} ~/.bashrc" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
 
 ## extra utilities
-alias \
-    myip="curl ipinfo.io/ip" \
+alias myip="curl ipinfo.io/ip" \
     untar="tar -zxvf" \
     mkd="mkdir -pv" \
 
 
-## yt-dlp
-alias \
-    yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
-    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
-    yta="yt -x -f bestaudio/best --audio-format mp4" \
 
 ## bat
-if command -v bat &> /dev/null; then
-    alias bcat="/usr/bin/\cat"
-    alias vat="bat"
-    alias pat="bat --style=plain"
-    alias cat="bat --style=changes"
-    alias sat="pat --paging=never"
-fi
-# this bit seems to break when put inside an if statement...
-alias bathelp='bat --plain --language=help'
-belp() {
-    "$@" --help 2>&1 | bathelp
-}
+command -v bat &> /dev/null && \
+    alias bcat="/usr/bin/\cat" \
+        bathelp='bat --plain --language=help' \
+        vat="bat" \
+        pat="bat --style=plain" \
+        cat="bat --style=changes" \
+        sat="pat --paging=never" \
+        aat="bat -A"
+belp() { "$@" --help 2>&1 | bathelp; }
 
 ## exa/ls/lsd
 alias bls="/usr/bin/ls"
 if [[ $USE_LSD -eq 1 ]]; then
-    alias els="bls -hN --color=auto --group-directories-first"
-    alias l="lsd --icon never"
-    alias ls="lsd"
-    alias la='ls -a'
-    alias ll='ls -l'
-    alias lal='lal -al'
-    alias tree='exa --tree'
+    alias els="bls -hN --color=auto --group-directories-first" \
+        ls="lsd --group-directories-first" \
+        l="ls --icon never" \
+        la='ls -a' \
+        ll='ls -l' \
+        lal='lal -al' \
+        tree='exa --tree'
 elif command -v exa &> /dev/null; then
-    alias els="bls -hN --color=auto --group-directories-first"
-    alias ls="exa -F"
-    alias l='exa'
-    alias la='l -a'
-    alias ll='l -l'
-    alias lal='l -al'
-    alias tree='exa --tree'
+    alias els="bls -hN --color=auto --group-directories-first" \
+        l='exa --group-directories-first' \
+        ls="exa -F" \
+        la='l -a' \
+        ll='l -l' \
+        lal='l -al' \
+        tree='exa --tree'
 else
-    alias l="ls -hN --color=auto --group-directories-first"
-    alias ls='l -CF'
-    alias la='l -A'
-    alias ll='l -l'
-    alias lal='l -Al'
+    alias l="ls -hN --color=auto --group-directories-first" \
+        ls='l -CF' \
+        la='l -A' \
+        ll='l -l' \
+        lal='l -Al'
 fi
 lsa() {
     echo $(pwd)$/$(ls $1)
@@ -156,12 +138,9 @@ command -v trash &> /dev/null && alias rm="trash" || alias rm="rm -Iv"
 alias srm="rm -I"
 
 ## colors and other conveniences for common programs
-alias diff="diff --color=auto"
-alias ccat="highlight --out-format=ansi"
-alias ip="ip -color=auto"
-
-## shortucts and microfunctions
-cht() { curl cheat.sh/$1; }
+alias diff="diff --color=auto" \
+    ccat="highlight --out-format=ansi" \
+    ip="ip -color=auto"
 
 ## colored less
 export LESS="--RAW-CONTROL-CHARS"
@@ -178,17 +157,19 @@ export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
-# for konsole and gnome-terminal? not sure if necessary
-export GROFF_NO_SGR=1
 
 ## recent additions I'm still uncertain of
 alias signals="man 1 signal"
 
-alias \
+# yt-dlp
+alias yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
+    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
+    yta="yt -x -f bestaudio/best --audio-format mp4" \
     yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
     yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
     yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
+# ugh not sure if it works
 vim_lock () {
   ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
     sudo mkdir -p /usr/local/share/kbd/keymaps/ && \
@@ -200,5 +181,3 @@ vim_lock () {
     sudo loadkeys /usr/local/share/kbd/keymaps/caps_to_esc
 }
 alias vim_unlock="sudo loadkeys /usr/local/share/kbd/keymaps/default"
-
-alias bemchmark="sysbench cpu --cpu-max-prime=200000 --threads=1 --validate run"
