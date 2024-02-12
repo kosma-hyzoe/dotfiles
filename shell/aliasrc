@@ -53,7 +53,7 @@ qcom() {
 
 qcomp() { qcom "$@" && git push; };
 alias gt="git status" \
-    gp="git pull && [[ $PWD == *dotfiles* ] && echo ~/dotfiles/scripts/rc-link.sh" \
+    gp="git pul" \
     gd="git diff" \
 	gr="git restore" \
     gg="git grep" \
@@ -75,14 +75,16 @@ alias apt="apt-get" \
     auu="sudo apt update && sudo apt upgrade -y --allow-downgrades"
 
 ## rc editing shortcuts
-alias zshrc="${EDITOR} ~/.zshrc" \
+alias \
+    zshrc="${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
     rebash="source ~/.bashrc" \
     bashrc="${EDITOR} ~/.bashrc" \
     aliasrc="${EDITOR} ~/.config/aliasrc" \
 
 ## extra utilities
-alias myip="curl ipinfo.io/ip" \
+alias \
+    myip="curl ipinfo.io/ip" \
     untar="tar -zxvf" \
     mkd="mkdir -pv"
 
@@ -102,7 +104,8 @@ belp() { "$@" --help 2>&1 | bathelp; }
 ## exa/ls/lsd
 alias bls="/usr/bin/ls"
 if [[ $USE_LSD -eq 1 ]]; then
-    alias els="bls -hN --color=auto --group-directories-first" \
+    alias \
+        els="bls -hN --color=auto --group-directories-first" \
         ls="lsd --group-directories-first" \
         l="ls --icon never" \
         la='ls -a' \
@@ -110,7 +113,8 @@ if [[ $USE_LSD -eq 1 ]]; then
         lal='lal -al' \
         tree='exa --tree'
 elif command -v exa &> /dev/null; then
-    alias els="bls -hN --color=auto --group-directories-first" \
+    alias \
+        els="bls -hN --color=auto --group-directories-first" \
         l='exa --group-directories-first' \
         ls="exa -F" \
         la='l -a' \
@@ -118,7 +122,8 @@ elif command -v exa &> /dev/null; then
         lal='l -al' \
         tree='exa --tree'
 else
-    alias l="ls -hN --color=auto --group-directories-first" \
+    alias \
+        l="ls -hN --color=auto --group-directories-first" \
         ls='l -CF' \
         la='l -A' \
         ll='l -l' \
@@ -141,33 +146,18 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 ## rm
-command -v trash &> /dev/null && alias rm="trash" || alias rm="rm -Iv"
-alias srm="rm -I"
+command -v trash &> /dev/null && \
+    alias rm="trash" || \
+    alias rm="rm -I" vrm="rm -Iv"
 
 ## colors and other conveniences for common programs
-alias diff="diff --color=auto" \
+alias \
+    diff="diff --color=auto" \
     ccat="highlight --out-format=ansi" \
     ip="ip -color=auto"
 
-## colored less
-export LESS="--RAW-CONTROL-CHARS"
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
-export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
-export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
-export LESS_TERMCAP_mr=$(tput rev)
-export LESS_TERMCAP_mh=$(tput dim)
-export LESS_TERMCAP_ZN=$(tput ssubm)
-export LESS_TERMCAP_ZV=$(tput rsubm)
-export LESS_TERMCAP_ZO=$(tput ssupm)
-export LESS_TERMCAP_ZW=$(tput rsupm)
 
 ## recent additions I'm still uncertain of
-alias signals="man 1 signal"
-
 # yt-dlp
 alias yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
     yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
@@ -176,7 +166,7 @@ alias yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
     yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
     yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
-# ugh not sure if it works
+# need extra testing
 vim_lock () {
   ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
     sudo mkdir -p /usr/local/share/kbd/keymaps/ && \

@@ -28,6 +28,7 @@ main() {
   ln -f shell/zshrc ~/.zshrc
   ln -f shell/bashrc ~/.bashrc
   ln -f shell/aliasrc ~/.config
+  ln -f shell/lessrc ~/.config
 
   # python
   mkdir -p ~/.ipython/profile_default
