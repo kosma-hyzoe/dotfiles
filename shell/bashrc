@@ -8,17 +8,15 @@ case $- in
       *) return;;
 esac
 
-FORCE_PROMPT_COLOR=
 
 # set up the prompt
-case "$TERM" in
-    tmux|*xterm-color|*-256color|*"$FORCE_PROMPT_COLOR"*)
-        export PS1="\[\033[01;34m\]\n\w\n\[\033[01;32m\]\$\[\033[00m\] "
-        ;;
-    *)
-        export PS1="\n\w\n\$ "
-        ;;
-esac
+FORCE_PROMPT_COLOR=
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null || \
+    [[ $FORCE_COLOR_PROMPT -eq 1 ]]; then
+    export PS1="\[\033[01;34m\]\n\w\n\[\033[01;32m\]\$\[\033[00m\] "
+else
+    export PS1="\n\w\n\$ "
+fi
 
 ## lf + zoxide = <3
 command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
