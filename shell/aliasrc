@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 
 ## general shorcuts and mnemonics
-alias nvh="cd ~/.config/nvim" \
+alias \
+    nvh="cd ~/.config/nvim" \
     files="xdg-open" \
     kas="tmux kill-ses -a" \
     alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" \
@@ -12,20 +13,24 @@ mkcd() { mkdir $1 && cd $1; }
 # development-specific
 qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
-alias make="make -j$(($(nproc) - 2))" \
+alias \
+    make="make -j$(($(nproc) - 2))" \
     p3="python3" \
     sven="source venv/bin/activate"
 
 ## vim/nvim
 if command -v nvim &>/dev/null; then
     export EDITOR=nvim
-    alias bvim="/usr/bin/vim" \
+    alias \
+        bvim="/usr/bin/vim" \
+        vi="nvim" \
         vim="nvim" \
-        vi="vim"
+        vimdiff="nvim -d"
 elif command -v vim &>/dev/null; then
     export EDITOR=vim
-    alias vi="vim" \
-        nvim="/usr/bin/vim"
+    alias \
+        vi="vim" \
+        nvim="vim"
 fi
 
 ## grep
@@ -48,7 +53,7 @@ qcom() {
 
 qcomp() { qcom "$@" && git push; };
 alias gt="git status" \
-    gp="git pull && [[ $PWD == *dotfiles* ] && ~/dotfiles/scripts/rc-link.sh" \
+    gp="git pull && [[ $PWD == *dotfiles* ] && echo ~/dotfiles/scripts/rc-link.sh" \
     gd="git diff" \
 	gr="git restore" \
     gg="git grep" \
@@ -79,7 +84,7 @@ alias zshrc="${EDITOR} ~/.zshrc" \
 ## extra utilities
 alias myip="curl ipinfo.io/ip" \
     untar="tar -zxvf" \
-    mkd="mkdir -pv" \
+    mkd="mkdir -pv"
 
 
 
