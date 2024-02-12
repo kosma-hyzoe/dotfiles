@@ -8,7 +8,6 @@ case $- in
       *) return;;
 esac
 
-
 # set up the prompt
 FORCE_PROMPT_COLOR=
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null || \
@@ -19,7 +18,7 @@ else
 fi
 
 ## lf + zoxide = <3
-command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
+command -v zoxide &> /dev/null && eval "$(zoxide init zsh)" ; alias bcd="\cd"
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"

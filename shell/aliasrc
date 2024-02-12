@@ -57,14 +57,12 @@ else
         la='l -A' \
         ll='l -l' \
         lal='l -Al'
+fi
 
 # grep
 alias grep='grep --color=auto' \
     fgrep='fgrep --color=auto' \
     egrep='egrep --color=auto'
-
-# zoxide
-command -v zoxide &> /dev/null && alias bcd="\cd" cd="z"
 
 # git
 qcom() {
@@ -82,8 +80,6 @@ alias gt="git status" \
     gg="git grep" \
     gcm="git commit" \
     gclean="git clean -fdx"
-
-
 
 # apt
 lill () {
@@ -105,7 +101,6 @@ alias \
     untar="tar -zxvf" \
     mkd="mkdir -pv"
 
-fi
 lsa() {
     echo $(pwd)$/$(ls $1)
 }
