@@ -59,6 +59,9 @@ else
         lal='l -Al'
 fi
 
+# zoxide
+command -v zoxide &> /dev/null && alias bcd="\cd" cd="z"
+
 # grep
 alias grep='grep --color=auto' \
     fgrep='fgrep --color=auto' \
