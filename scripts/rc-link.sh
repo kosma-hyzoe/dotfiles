@@ -4,16 +4,17 @@ NESTED_TMUX=
 
 main() {
   cd $(dirname "$0")/..
+  mkdir -p ~/.config
 
   # vim
-  mkdir -p ~/.vim
+  mkdir ~/.vim
   ln -f vim/vimrc ~/.vim
   ln -f vim/colorscheme.vim ~/.vim
   ln -f vim/remaps.vim ~/.vim
   ln -f vim/plugins.vim ~/.vim
 
   # lf
-  mkdir -p ~/.config/lf
+  mkdir ~/.config/lf
   ln -f lfrc ~/.config/lf
 
 
@@ -34,7 +35,7 @@ main() {
   ln -f python/flake8 ~/.config
 
   # kitty
-  mkdir -p ~/.config/kitty
+  mkdir ~/.config/kitty
   ln -f kitty.conf ~/.config/kitty
 
   cd - > /dev/null
