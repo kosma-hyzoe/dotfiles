@@ -128,12 +128,11 @@ command -v trash &> /dev/null && \
     alias rm="rm -I" vrm="rm -Iv"
 
 ## colors and other conveniences for common programs
+
 alias \
     diff="diff --color=auto" \
     ccat="highlight --out-format=ansi" \
     ip="ip -color=auto"
-
-
 
 
 ## misc shorcuts and mnemonics
@@ -153,9 +152,11 @@ alias \
     rebash="source ~/.bashrc" \
     bashrc="${EDITOR} ~/.bashrc" \
     aliasrc="${EDITOR} ~/.config/aliasrc"
+    #
 # development-specific
 qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
+p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
     make="make -j$(($(nproc) - 2))" \
     p3="python3" \
@@ -166,7 +167,7 @@ alias \
 # yt-dlp
 alias yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
     yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
-    yta="yt -x -f bestaudio/best --audio-format mp4" \
+    yta="yt -x -f bestaudio/best --audio-format mp3" \
     yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
     yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
     yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
