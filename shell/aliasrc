@@ -36,24 +36,26 @@ if [[ $USE_LSD -eq 1 ]]; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
         ls="lsd --group-directories-first" \
+        ls1="ls -1" \
         l="ls --icon never" \
         la='ls -a' \
         ll='ls -l' \
-        lal='lal -al' \
-        tree='exa --tree'
+        lal='lal -al'
 elif command -v exa &> /dev/null; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
         l='exa --group-directories-first' \
         ls="l -F" \
+        ls1="ls -1" \
         la='l -a' \
         ll='l -l' \
         lal='l -al' \
-        tree='exa --tree'
+        tree='exa --tree | cat'
 else
     alias \
         l="ls -hN --color=auto --group-directories-first" \
         ls='l -CF' \
+        ls1="ls -1" \
         la='l -A' \
         ll='l -l' \
         lal='l -Al'
