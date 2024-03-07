@@ -50,6 +50,8 @@ tiling_drag modifier titlebar
 
 # POP-OS like bindings
 #
+# enter fullscreen mode for the focused container
+bindsym $mod+m fullscreen toggle
 # kill focused window
 bindsym $mod++q kill
 # start a terminal
@@ -93,8 +95,6 @@ bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -190,4 +190,4 @@ bar {
         status_command i3status
 }
 
-exec always nitrogen --restore
+exec always nitrogen --compton
