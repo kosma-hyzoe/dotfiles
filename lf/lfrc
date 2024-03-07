@@ -1,5 +1,15 @@
-set previewer ~/.config/lf/lf_kitty_preview
-set cleaner ~/.config/lf/lf_kitty_clean
+cmd set_previewer ${{
+    case "${TERM}" in
+      *tmux*)
+        ;;
+      *)
+        echo dupa
+        set previewer ~/.config/lf/lf_kitty_preview
+        set cleaner ~/.config/lf/lf_kitty_clean
+        ;;
+    esac
+}}
+:set_previewer
 
 # Basic Settings
 set ignorecase true
@@ -18,19 +28,6 @@ cmd mkfile ${{
   $EDITOR $ans
 }}
 
-
-# Bindings
-map <c-v> $code $f
-map . set hidden!
-map gD cd ~/media/documents
-map gd cd ~/downloads
-map gp cd ~/media/pictures
-map gr cd ~/repos
-map gv cd ~/media/videos
-map gt cd ~/.local/share/Trash/files
-
-# $$OPENER wezterm start nvim $PWD/$f
-
 cmd delete ${{
     rm -r $fx
     lf -remote "send $id load"
@@ -45,4 +42,13 @@ cmd trash ${{
     fi
 }}
 
+# Bindings
+map <c-v> $code $f
+map . set hidden!
+map gD cd ~/media/documents
+map gd cd ~/downloads
+map gp cd ~/media/pictures
+map gr cd ~/repos
+map gv cd ~/media/videos
+map gt cd ~/.local/share/Trash/files
 map D trash

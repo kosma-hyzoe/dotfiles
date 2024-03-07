@@ -18,7 +18,10 @@ else
 fi
 
 # lf + zoxide = <3
-command -v zoxide &> /dev/null && eval "$(zoxide init bash)" ; alias bcd="\cd"
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init bash)"
+    alias bcd="\cd" cd="z"
+fi
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
