@@ -52,13 +52,8 @@ prompt pure
 PURE_PROMPT_SYMBOL=$
 PURE_PROMPT_VICMD_SYMBOL=V
 
-# configure PATH and similar variables
-export JAVA_HOME=~/.jdks
-export PATH="$PATH:"\
-"$HOME/.cargo/bin:"\
-"$HOME/.local/bin:"\
-"$JAVA_HOME/openjdk-20.0.1/bin:"\
-"/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin"
+# configure PATH
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 
 ## bindings
 

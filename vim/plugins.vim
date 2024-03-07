@@ -16,7 +16,6 @@ if ! filereadable(system('echo -n "${HOME}/.vim/autoload/plug.vim"'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
@@ -26,4 +25,3 @@ call plug#end()
 
 filetype plugin on
 filetype indent on
-

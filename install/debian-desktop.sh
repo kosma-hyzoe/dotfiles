@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+FLATPAK="spotify keepassxc qbittorrent libreoffice stretchly"
 source $(dirname "$0")/header
 
 sudo flatpak remote-add --if-not-exists \
@@ -7,20 +8,20 @@ sudo flatpak remote-add --if-not-exists \
 
 flatpak install flathub org.wezfurlong.wezterm
 
-# chromium
+# browsers
 ill chromium
 sudo apt remove firefox-esr
+./firefox.sh
 
 # multimedia
-ill vlc libavcodec-extra
+ill "vlc libavcodec-extra"
 
 sudo apt remove libreoffice-common libreoffice-core libreoffice-gnome \
   libreoffice-gtk3 libreoffice-help-common libreoffice-he \
   lp-en-us libreoffice-style-colibre libreoffice-style-elementary
 
-ill flatpak gnome-software-plugin-flatpak
-flatpak install \
-    spotify keepassxc qbittorrent libreoffice stretchly
+ill "flatpak gnome-software-plugin-flatpak"
+flatpak install $FLATPAK
 
 
 # syncthing
@@ -32,14 +33,4 @@ sudo apt-get install syncthing
 
 # appearance
 ill neofetch
-
-sudo sh -c "echo 'deb http://ppa.launchpad.net/papirus/papirus/ubuntu jammy main' > /etc/apt/sources.list.d/papirus-ppa.list"
-sudo wget -qO /etc/apt/trusted.gpg.d/papirus-ppa.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9461999446FAF0DF770BFC9AE58A9D36647CAE7F'
-sudo apt-get update
-ill papirus-icon-theme
-
-git clone https://github.com/horst3180/arc-theme.git
-cd arc-theme
-./autogen.sh --prefix=/usr --disable-cinnamon --disable-metacity \
-  --disable-xfwm --disable-unity --with-gnome=3.22
-sudo make install && cd .. && rm arc-theme
+wget -qO- https://git.io/papirus-icon-theme-install | sh

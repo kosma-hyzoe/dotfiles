@@ -17,8 +17,8 @@ else
     export PS1="\n\w\n\$ "
 fi
 
-## lf + zoxide = <3
-command -v zoxide &> /dev/null && eval "$(zoxide init zsh)" ; alias bcd="\cd"
+# lf + zoxide = <3
+command -v zoxide &> /dev/null && eval "$(zoxide init bash)" ; alias bcd="\cd"
 lfcd() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
@@ -72,12 +72,7 @@ fi
 # End of Ubuntu 20.04 defaults
 
 # configure PATH and similar variables
-export JAVA_HOME=~/.jdks
-export PATH="$PATH:"\
-"$HOME/.cargo/bin:"\
-"$HOME/.local/bin:"\
-"$JAVA_HOME/openjdk-20.0.1/bin:"\
-"/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 
 # load aliases and shortcuts if existent
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

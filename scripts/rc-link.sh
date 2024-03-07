@@ -14,7 +14,9 @@ ln -f vim/plugins.vim ~/.vim
 
 # lf
 mkdir -p ~/.config/lf
-ln -f lfrc ~/.config/lf
+ln -f lf/lfrc ~/.config/lf
+ln -f lf/lf_kitty_preview ~/.config/lf
+ln -f lf/lf_kitty_clean ~/.config/lf
 
 
 # tmux
