@@ -1,7 +1,5 @@
 #!/bin/bash
 
-NESTED_TMUX=
-
 cd $(dirname "$0")/..
 mkdir  -p ~/.config
 
@@ -14,15 +12,17 @@ ln -f vim/plugins.vim ~/.vim
 
 # lf
 mkdir -p ~/.config/lf
+mkdir -p ~/.local/bin
 ln -f lf/lfrc ~/.config/lf
 ln -f lf/lf_kitty_preview ~/.config/lf
 ln -f lf/lf_kitty_clean ~/.config/lf
+ln -f lf/imgp ~/.local/bin
 
 
 # tmux
 [[ $NESTED_TMUX -eq 1 ]] && \
-  ln -f tmux/nested-tmux.conf ~/.tmux.conf || \
-  ln -f tmux/tmux.conf ~/.tmux.conf
+    ln -f tmux/nested-tmux.conf ~/.tmux.conf || \
+    ln -f tmux/tmux.conf ~/.tmux.conf
 
 # shell
 ln -f shell/zshrc ~/.zshrc

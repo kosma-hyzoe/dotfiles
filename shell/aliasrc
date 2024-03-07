@@ -161,6 +161,13 @@ alias yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
     yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
     yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
 
+imgp () {
+    cp ~/.config/lfrc /tmp/lfrc
+    echo -ne "set previewer ~/.config/lf/lf_kitty_preview\ncleaner ~/.config/lf/lf_kitty_clean\n" \
+        >> /tmp/lfrc
+    lf -config /tmp/lfrc
+}
+
 # rebind esc and caps-lock on terminal session. need som extra testing...
 vim_lock () {
   ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
