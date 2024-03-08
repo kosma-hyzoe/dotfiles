@@ -7,3 +7,10 @@ around. The best I can offer are my configs for `vim`, `bash`/`zsh`,
 
 My `nvim` config is moved to [`kosma-hyzoe/nvim-sane`](https://github.com/kosma-hyzoe/nvim-sane).
 
+## TODO
+
+* npm
+* trash-cli?
+* speedtest-cli
+* chsh
+* lf: tmux split right on enter

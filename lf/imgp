@@ -1,8 +1,10 @@
-#/usr/bin/bash
+#!/usr/bin/bash
 
-if [  ! -e /tmp/lfrc ]; then
-    cp -f ~/.config/lf/lfrc /tmp/lfrc
-    echo "set previewer ~/.config/lf/lf_kitty_preview" >> /tmp/lfrc
-    echo "set cleaner ~/.config/lf/lf_kitty_clean" >> /tmp/lfrc
-fi
-lf -config /tmp/lfrc
+_lfip() {
+    if [  ! -e /tmp/lfrc ]; then
+        cp -f ~/.config/lf/lfrc /tmp/lfrc
+        echo "set previewer ~/.config/lf/lf_kitty_preview" >> /tmp/lfrc
+        echo "set cleaner ~/.config/lf/lf_kitty_clean" >> /tmp/lfrc
+    fi
+}
+lfcd -config /tmp/lfrc

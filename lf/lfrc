@@ -1,6 +1,6 @@
 # Basic Settings
 set ignorecase true
-set icons true
+## set icons true
 
 # Custom Functions
 cmd mkdir ${{
@@ -9,10 +9,21 @@ cmd mkdir ${{
   mkdir $ans
 }}
 
+
 cmd mkfile ${{
   printf "File Name: "
   read ans
   $EDITOR $ans
+}}
+
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
 }}
 
 cmd delete ${{
@@ -28,14 +39,22 @@ cmd trash ${{
         IFS="$(printf '\n\t')"; mv $fs ~/.trash
     fi
 }}
+cmd restore_trash ${{
+  trash-restore
+}}
 
 # Bindings
-map <c-v> $code $f
-map . set hidden!
+map au unarchive
+map <enter> open
+map R reload
+map dr restore_trash
+map D trash
+map <c-v> $code "$f"
+
+# Quick jump
 map gD cd ~/media/documents
 map gd cd ~/downloads
 map gp cd ~/media/pictures
 map gr cd ~/repos
 map gv cd ~/media/videos
 map gt cd ~/.local/share/Trash/files
-map D trash

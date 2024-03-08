@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
+export PATH="$PATH:$HOME/.cargo/bin:\
+$HOME/.local/bin:\
+$HOME/.local/scripts:\
+$HOME/.local/nvim-linux64/bin"
+
 # vim/nvim
 if command -v nvim &>/dev/null; then
     export EDITOR=nvim
@@ -7,7 +12,8 @@ if command -v nvim &>/dev/null; then
         bvim="/usr/bin/vim" \
         vi="nvim" \
         vim="nvim" \
-        vimdiff="nvim -d"
+        vimdiff="nvim -d" \
+        nvh="cd ~/.config/nvim"
 elif command -v vim &>/dev/null; then
     export EDITOR=vim
     alias \
@@ -17,7 +23,8 @@ fi
 
 # bat
 command -v bat &> /dev/null && \
-    alias bcat="/usr/bin/\cat" \
+    alias \
+        bcat="/usr/bin/\cat" \
         bathelp='bat --plain --language=help' \
         vat="bat" \
         pat="bat --style=plain" \
@@ -28,18 +35,9 @@ command -v bat &> /dev/null && \
 tlr() { tldr $1 | bat --plain -l="md"; }
 belp() { "$@" --help 2>&1 | bathelp; }
 
-# exa/ls/lsd
+# exa/ls
 alias bls="/usr/bin/ls" lsr="realpath"
-if [[ $USE_LSD -eq 1 ]]; then
-    alias \
-        els="bls -hN --color=auto --group-directories-first" \
-        ls="lsd --group-directories-first" \
-        ls1="ls -1" \
-        l="ls --icon never" \
-        la='ls -a' \
-        ll='ls -l' \
-        lal='lal -al'
-elif command -v exa &> /dev/null; then
+if command -v exa &> /dev/null; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
         l='exa --group-directories-first' \
@@ -59,11 +57,6 @@ else
         lal='l -Al'
 fi
 pree() { tree $1 | cat; }
-
-# grep
-alias grep='grep --color=auto' \
-    fgrep='fgrep --color=auto' \
-    egrep='egrep --color=auto'
 
 # git
 qcom() {
@@ -95,48 +88,57 @@ alias apt="apt-get" \
     whichv="apt-cache policy" \
     auu="sudo apt update && sudo apt upgrade -y --allow-downgrades"
 
-
-# extra utilities
-alias \
-    myip="curl ipinfo.io/ip" \
-    untar="tar -zxvf" \
-    mkd="mkdir -pv"
-
-# verbosity and colors settings
-alias \
-	silcp="/usr/bin/cp" \
-    cp="cp -i" \
-    procp="rsync --progress" \
-	rsync="rsync -vrPlu" \
-	smv="/usr/bin/mv" \
-    mv="mv -iv" \
-    srm="/usr/bin/rm" \
-	bc="bc -ql" \
-	ffmpeg="ffmpeg -hide_banner"
-
-# rm
+# trash
 command -v trash &> /dev/null && \
     alias rm="trash" || \
     alias rm="rm -I" vrm="rm -Iv"
 
-# colors and other conveniences for common programs
+# yt-dlp
 alias \
+    yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
+    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
+    yta="yt -x -f bestaudio/best --audio-format mp3"
+ytq() {
+    [ -z "$1" ] && QUAL="1080" || QUAL=$1
+    yt -f 'bv*[height<=${QUAL}]+ba/b[height<=${QUAL}] / wv*+ba/w'
+}
+
+unarchive() {
+    case "$1" in
+        *.zip) unzip "$1" ;;
+        *.tar.gz) tar -xzvf "$1" ;;
+        *.tar.bz2) tar -xjvf "$1" ;;
+        *.tar) tar -xvf "$1" ;;
+        *) echo "Unsupported format" ;;
+    esac
+}
+
+# sane defaults, i.e. colors and verbosity
+alias alert='notify-send --urgency=low -i
+"$([ $? = 0 ] && echo terminal || echo error)
+$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias \
+    grep='grep --color=auto' \
+    fgrep='fgrep --color=auto' \
+    egrep='egrep --color=auto' \
+    ip="ip -color=auto" \
     diff="diff --color=auto" \
-    ccat="highlight --out-format=ansi" \
-    ip="ip -color=auto"
+	smv="/usr/bin/mv" \
+    mv="mv -iv" \
+	rsync="rsync -vrPlu" \
+    cp="cp -i" \
+	ffmpeg="ffmpeg -hide_banner" \
+	bc="bc -ql"
 
-
-# misc shorcuts and mnemonics
-alias \
-    nvh="cd ~/.config/nvim" \
-    files="xdg-open" \
-    kas="tmux kill-ses -a" \
-    alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" \
-    "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# shortcuts
 cht() { curl cheat.sh/$1 | less; }
 mkcd() { mkdir $1 && cd $1; }
-
-# rc editing shortcuts
+alias \
+    mkd="mkdir -pv" \
+    myip="curl ipinfo.io/ip" \
+    xo="xdg-open" \
+    kas="tmux kill-ses -a" \
+    chi="highlight --out-format=ansi"
 alias \
     zshrc="${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
@@ -153,30 +155,12 @@ alias \
     p3="python3" \
     sven="source venv/bin/activate"
 
-# yt-dlp
-alias yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
-    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
-    yta="yt -x -f bestaudio/best --audio-format mp3" \
-    yt480="yt -f 'bv*[height<=480]+ba/b[height<=480] / wv*+ba/w'" \
-    yt720="yt -f 'bv*[height<=720]+ba/b[height<=720] / wv*+ba/w'" \
-    yt1080="yt -f 'bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w'"
-
-imgp () {
-    cp ~/.config/lfrc /tmp/lfrc
-    echo -ne "set previewer ~/.config/lf/lf_kitty_preview\ncleaner ~/.config/lf/lf_kitty_clean\n" \
-        >> /tmp/lfrc
-    lf -config /tmp/lfrc
+# remap caps lock and escape on tty sessions
+caps2esc() {
+    echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" > /tmp/caps2esc
+    sudo loadkeys /tmp/caps2esc
 }
-
-# rebind esc and caps-lock on terminal session. need som extra testing...
-vim_lock () {
-  ls /usr/local/share/kbd/keymaps/caps_to_esc &> /dev/null || \
-    sudo mkdir -p /usr/local/share/kbd/keymaps/ && \
-    dumpkeys | sudo tee /usr/local/share/kbd/keymaps/default && \
-    sudo touch /usr/local/share/kbd/keymaps/caps_to_esc && \
-    echo -e "keycode 1 = Caps_Lock \nkeycode 58 = Escape" \
-      | sudo tee -a /usr/local/share/kbd/keymaps/caps_to_esc > /dev/null
-
-    sudo loadkeys /usr/local/share/kbd/keymaps/caps_to_esc
+back2caps() {
+    echo -e "keycode 58 = Caps_Lock \nkeycode 1 = Escape" > /tmp/back2caps
+    sudo loadkeys /tmp/back2caps
 }
-alias vim_unlock="sudo loadkeys /usr/local/share/kbd/keymaps/default"
