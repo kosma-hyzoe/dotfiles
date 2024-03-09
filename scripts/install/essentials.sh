@@ -1,33 +1,18 @@
 #!/usr/bin/bash
-
 source $(dirname "$0")/header
 
-DEF_PKGM_PKGS="git curl wget vim htop xclip tmux"
-DEFAULT_BIN_PATH="$HOME/.local/bin"
+APT="zsh git curl wget vim htop xclip tmux openjdk-17-jdk python3"
 PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
-if [[ $(uname -m) == "x86_64" ]]; then
-    ARCH="amd64"
-elif [[ $(uname -m) == "aarch64" ]]; then
-    ARCH="arm64"
-else
-    ARCH="arm"
-fi
-LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-${ARCH}.tar.gz"
 
 
-ill $DEF_PKGM_PKGS
+ill $APT
 
-mkdir -p $DEFAULT_BIN_PATH
+mkdir -p "$HOME/.local/bin"
 
 # lf
-if ! command -v lf &>/dev/null; then
-    wget ${LF_DOWNLOAD_URL}
-    tar -xvzf lf*.tar.gz -C $DEFAULT_BIN_PATH
-    rm -f lf*.tar.gz
-fi
+./lf.sh
 
 # zsh
-ill zsh
 mkdir -p ~/.config/zsh
 git clone ${PURE_REPO_URL} ~/.config/zsh/pure &>/dev/null
 

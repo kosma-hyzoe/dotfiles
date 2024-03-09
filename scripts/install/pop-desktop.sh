@@ -1,15 +1,9 @@
 #!/usr/bin/bash
 source $(dirname "$0")/header
 
-FLATPAK="spotify keepassxc qbittorrent libreoffice stretchly"
-APT="chromium vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
+FLATPAK="tidal keepassxc qbittorrent libreoffice stretchly"
+APT="timeshift chromium vlc libavcodec-extra flatpak gnome-software-plugin-flatpak syncthing neofetch"
 
-
-# remove legacy libreoffice and firefox
-sudo apt remove libreoffice-common libreoffice-core libreoffice-gnome \
-  libreoffice-gtk3 libreoffice-help-common libreoffice-he \
-  lp-en-us libreoffice-style-colibre libreoffice-style-elementary \
-  firefox-esr
 
 sudo flatpak remote-add --if-not-exists \
     flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -25,4 +19,4 @@ ill $APT
 flatpak install $FLATPAK
 
 # papirus
-wget -qO- https://git.io/papirus-icon-theme-install | sh
+# wget -qO- https://git.io/papirus-icon-theme-install | sh
