@@ -18,6 +18,7 @@ ln -f lf/lf_kitty_preview ~/.local/scripts
 ln -f lf/lf_kitty_clean ~/.local/scripts
 ln -f lf/lfcd ~/.local/scripts
 ln -f lf/_lfip ~/.local/scripts
+ln -f lf/lfip ~/.local/scripts
 
 # tmux
 [[ $NESTED_TMUX -eq 1 ]] && \
