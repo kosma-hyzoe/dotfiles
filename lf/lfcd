@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-
-cd "$(command lf -print-last-dir "$@")"

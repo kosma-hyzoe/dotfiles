@@ -164,3 +164,6 @@ back2caps() {
     echo -e "keycode 58 = Caps_Lock \nkeycode 1 = Escape" > /tmp/back2caps
     sudo loadkeys /tmp/back2caps
 }
+
+lfip() { kitty _lfip "$@"; }
+lfcd() { cd "$(command lf -print-last-dir "$@")"; }

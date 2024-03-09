@@ -82,6 +82,5 @@ bindkey "^[[1;5D" backward-word
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
 
-[ -f "$HOME/.local/scripts/lfcd.sh" ] && source "$HOME/.local/scripts/lfcd.sh"
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^p' 'lfip\n'
