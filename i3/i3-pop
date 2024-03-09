@@ -1,0 +1,10 @@
+# POP-OS like bindings
+#
+# enter fullscreen mode for the focused container
+bindsym $mod+m fullscreen toggle
+# suspend
+bindsym $mod+Escape exec systemctl suspend
+# kill focused window
+bindsym $mod++q kill
+# start a terminal
+bindsym $mod+t exec kitty tmux
