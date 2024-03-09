@@ -50,7 +50,9 @@ _comp_options+=(globdots) # Include hidden files
 fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
-fallback_prompt() { PURE_PROMPT_SYMBOL='$' PURE_PROMPT_VICMD_SYMBOL='V' }
+PURE_PROMPT_SYMBOL='$'
+PURE_PROMPT_VICMD_SYMBOL='V'
+zstyle :prompt:pure:prompt:success color '#FFAA00'
 
 # Reverse search with ctrl+r
 bindkey '^R' history-incremental-search-backward
