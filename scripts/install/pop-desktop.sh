@@ -2,7 +2,7 @@
 source $(dirname "$0")/header
 
 FLATPAK="tidal keepassxc qbittorrent libreoffice stretchly"
-APT="timeshift chromium vlc libavcodec-extra flatpak gnome-software-plugin-flatpak syncthing neofetch"
+APT="timeshift chromium-browser vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
 
 
 sudo flatpak remote-add --if-not-exists \

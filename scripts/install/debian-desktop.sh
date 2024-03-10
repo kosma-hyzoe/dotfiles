@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 source $(dirname "$0")/header
 
-FLATPAK="spotify keepassxc qbittorrent libreoffice stretchly"
-APT="chromium vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
+FLATPAK="tidal keepassxc qbittorrent libreoffice stretchly"
+APT="timeshift chromium vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
 
 
 # remove legacy libreoffice and firefox
