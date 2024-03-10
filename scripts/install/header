@@ -22,7 +22,8 @@ _ill () {
 
 ill () {
     if [[ $1 == *" "* ]]; then
-        for pkg in "$1"; do
+        pkgs=($1)
+        for pkg in "${pkgs[@]}"; do
             _ill $pkgm $pkg
         done
     else

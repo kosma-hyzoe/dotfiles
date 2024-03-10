@@ -51,8 +51,11 @@ fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 PURE_PROMPT_SYMBOL='$'
-PURE_PROMPT_VICMD_SYMBOL='V'
+PURE_PROMPT_VICMD_SYMBOL='%%'
+PURE_SUSPENDED_JOBS_SYMBOL='&'
 zstyle :prompt:pure:prompt:success color '#FFAA00'
+zstyle :prompt:pure:prompt:error color '#A13D2D'
+zstyle :prompt:pure:suspended_jobs color '#808080'
 
 # Reverse search with ctrl+r
 bindkey '^R' history-incremental-search-backward

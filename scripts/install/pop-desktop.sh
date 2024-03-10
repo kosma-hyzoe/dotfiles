@@ -19,4 +19,4 @@ ill $APT
 flatpak install $FLATPAK
 
 # papirus
-# wget -qO- https://git.io/papirus-icon-theme-install | sh
+wget -qO- https://git.io/papirus-icon-theme-install | sh
