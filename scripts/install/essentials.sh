@@ -1,35 +1,28 @@
 #!/usr/bin/bash
-
 source $(dirname "$0")/header
 
-DEF_PKGM_PKGS="git curl wget vim htop xclip tmux"
-DEFAULT_BIN_PATH="$HOME/.local/bin"
-PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
-if [[ $(uname -m) == "x86_64" ]]; then
-    ARCH="amd64"
-elif [[ $(uname -m) == "aarch64" ]]; then
-    ARCH="arm64"
-else
-    ARCH="arm"
-fi
+[ -z "$ARCH" ] && ARCH="amd64"
+[ -z "$DEFAULT_BIN_PATH" ] && DEFAULT_BIN_PATH="$HOME/.local/bin"
+
+APT="zsh git curl wget vim htop xclip tmux openjdk-17-jdk python3 python3-pip"
+PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-${ARCH}.tar.gz"
 
+ill "$APT"
 
-ill $DEF_PKGM_PKGS
 
-mkdir -p $DEFAULT_BIN_PATH
+mkdir -p "$DEFAULT_BIN_PATH"
 
 # lf
 if ! command -v lf &>/dev/null; then
-    wget ${LF_DOWNLOAD_URL}
-    tar -xvzf lf*.tar.gz -C $DEFAULT_BIN_PATH
+    wget "$LF_DOWNLOAD_URL" >/dev/null
+    tar -xvzf lf*.tar.gz -C "$DEFAULT_BIN_PATH"
     rm -f lf*.tar.gz
 fi
 
 # zsh
-ill zsh
-mkdir -p ~/.config/zsh
-git clone ${PURE_REPO_URL} ~/.config/zsh/pure &>/dev/null
+mkdir -p "~/.config/zsh"
+[ -d "~/.config/zsh/pure" ] || git clone ${PURE_REPO_URL} --depth=1 ~/.config/zsh/pure &>/dev/null
 
 # gh
 if ! command -v gh &>/dev/null && command -v apt &>/dev/null; then
@@ -37,9 +30,8 @@ if ! command -v gh &>/dev/null && command -v apt &>/dev/null; then
         && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
         && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
         && sudo apt update
+    ill gh
 fi
-ill gh
-
 
 # fzf
 if ! command -v fzf &>/dev/null; then

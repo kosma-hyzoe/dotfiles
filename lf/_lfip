@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-cd "$(command lf  -config <(cat ~/.config/lf/lfrc <(echo 'set previewer lf_kitty_preview')) -print-last-dir "$@" )"
+command lf  -config <(cat ~/.config/lf/lfrc <(echo 'set previewer lf_kitty_preview')) -print-last-dir "$@"
 exit 0

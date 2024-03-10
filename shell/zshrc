@@ -51,8 +51,11 @@ fpath+=($HOME/.config/zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 PURE_PROMPT_SYMBOL='$'
-PURE_PROMPT_VICMD_SYMBOL='V'
+PURE_PROMPT_VICMD_SYMBOL='%%'
+PURE_SUSPENDED_JOBS_SYMBOL='&'
 zstyle :prompt:pure:prompt:success color '#FFAA00'
+zstyle :prompt:pure:prompt:error color '#A13D2D'
+zstyle :prompt:pure:suspended_jobs color '#808080'
 
 # Reverse search with ctrl+r
 bindkey '^R' history-incremental-search-backward
@@ -82,6 +85,5 @@ bindkey "^[[1;5D" backward-word
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
 
-[ -f "$HOME/.local/scripts/lfcd.sh" ] && source "$HOME/.local/scripts/lfcd.sh"
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^p' 'lfip\n'

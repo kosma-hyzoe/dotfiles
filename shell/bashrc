@@ -61,6 +61,5 @@ fi
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
 
-[ -f "$HOME/.local/scripts/lfcd.sh" ] && source "$HOME/.local/scripts/lfcd.sh"
 bind '"\C-o":"lfcd\C-m"'
 bind '"\C-p":"lfcd\C-m"'

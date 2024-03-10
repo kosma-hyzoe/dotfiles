@@ -5,13 +5,8 @@ if [[ -n $EXT_PKGM ]]; then
 elif command -v apt &> /dev/null; then
     pkgm="sudo apt-get install -y"
 else
-    distro=$(uname -v)
-    if [[ $distro == "SMP PREEMPT" ]]; then
-        pkgm="pkg install"
-    else
-        echo "Failed to setup the 'pkgm' variable. Exiting..."
-        exit 1
-    fi
+    echo "Failed to setup the 'pkgm' variable. Exiting..."
+    exit 1
 fi
 
 _ill () {
@@ -27,7 +22,8 @@ _ill () {
 
 ill () {
     if [[ $1 == *" "* ]]; then
-        for pkg in "$1"; do
+        pkgs=($1)
+        for pkg in "${pkgs[@]}"; do
             _ill $pkgm $pkg
         done
     else

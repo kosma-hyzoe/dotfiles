@@ -2,14 +2,8 @@
 source $(dirname "$0")/header
 
 FLATPAK="tidal keepassxc qbittorrent libreoffice stretchly"
-APT="timeshift chromium vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
+APT="timeshift chromium-browser vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
 
-
-# remove legacy libreoffice and firefox
-sudo apt remove libreoffice-common libreoffice-core libreoffice-gnome \
-  libreoffice-gtk3 libreoffice-help-common libreoffice-he \
-  lp-en-us libreoffice-style-colibre libreoffice-style-elementary \
-  firefox-esr
 
 sudo flatpak remote-add --if-not-exists \
     flathub https://flathub.org/repo/flathub.flatpakrepo
