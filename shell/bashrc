@@ -50,9 +50,9 @@ fi
 # End of Ubuntu 20.04 defaults
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
+[ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 
 bind '"\C-o":"lfcd\C-m"'
 bind '"\C-p":"lfcd\C-m"'

@@ -32,13 +32,19 @@ cmd delete ${{
 }}
 
 cmd trash ${{
-    mkdir -p ~/.trash
-    if [ -z "$fs" ]; then
-        mv "$f" ~/.trash
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
     else
-        IFS="$(printf '\n\t')"; mv $fs ~/.trash
+      files="${files#*;}"
     fi
+  done
 }}
+
 cmd restore_trash ${{
   trash-restore
 }}

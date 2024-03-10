@@ -143,7 +143,8 @@ alias \
     rezsh="source ~/.zshrc" \
     rebash="source ~/.bashrc" \
     bashrc="${EDITOR} ~/.bashrc" \
-    aliasrc="${EDITOR} ~/.config/aliasrc"
+    aliasrc="${EDITOR} ~/.config/aliasrc" \
+    locrc="${EDITOR} ~/.config/localshrc"
 
 # development-specific
 qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };

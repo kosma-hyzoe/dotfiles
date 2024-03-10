@@ -69,15 +69,17 @@ bindkey -M menuselect "\H" vi-backward-char
 bindkey -M menuselect "\K" vi-up-line-or-history
 bindkey -M menuselect "\L" vi-forward-char
 bindkey -M menuselect "\J" vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
 
 # bind ctrl + arrow right/left arrow keys to forward word / backward word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
+[ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^p' 'lfip\n'
