@@ -87,3 +87,5 @@ bindkey "^[[1;5D" backward-word
 
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^p' 'lfip\n'
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
