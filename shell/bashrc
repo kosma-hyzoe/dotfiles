@@ -13,13 +13,6 @@ else
     export PS1="\n\w\n\$ "
 fi
 
-# zoxide
-if command -v zoxide &> /dev/null; then
-    eval "$(zoxide init bash)"
-    alias bcd="\cd" cd="z"
-fi
-bind '"\C-o":"lfcd\C-m"'
-
 #
 # DEFAULTS
 #
@@ -63,3 +56,9 @@ fi
 
 bind '"\C-o":"lfcd\C-m"'
 bind '"\C-p":"lfcd\C-m"'
+
+# zoxide
+if command -v zoxide &> /dev/null; then
+    alias bcd="\cd" cd="z"
+    eval "$(zoxide init bash)"
+fi

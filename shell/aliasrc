@@ -137,8 +137,7 @@ alias \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
-    kas="tmux kill-ses -a" \
-    chi="highlight --out-format=ansi"
+    kas="tmux kill-ses -a"
 alias \
     zshrc="${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
