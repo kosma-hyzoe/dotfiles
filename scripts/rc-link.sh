@@ -7,7 +7,6 @@ mkdir  -p "$HOME/.config"
 # vim
 mkdir -p "$HOME/.vim"
 ln -f vim/vimrc "$HOME/.vim"
-ln -f vim/colorscheme.vim "$HOME/.vim"
 ln -f vim/remaps.vim "$HOME/.vim"
 ln -f vim/plugins.vim "$HOME/.vim"
 
