@@ -45,7 +45,7 @@ set conceallevel=0
 " Theme
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-set notermguicolors
+set termguicolors
 colorscheme industry
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 hi clear SpellBad
