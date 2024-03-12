@@ -17,11 +17,6 @@ ln -f lf/lf_kitty_preview "$HOME/.local/scripts"
 ln -f lf/lf_kitty_clean "$HOME/.local/scripts"
 ln -f lf/_lfip "$HOME/.local/scripts"
 
-# tmux
-[[ "$NESTED_TMUX" -eq 1 ]] && \
-    ln -f tmux/nested-tmux.conf "$HOME/.tmux.conf" || \
-    ln -f tmux/tmux.conf "$HOME/.tmux.conf"
-
 # less
 ln -f config/lessrc "$HOME/.config"
 
