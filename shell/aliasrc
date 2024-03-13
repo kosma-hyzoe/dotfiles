@@ -68,7 +68,7 @@ qcom() {
 }
 qcomp() { qcom "$@" && git push; };
 alias gt="git status" \
-    gp="git pul" \
+    gp="git pull" \
     gd="git diff" \
 	gr="git restore" \
     gg="git grep" \
@@ -147,7 +147,7 @@ alias \
     locrc="${EDITOR} ~/.config/localshrc"
 
 # development-specific
-qcr() { gcc $@ -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
+qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
@@ -166,4 +166,4 @@ back2caps() {
 }
 
 lfip() { kitty _lfip "$@"; }
-lfcd() { cd "$(command lf -print-last-dir "$@")"; }
+lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
