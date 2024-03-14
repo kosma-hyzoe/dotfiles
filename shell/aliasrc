@@ -114,9 +114,7 @@ unarchive() {
 }
 
 # sane defaults, i.e. colors and verbosity
-alias alert='notify-send --urgency=low -i
-"$([ $? = 0 ] && echo terminal || echo error)
-$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
     grep='grep --color=auto' \
     fgrep='fgrep --color=auto' \
