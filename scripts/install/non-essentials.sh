@@ -1,5 +1,5 @@
-#!/bin/bash
-source $(dirname "$0")/header
+#!/usr/bin/bash
+source "$(dirname "${0}")/header"
 
 
 DEPENDENCIES="build-essential"
@@ -7,8 +7,8 @@ CARGO_PROGRAMS="bat exa zoxide ripgrep tree-sitter-cli tealdeer fd-find"
 PIPX_PROGRAMS="speedtest-cli trash-cli pynvim"
 APT_PROGRAMS="kitty pipx"
 
-ill $APT_PROGRAMS
-
+ill "$DEPENDENCIES"
+ill "$APT_PROGRAMS"
 
 ## cargo
 if ! command -v cargo &>/dev/null; then
@@ -17,8 +17,8 @@ if ! command -v cargo &>/dev/null; then
 fi
 
 EXT_PKGM="cargo install --locked"
-source $(dirname "$0")/header
-ill $CARGO_PROGRAMS
+source "$(dirname "${0}")/header"
+ill "$CARGO_PROGRAMS"
 
 # pip/pipx
 command -v pipx &>/dev/null || \
@@ -26,8 +26,8 @@ command -v pipx &>/dev/null || \
     pipx ensurepath > /dev/null
 
 EXT_PKGM="pipx install --user --upgrade"
-source $(dirname "$0")/header
-ill $PIP_PROGRAMS
+source "$(dirname "${0}")/header"
+ill "$PIPX_PROGRAMS"
 
 # npm
 if ! command -v npm &>/dev/null; then
