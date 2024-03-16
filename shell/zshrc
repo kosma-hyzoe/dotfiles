@@ -84,7 +84,7 @@ bindkey "^[[1;5D" backward-word
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^p' 'lfip\n'
 
-# enable
+# enable syntax highlighting
 hl() { source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; }
 
 # zoxide setup
