@@ -54,6 +54,8 @@ fi
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 
+
+bind '"\C-q":"exit\C-m"'
 bind '"\C-o":"lfcd\C-m"'
 bind '"\C-p":"lfcd\C-m"'
 

@@ -32,7 +32,7 @@ command -v bat &> /dev/null && \
         sat="pat --paging=never" \
         aat="bat -A" \
         less="cat"
-tlr() { tldr $1 | bat --plain -l="md"; }
+tlr() { tldr "$1" | bat --plain -l="md"; }
 belp() { "$@" --help 2>&1 | bathelp; }
 
 # exa/ls
@@ -56,7 +56,7 @@ else
         ll='l -l' \
         lal='l -Al'
 fi
-pree() { tree $1 | cat; }
+pree() { tree "$1" | cat; }
 
 # git
 qcom() {
@@ -149,7 +149,7 @@ qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
-    make="make -j$(($(nproc) - 2))" \
+    make="make -j\$((\$(nproc) - 2))" \
     p3="python3" \
     sven="source venv/bin/activate"
 
