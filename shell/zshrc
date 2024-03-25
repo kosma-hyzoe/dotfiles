@@ -81,7 +81,7 @@ bindkey "^[[1;5D" backward-word
 [ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
-bindkey -s '^q' 'exit\n'
+bindkey -s '^k' 'exit\n'
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^p' 'lfip\n'
 

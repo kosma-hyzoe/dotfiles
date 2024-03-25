@@ -129,20 +129,20 @@ alias \
 	bc="bc -ql"
 
 # shortcuts
-cht() { curl cheat.sh/$1 | less; }
-mkcd() { mkdir $1 && cd $1; }
+cht() { curl cheat.sh/"$1" | less; }
+mkcd() { mkdir "$1" && cd "$1" || exit; }
 alias \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
     kas="tmux kill-ses -a"
 alias \
-    zshrc="${EDITOR} ~/.zshrc" \
+    zshrc="\${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
     rebash="source ~/.bashrc" \
-    bashrc="${EDITOR} ~/.bashrc" \
-    aliasrc="${EDITOR} ~/.config/aliasrc" \
-    locrc="${EDITOR} ~/.config/localshrc"
+    bashrc="\${EDITOR} ~/.bashrc" \
+    aliasrc="\${EDITOR} ~/.config/aliasrc" \
+    locrc="\${EDITOR} ~/.config/localshrc"
 
 # development-specific
 qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };

@@ -1,9 +1,11 @@
 #!/usr/bin/bash
 
+EMBEDDED="picocom"
 KERNEL="lzop gcc-arm-linux-gnueabi libssl-dev bison flex"
 JAVA="openjdk-17-jdk"
 
 ill "$KERNEL"
+ill "$EMBEDDED"
 ill "$JAVA"
 
 ## STM32 / PlatformIO
