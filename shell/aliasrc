@@ -131,6 +131,7 @@ alias \
 # shortcuts
 cht() { curl cheat.sh/"$1" | less; }
 mkcd() { mkdir "$1" && cd "$1" || exit; }
+ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
 alias \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
