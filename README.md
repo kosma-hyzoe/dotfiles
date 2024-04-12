@@ -5,20 +5,18 @@ consuming and possibly counter-productive. If you're interested, just browse
 around. The best I can offer are my configs for `vim`, `bash`/`zsh`,
 `tmux` and Visual Studio Code. There's also some comfy install scripts.
 
+*foobar*
 My `nvim` config is moved to [`kosma-hyzoe/nvim-sane`](https://github.com/kosma-hyzoe/nvim-sane).
 
 ## TODO
 
-* npm
-* trash-cli?
-* speedtest-cli
-* chsh
-* lf: tmux split right on enter
+* `chsh`
+* `lf`: `tmux` split right on enter
 * to try:
-  * "git-delta"
-  * "duf"
-  * "dust"
-  * "procs"
-  * "sd"
-  * "du"
-  * "bandwhich"
+  * `git-delta`
+  * `duf`
+  * `dust1`
+  * `procs`
+  * `sd`
+  * `du`
+  * `bandwhich`

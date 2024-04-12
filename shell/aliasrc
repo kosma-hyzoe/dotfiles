@@ -24,7 +24,7 @@ fi
 # bat
 command -v bat &> /dev/null && \
     alias \
-        bcat="/usr/bin/\cat" \
+        bcat="/usr/bin/cat" \
         bathelp='bat --plain --language=help' \
         vat="bat" \
         pat="bat --style=plain" \
@@ -114,7 +114,6 @@ unarchive() {
 }
 
 # sane defaults, i.e. colors and verbosity
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
     grep='grep --color=auto' \
     fgrep='fgrep --color=auto' \
@@ -132,6 +131,7 @@ alias \
 cht() { curl cheat.sh/"$1" | less; }
 mkcd() { mkdir "$1" && cd "$1" || exit; }
 ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
@@ -144,6 +144,9 @@ alias \
     bashrc="\${EDITOR} ~/.bashrc" \
     aliasrc="\${EDITOR} ~/.config/aliasrc" \
     locrc="\${EDITOR} ~/.config/localshrc"
+alias \
+    visc="vi ~/notes/keymaps/vi.md" \
+    susc="vi ~/notes/keymaps/su.md"
 
 # development-specific
 qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
