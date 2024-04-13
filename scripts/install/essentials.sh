@@ -1,12 +1,13 @@
 #!/usr/bin/bash
-source $(dirname "$0")/header
+
+source "$(dirname "$0")/header"
 
 [ -z "$ARCH" ] && ARCH="amd64"
 [ -z "$DEFAULT_BIN_PATH" ] && DEFAULT_BIN_PATH="$HOME/.local/bin"
 
 APT="zsh git curl wget vim htop xclip tmux openjdk-17-jdk python3 python3-pip"
 PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
-LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r31/lf-linux-${ARCH}.tar.gz"
+LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r32/lf-linux-${ARCH}.tar.gz"
 
 ill "$APT"
 

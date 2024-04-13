@@ -1,6 +1,5 @@
 # Basic Settings
 set ignorecase true
-## set icons true
 
 # Custom Functions
 cmd mkdir ${{
@@ -24,11 +23,6 @@ cmd unarchive ${{
       *.tar) tar -xvf "$f" ;;
       *) echo "Unsupported format" ;;
   esac
-}}
-
-cmd delete ${{
-    rm -r $fx
-    lf -remote "send $id load"
 }}
 
 cmd trash ${{
@@ -55,6 +49,8 @@ map <enter> open
 map R reload
 map dr restore_trash
 map D trash
+map mf mkfile
+map md mkdir
 map <c-v> $code "$f"
 
 # Quick jump

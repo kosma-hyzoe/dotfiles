@@ -76,9 +76,9 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
-[ -f "$HOME/.config/localshrc" ] && source "$HOME/.config/localshrc"
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
 bindkey -s '^k' 'exit\n'
