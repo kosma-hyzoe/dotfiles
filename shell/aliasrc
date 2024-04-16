@@ -42,9 +42,9 @@ if [[ $USE_LSD -eq 1 ]]; then
         els="bls -hN --color=auto --group-directories-first" \
         ls="lsd --group-directories-first" \
         l="ls --icon never" \
-        la='ls -a' \
+        la='ls -A' \
         ll='ls -l' \
-        lal='lal -al' \
+        lal='lal -Al' \
         tree='exa --tree'
 elif command -v exa &> /dev/null; then
     alias \
@@ -100,7 +100,7 @@ alias apt="apt-get" \
 # trash
 command -v trash &> /dev/null && \
     alias rm="trash" || \
-    alias rm="rm -I" vrm="rm -Iv"
+    alias rm="rm -I"; alias vrm="rm -Iv"
 
 # yt-dlp
 alias \
