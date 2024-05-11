@@ -108,8 +108,8 @@ alias \
     yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
     yta="yt -x -f bestaudio/best --audio-format mp3"
 ytq() {
-    [ -z "$1" ] && QUAL="1080" || QUAL=$1
-    yt -f 'bv*[height<=${QUAL}]+ba/b[height<=${QUAL}] / wv*+ba/w'
+    [ -z "$2" ] && QUAL="1080" || QUAL=$2
+    yt -f "bv*[height<=${QUAL}]+ba/b[height<=${QUAL}] / wv*+ba/w" "$1"
 }
 
 unarchive() {
