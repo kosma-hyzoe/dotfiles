@@ -139,14 +139,13 @@ alias \
 # shortcuts
 auu() {
     echo -n -e "\n>APT\n"
-    sudo apt update
-    sudo apt upgrade -y --allow-downgrades
+    sudo apt-get update
+    sudo apt-get upgrade -y --allow-downgrades
     echo -n -e "\n>PIPX\n"
     pipx upgrade-all
     echo -n -e "\n>CARGO\n"
     cargo install-update -a
 }
-
 cht() { curl cheat.sh/"$1" | less; }
 mkcd() { mkdir "$1" && cd "$1" || exit; }
 ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
