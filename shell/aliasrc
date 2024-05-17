@@ -35,7 +35,7 @@ command -v bat &> /dev/null && \
 tlr() { tldr "$1" | bat --plain -l="md"; }
 belp() { "$@" --help 2>&1 | bathelp; }
 
-# exa/ls
+# eza/ls
 alias bls="/usr/bin/ls" lsr="realpath"
 if [[ $USE_LSD -eq 1 ]]; then
     alias \
@@ -45,17 +45,17 @@ if [[ $USE_LSD -eq 1 ]]; then
         la='ls -A' \
         ll='ls -l' \
         lal='lal -Al' \
-        tree='exa --tree'
-elif command -v exa &> /dev/null; then
+    command -v eza >/dev/null && alias tree='eza --tree'
+elif command -v eza &> /dev/null; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
-        l='exa --group-directories-first' \
+        l='eza --group-directories-first' \
         ls="l -F" \
         ls1="ls -1" \
         la='l -a' \
         ll='l -l' \
         lal='l -al' \
-        tree='exa --tree'
+        tree='eza --tree'
 else
     alias \
         l="ls -hN --color=auto --group-directories-first" \
@@ -187,3 +187,9 @@ back2caps() {
 
 lfip() { kitty _lfip "$@"; }
 lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=fg:#c0caf5,bg:#1a1b26,hl:#ff9e64 \
+--color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
