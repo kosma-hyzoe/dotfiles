@@ -1,5 +1,34 @@
-source ~/.vim/plugins.vim
-source ~/.vim/remaps.vim
+" Indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set breakindent
+set textwidth=0
+
+" Interface
+set colorcolumn=81
+set cursorline
+set mouse=a
+set smartcase
+set nonumber
+set ignorecase
+set splitbelow
+set splitright
+set nowrap
+set scrolloff=5
+set conceallevel=0
+
+" Spelling
+set wildmode=longest,list,full
+set spelllang=en_us
+set spell
+set spellsuggest=best,9
+
+" Timing
+set updatetime=250
+set updatetime=350
 
 " Neovim defaults
 set nocompatible
@@ -16,38 +45,14 @@ set incsearch
 set history=10000
 set formatoptions=tcqj
 
-" Indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-
-" Interface
-set colorcolumn=81
-set mouse=a
-set smartcase
-set nonumber
-set ignorecase
-set splitbelow
-set splitright
-set nowrap
-set scrolloff=5
-
-set updatetime=1000
-set textwidth=0
-set wildmode=longest,list,full
-set spelllang=en_us
-set spell
-set spellsuggest=best,9
-set conceallevel=0
-
 " Theme
+colorscheme industry
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-hi Normal guibg=NONE ctermbg=NONE
-colorscheme industry
+hi Normal guibg=NONE ctermbg=none
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" Highlight bad spell as a grey underline, disable other suggests
 hi clear SpellBad
 hi clear SpellLocal
 hi clear SpellRare
@@ -64,3 +69,6 @@ autocmd BufReadPost *
 autocmd BufWritePre * let currPos = getpos(".")
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
+
+source ~/.vim/plugins.vim
+source ~/.vim/remaps.vim

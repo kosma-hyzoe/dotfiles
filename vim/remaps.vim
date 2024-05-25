@@ -1,8 +1,12 @@
-" Quick refator
+" Quick search
 nmap Q :%s//g<Left><Left><CR>
 
 " Perform dot commands over visual blocks
 vnoremap . :normal .<CR>
+
+" Indent
+vnoremap <s-tab> <<
+imap <s-tab> <c-d>
 
 " Split navigation
 map <C-h> <C-w>h
@@ -43,35 +47,44 @@ nnoremap <c-e> ge
 " Leader remaps
 
 let g:mapleader = ","
-nnoremap <leader>nh :nohl<CR>
-nnoremap <leader>sn :set number!<CR>
-nnoremap <leader>sr :set relativenumber!<CR>
-nnoremap <leader>ss z=
-map <leader>o :setlocal spell!<CR>
+nnoremap <leader>tn :set number!<CR>
+nnoremap <leader>tr :set relativenumber!<CR>
+nnoremap <leader>tw :set wrap!<CR>
+nnoremap <leader>ai z=
 nnoremap <leader>ex :Ex<CR>
-"
+
 " Add run permissions on currently open file
 nnoremap <leader>cx :!chmod +x %<CR>
 
 " Show diff
-nnoremap <leader>sd :w !diff % -<CR>
+nnoremap <leader>di :w !diff % -<CR>
 
 " Close buffer
 nmap <leader>cb :bp<bar>sp<bar>bn<bar>bd<CR>
 
-" Replace word that the cursor is on
-nnoremap <leader>rw :%s/\<\<<C-r><C-w>\>/\<C-r><C-w>/gI<Left><Left><Left>
+" Exit terminal mode
+tmap <esc><esc> <c-\><c-n>
 
 " Change indent width, use tabs for t8
 nnoremap <leader>t2 :set tabstop=2 softtabstop=2 shiftwidth=2 expandtab<CR>
 nnoremap <leader>t4 :set tabstop=4 softtabstop=4 shiftwidth=4 expandtab<CR>
 nnoremap <leader>t8 :set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab<CR>
 
-" Disable starting new line as a comment when doing a newline from a comment
+" Disable commenting on new line  TODO: make this a reversible function
 nnoremap <leader>nc :set formatoptions-=c formatoptions-=r formatoptions-=o<CR>
+
+" Surround word/WORD
+nmap <leader>sw ysiw
+nmap <leader>sW ysiW
+
+" Neovim diff
+
+" Toggle highlight off
+nnoremap <leader>hl :nohl<CR>
 
 " Check file in shellcheck
 map <leader>sc :!clear && shellcheck -x %<CR>
+
 
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<CR>
