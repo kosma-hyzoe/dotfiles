@@ -9,17 +9,15 @@ $HOME/.local/nvim-linux64/bin"
 if command -v nvim &>/dev/null; then
     export EDITOR=nvim
     alias \
-        bvim="/usr/bin/vim" \
         vi="nvim" \
-        vim="nvim" \
-        vimdiff="nvim -d" \
-        nvh="cd ~/.config/nvim"
+        vh="cd ~/.config/nvim"
 elif command -v vim &>/dev/null; then
     export EDITOR=vim
     alias \
         vi="vim" \
-        nvim="vim"
+        vh="cd ~/.vim"
 fi
+alias vimdiff="vi -d"
 
 # bat
 command -v bat &> /dev/null && \
@@ -33,7 +31,7 @@ command -v bat &> /dev/null && \
         aat="bat -A" \
         less="cat"
 tlr() { tldr "$1" | bat --plain -l="md"; }
-belp() { "$@" --help 2>&1 | bathelp; }
+bh() { "$@" --help 2>&1 | bathelp; }
 
 # eza/ls
 alias bls="/usr/bin/ls" lsr="realpath"
@@ -75,7 +73,10 @@ qcom() {
         git add . && git commit -m "$1"
     fi
 }
-qcomp() { qcom "$@" && git push; };
+qcomp() {
+    qcom "$@" && git push || \
+        git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
+};
 alias gt="git status" \
     gp="git pull" \
     gd="git diff" \
@@ -129,15 +130,15 @@ alias \
     egrep='egrep --color=auto' \
     ip="ip -color=auto" \
     diff="diff --color=auto" \
-	smv="/usr/bin/mv" \
-    mv="mv -iv" \
-	rsync="rsync -vrPlu" \
+    mv="mv -i" \
+    rsync="rsync -vrPlu" \
     cp="cp -i" \
-	ffmpeg="ffmpeg -hide_banner" \
-	bc="bc -ql"
+    ffmpeg="ffmpeg -hide_banner" \
+    bc="bc -ql"
 
 # shortcuts
-auu() {
+#
+update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
     sudo apt-get upgrade -y --allow-downgrades
@@ -151,6 +152,7 @@ mkcd() { mkdir "$1" && cd "$1" || exit; }
 ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
+    ua="update_all" \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
@@ -188,6 +190,7 @@ back2caps() {
 lfip() { kitty _lfip "$@"; }
 lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
 
+# tokyonight-night theme for fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=fg:#c0caf5,bg:#1a1b26,hl:#ff9e64 \
 --color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
