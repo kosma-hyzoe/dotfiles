@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # command -v tmux $> /dev/null  || echo "tmux already installed." ; exit 1
 

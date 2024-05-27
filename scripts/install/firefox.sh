@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 
 if ! ls firefox-*.tar.bz2 &> /dev/null; then

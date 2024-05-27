@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if [[ -n $EXT_PKGM ]]; then
     pkgm=$EXT_PKGM

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 command lf  -config <(cat ~/.config/lf/lfrc <(echo -ne 'set previewer lf_kitty_preview\nset cleaner lf_kitty_clean\n')) -print-last-dir "$@"
 exit 0

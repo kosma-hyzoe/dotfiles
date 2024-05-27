@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 EMBEDDED="picocom"
 KERNEL="lzop gcc-arm-linux-gnueabi libssl-dev bison flex"
