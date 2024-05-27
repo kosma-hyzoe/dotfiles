@@ -42,7 +42,7 @@ if [[ $USE_LSD -eq 1 ]]; then
         l="ls --icon never" \
         la='ls -A' \
         ll='ls -l' \
-        lal='lal -Al' \
+        lal='lal -Al'
     command -v eza >/dev/null && alias tree='eza --tree'
 elif command -v eza &> /dev/null; then
     alias \
@@ -80,7 +80,7 @@ qcomp() {
 alias gt="git status" \
     gp="git pull" \
     gd="git diff" \
-	gr="git restore" \
+    gr="git restore" \
     gg="git grep" \
     gcm="git commit" \
     gclean="git clean -fdx"
