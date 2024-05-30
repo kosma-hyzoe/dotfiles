@@ -1,3 +1,6 @@
+source ~/.vim/plugins.vim
+source ~/.vim/remaps.vim
+
 " Indentation
 set tabstop=4
 set softtabstop=4
@@ -16,7 +19,7 @@ set nonumber
 set ignorecase
 set splitbelow
 set splitright
-set nowrap
+set wrap
 set scrolloff=5
 set conceallevel=0
 
@@ -69,6 +72,3 @@ autocmd BufReadPost *
 autocmd BufWritePre * let currPos = getpos(".")
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
-
-source ~/.vim/plugins.vim
-source ~/.vim/remaps.vim
