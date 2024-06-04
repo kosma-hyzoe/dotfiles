@@ -38,13 +38,13 @@ ln -f python/ipython_config.py "$HOME/.ipython/profile_default"
 ln -f python/flake8 "$HOME/.config"
 
 # kitty
-if command -v kitty; then
+if command -v kitty >/dev/null; then
     mkdir -p "$HOME/.config/kitty"
     ln -f config/kitty.conf "$HOME/.config/kitty"
 fi
 
 # zathura
-if command -v zathura; then
+if command -v zathura >/dev/null; then
     mkdir -p "$HOME/.config/zathura"
     ln -f config/kitty.conf "$HOME/.config/zathura/zathurarc"
 fi

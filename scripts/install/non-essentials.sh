@@ -1,14 +1,12 @@
 #!/bin/bash
+
 source "$(dirname "${0}")/header"
 
+DEPENDENCIES="build-essential pipx"
+CARGO_PROGRAMS="bat exa zoxide ripgrep  fd-find"
+PIPX_PROGRAMS="speedtest-cli pynvim"
 
-DEPENDENCIES="build-essential"
-CARGO_PROGRAMS="bat exa zoxide ripgrep tree-sitter-cli tealdeer fd-find"
-PIPX_PROGRAMS="speedtest-cli trash-cli pynvim"
-APT_PROGRAMS="kitty pipx"
-
-ill "$DEPENDENCIES"
-ill "$APT_PROGRAMS"
+ill $DEPENDENCIES
 
 ## cargo
 if ! command -v cargo &>/dev/null; then
@@ -39,4 +37,13 @@ if ! command -v npm &>/dev/null; then
         curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
         sudo apt-get install -y nodejs
     fi
+fi
+
+# gh
+if ! command -v gh &>/dev/null && command -v apt &>/dev/null; then
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+        && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+        && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+        && sudo apt update
+    ill gh
 fi
