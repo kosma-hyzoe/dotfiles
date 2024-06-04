@@ -24,7 +24,6 @@ if command -v lf >/dev/null; then
     ln -f lf/_lfip "$HOME/.local/scripts"
 fi
 
-
 # shell
 ln -f shell/bashrc "$HOME/.bashrc"
 ln -f shell/aliasrc "$HOME/.config"
@@ -42,6 +41,12 @@ ln -f python/flake8 "$HOME/.config"
 if command -v kitty; then
     mkdir -p "$HOME/.config/kitty"
     ln -f config/kitty.conf "$HOME/.config/kitty"
+fi
+
+# zathura
+if command -v zathura; then
+    mkdir -p "$HOME/.config/zathura"
+    ln -f config/kitty.conf "$HOME/.config/zathura/zathurarc"
 fi
 
 cd - > /dev/null || exit
