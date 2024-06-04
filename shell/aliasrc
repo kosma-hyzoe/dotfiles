@@ -32,6 +32,7 @@ command -v bat &> /dev/null && \
         less="cat"
 tlr() { tldr "$1" | bat --plain -l="md"; }
 bh() { "$@" --help 2>&1 | bathelp; }
+dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
 
 # eza/ls
 alias bls="/usr/bin/ls" lsr="realpath"
