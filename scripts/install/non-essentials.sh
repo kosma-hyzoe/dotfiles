@@ -3,7 +3,7 @@
 source "$(dirname "${0}")/header"
 
 DEPENDENCIES="build-essential pipx"
-CARGO_PROGRAMS="bat exa zoxide ripgrep  fd-find"
+CARGO_PROGRAMS="bat exa zoxide ripgrep fd-find fcp"
 PIPX_PROGRAMS="speedtest-cli pynvim"
 
 ill $DEPENDENCIES

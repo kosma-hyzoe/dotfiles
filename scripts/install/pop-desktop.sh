@@ -4,7 +4,7 @@ source "$(dirname "$0")/header"
 
 FLATPAK="tidal keepassxc qbittorrent libreoffice stretchly"
 APT_PROGRAMS="timeshift chromium-browser vlc kitty libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"
-CARGO_PROGRAMS="duf tealdeer tree-sitter-cli"
+CARGO_PROGRAMS="tealdeer tree-sitter-cli"
 PIPX_PROGRAMS="speedtest-cli pynvim"
 
 ill $APT_PROGRAMS

@@ -1,4 +1,10 @@
 # TODO
 
 * vscode vim spell highlight
-* porsmo
+
+## TRYME
+
+* `porsmo`
+* `df-duf`
+* `dust`
+* `fcp`
