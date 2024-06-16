@@ -151,6 +151,8 @@ update_all() {
 cht() { curl cheat.sh/"$1" | less; }
 mkcd() { mkdir "$1" && cd "$1" || exit; }
 ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
+qm() { python3 <(echo "print($@)"); }
+
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
     ua="update_all" \
