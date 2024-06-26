@@ -159,7 +159,9 @@ alias \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
-    kas="tmux kill-ses -a"
+    kas="tmux kill-ses -a" \
+    spa="echo \$(pwd) >> ~/projects/paths" \
+    vipa="vi ~/projects/paths"
 alias \
     zshrc="\${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
