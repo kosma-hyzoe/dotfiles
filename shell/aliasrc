@@ -23,16 +23,18 @@ alias vimdiff="vi -d"
 command -v bat &> /dev/null && \
     alias \
         bcat="/usr/bin/cat" \
-        bathelp='bat --plain --language=help' \
         vat="bat" \
-        pat="bat --style=plain" \
-        cat="bat --style=changes" \
-        sat="pat --paging=never" \
+        cat="bat --style=plain" \
+        bathelp='bat --plain --language=help' \
+        sat="bat --paging=never --style=plain" \
+        gat="bat --style=changes" \
         aat="bat -A" \
-        less="cat"
+        less="cat" \
+        bfzf="fzf" \
+        fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}'
 tlr() { tldr "$1" | bat --plain -l="md"; }
 bh() { "$@" --help 2>&1 | bathelp; }
-dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
+
 
 # eza/ls
 alias bls="/usr/bin/ls" lsr="realpath"
@@ -148,10 +150,11 @@ update_all() {
     echo -n -e "\n>CARGO\n"
     cargo install-update -a
 }
-cht() { curl cheat.sh/"$1" | less; }
-mkcd() { mkdir "$1" && cd "$1" || exit; }
 ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
 qm() { python3 <(echo "print($@)"); }
+ts() { trans "$@" | less; }
+cht() { curl cheat.sh/"$1" | less; }
+dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
@@ -159,9 +162,7 @@ alias \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
-    kas="tmux kill-ses -a" \
-    spa="echo \$(pwd) >> ~/projects/paths" \
-    vipa="vi ~/projects/paths"
+    kas="tmux kill-ses -a"
 alias \
     zshrc="\${EDITOR} ~/.zshrc" \
     rezsh="source ~/.zshrc" \
