@@ -158,21 +158,27 @@ dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
+    c="xclip" \
+    v="xclip -o" \
+    xc="xclip -selection clipboard"
+alias \
     ua="update_all" \
     mkd="mkdir -pv" \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
     kas="tmux kill-ses -a"
 alias \
-    zshrc="\${EDITOR} ~/.zshrc" \
-    rezsh="source ~/.zshrc" \
-    rebash="source ~/.bashrc" \
-    bashrc="\${EDITOR} ~/.bashrc" \
+    resh="[[ \$0 == *"zsh"* ]] && source ~/.zshrc || source ~/.bashrc" \
+    shrc="[[ \$0 == *"zsh"* ]] && \${EDITOR} ~/.zshrc || \${EDITOR} ~/.bashrc" \
     aliasrc="\${EDITOR} ~/.config/aliasrc" \
     locrc="\${EDITOR} ~/.config/localshrc"
 alias \
-    visc="vi ~/notes/keymaps/vi.md" \
-    susc="vi ~/notes/keymaps/su.md"
+    vivi="vi ~/notes/keymaps/vi.md" \
+    visu="vi ~/notes/keymaps/su.md"
+alias \
+    sshkg="ssh-keygen -t ed25519" \
+    sshag="ssh-agent; ssh-add ~/.ssh/id_rsa &>/dev/null; ssh-add ~/.ssh/id_ed25519 &>/dev/null"
+
 
 # development-specific
 qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
