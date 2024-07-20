@@ -49,7 +49,7 @@ set history=10000
 set formatoptions=tcqj
 
 " Theme
-colorscheme industry
+" colorscheme industry
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 hi Normal guibg=NONE ctermbg=none
