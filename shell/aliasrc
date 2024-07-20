@@ -177,7 +177,7 @@ alias \
     visu="vi ~/notes/keymaps/su.md"
 alias \
     sshkg="ssh-keygen -t ed25519" \
-    sshag="ssh-agent; ssh-add ~/.ssh/id_rsa &>/dev/null; ssh-add ~/.ssh/id_ed25519 &>/dev/null"
+    sshag='eval $(ssh-agent) && ssh-add'
 
 
 # development-specific
