@@ -72,3 +72,5 @@ autocmd BufReadPost *
 autocmd BufWritePre * let currPos = getpos(".")
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
+
+source ./sane.vim

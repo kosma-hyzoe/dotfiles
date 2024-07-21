@@ -3,6 +3,7 @@
 source "$(dirname "$0")/header"
 
 [ -z "$ARCH" ] && ARCH="amd64"
+[ -z "$DEFAULT_BIN_PATH" ] && DEFAULT_BIN_PATH="$HOME/.local/bin"
 
 CAN_SUDO=1
 
@@ -12,7 +13,7 @@ LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r32/lf-linux-$
 
 
 
-mkdir -p ~/.local/bin
+mkdir -p "$DEFAULT_BIN_PATH"
 
 # lf
 if ! command -v lf &>/dev/null; then
