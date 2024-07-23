@@ -19,7 +19,7 @@ set nonumber
 set ignorecase
 set splitbelow
 set splitright
-set wrap
+set nowrap
 set scrolloff=5
 set conceallevel=0
 
@@ -68,7 +68,7 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
-" Delete all trailing white-space and end of file newlines
+" Delete all trailing white-space
 autocmd BufWritePre * let currPos = getpos(".")
-	autocmd BufWritePre * %s/\s\+$//e
-	autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
