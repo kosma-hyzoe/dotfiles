@@ -12,6 +12,7 @@ My `nvim` config is moved to [`kosma-hyzoe/nvim-sane`](https://github.com/kosma-
 
 * `chsh`
 * `lf`: `tmux` split right on enter
+* `tmux` sshsplit
 * to try:
   * `git-delta`
   * `duf`
