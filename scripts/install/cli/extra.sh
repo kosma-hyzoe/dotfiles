@@ -5,7 +5,6 @@ source "$(dirname "${0}")/../header"
 DEPENDENCIES="build-essential"
 CARGO_PROGRAMS="bat exa zoxide ripgrep fd-find fcp" \
     "tealdeer tree-sitter-cli"
-APT_PROGRAMS="python3-pynvim"
 
 ill $DEPENDENCIES
 
@@ -13,9 +12,6 @@ ill $DEPENDENCIES
 if ! command -v cargo &>/dev/null; then
     curl https://sh.rustup.rs -sSf | sh
 fi
-
-# apt
-ill $APT_PROGRAMS
 
 EXT_PKGM="cargo install --locked"
 source "$(dirname "${0}")/../header"
