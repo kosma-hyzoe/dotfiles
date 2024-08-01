@@ -146,8 +146,8 @@ update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
     sudo apt-get upgrade -y --allow-downgrades
-    echo -n -e "\n>PIPX\n"
-    pipx upgrade-all
+    echo -n -e "\n>PIP(X)\n"
+    pipx upgrade-all || pip upgrade-all
     echo -n -e "\n>CARGO\n"
     cargo install-update -a
 }
