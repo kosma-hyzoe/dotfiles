@@ -183,7 +183,11 @@ alias \
 
 # development-specific
 qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
-p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
+p4u() {
+    n=$1; shift;
+    [ -z "$1" ] && usage_mesg="usage: 'p4u <n> <flags>' where <n> - ttyUSB<N>"
+    picocom -b 115200 "/dev/ttyUSB${n}" "$@" || echo $usage_mesg
+}
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
     make="make -j\$((\$(nproc) - 2))" \
