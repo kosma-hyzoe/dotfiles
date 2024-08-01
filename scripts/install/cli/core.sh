@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname "$0")/header"
+source "$(dirname "$0")/../header"
 
 [ -z "$ARCH" ] && ARCH="amd64"
 [ -z "$DEFAULT_BIN_PATH" ] && DEFAULT_BIN_PATH="$HOME/.local/bin"

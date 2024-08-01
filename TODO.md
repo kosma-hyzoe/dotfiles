@@ -4,6 +4,11 @@
 
 ## TRYME
 
+* `git-delta`
+* `procs`
+* `sd`
+* `du`"
+* `bandwhich`
 * `porsmo`
 * `df-duf`
 * `dust`

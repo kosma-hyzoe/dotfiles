@@ -1,5 +1,5 @@
 #!/bin/bash
-source "$(dirname "${0}")/header"
+source "$(dirname "${0}")/../header"
 
 FLATPAK="tidal keepassxc qbittorrent libreoffice stretchly"
 APT="timeshift chromium vlc libavcodec-extra flatpak barrier gnome-software-plugin-flatpak syncthing neofetch"

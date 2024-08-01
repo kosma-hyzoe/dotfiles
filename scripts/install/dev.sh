@@ -1,7 +1,7 @@
 #!/bin/bash
 
 EMBEDDED="picocom"
-KERNEL="lzop gcc-arm-linux-gnueabi libssl-dev bison flex"
+KERNEL="cmake lzop gcc-arm-linux-gnueabi libssl-dev bison flex"
 JAVA="openjdk-17-jdk"
 
 ill "$KERNEL"

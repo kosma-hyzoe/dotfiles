@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname "${0}")/header"
+source "$(dirname "${0}")/../header"
 
 DEPENDENCIES="build-essential"
 CARGO_PROGRAMS="bat exa zoxide ripgrep fd-find fcp"
@@ -15,7 +15,7 @@ if ! command -v cargo &>/dev/null; then
 fi
 
 EXT_PKGM="cargo install --locked"
-source "$(dirname "${0}")/header"
+source "$(dirname "${0}")/../header"
 ill "$CARGO_PROGRAMS"
 
 # pip/pipx
@@ -24,7 +24,7 @@ command -v pipx &>/dev/null || \
     pipx ensurepath > /dev/null
 
 EXT_PKGM="pipx install --user --upgrade"
-source "$(dirname "${0}")/header"
+source "$(dirname "${0}")/../header"
 ill "$PIPX_PROGRAMS"
 
 # npm
