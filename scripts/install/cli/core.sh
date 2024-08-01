@@ -7,8 +7,7 @@ source "$(dirname "$0")/../header"
 
 CAN_SUDO=1
 
-APT="zsh git curl wget vim xclip tmux htop shellcheck python3 progress" \
-    "trash-cli speedtest-cli"
+APT="zsh git curl wget vim xclip tmux htop shellcheck python3 progress trash-cli speedtest-cli"
 PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r32/lf-linux-${ARCH}.tar.gz"
 
