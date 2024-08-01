@@ -12,7 +12,7 @@ set textwidth=0
 
 " Interface
 set colorcolumn=81
-set cursorline
+set nocursorline
 set mouse=a
 set smartcase
 set nonumber

@@ -1,6 +1,5 @@
-" Quick search
-nmap Q :%s//g<Left><Left><CR>
-
+" Quick replace
+nmap Q :%s//g<Left><Left>
 " Perform dot commands over visual blocks
 vnoremap . :normal .<CR>
 
