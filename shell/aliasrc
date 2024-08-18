@@ -21,9 +21,8 @@ alias vimdiff="vi -d"
 vimify() { ~/.dotfiles/vim/zip.sh > /tmp/vimrc; scp -r /tmp/vimrc $1:~/.vimrc; }
 
 # bat
-command -v bat &> /dev/null && \
+if command -v bat &> /dev/null; then
     alias \
-        bcat="/usr/bin/cat" \
         vat="bat" \
         cat="bat --style=plain" \
         bathelp='bat --plain --language=help' \
@@ -33,12 +32,13 @@ command -v bat &> /dev/null && \
         less="cat" \
         bfzf="fzf" \
         fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}'
+    export PAGER="bat --plain"
+fi
 tlr() { tldr "$1" | bat --plain -l="md"; }
 bh() { "$@" --help 2>&1 | bathelp; }
 
 
 # eza/ls
-alias bls="/usr/bin/ls" lsr="realpath"
 if [[ $USE_LSD -eq 1 ]]; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
@@ -123,6 +123,7 @@ unarchive() {
         *.tar.gz) tar -xzvf "$1" ;;
         *.tar.bz2) tar -xjvf "$1" ;;
         *.tar) tar -xvf "$1" ;;
+        *.xz) xz -z "$1" ;;
         *) echo "Unsupported format" ;;
     esac
 }
@@ -206,6 +207,7 @@ back2caps() {
 
 lfip() { kitty _lfip "$@"; }
 lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
+if command -v zoxide &> /dev/null; then alias cdf="zi"; fi
 
 # tokyonight-night theme for fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
