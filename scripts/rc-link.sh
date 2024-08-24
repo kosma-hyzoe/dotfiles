@@ -46,7 +46,7 @@ fi
 # zathura
 if command -v zathura >/dev/null; then
     mkdir -p "$HOME/.config/zathura"
-    ln -f config/kitty.conf "$HOME/.config/zathura/zathurarc"
+    ln -f config/zathurarc "$HOME/.config/zathura/zathurarc"
 fi
 
 cd - > /dev/null || exit
