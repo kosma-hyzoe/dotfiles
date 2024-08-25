@@ -6,7 +6,7 @@ export KEYTIMEOUT=1
 
 # Enable bash-style comments
 setopt interactivecomments
-export KSH_ARRAYS=1
+# export KSH_ARRAYS=1
 
 # History
 setopt sharehistory
