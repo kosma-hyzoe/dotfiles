@@ -60,4 +60,4 @@ bind '"\C-o":"lfcd\C-m"'
 bind '"\C-p":"lfcd\C-m"'
 
 # zoxide
-if command -v zoxide &> /dev/null; then eval "$(zoxide init bash)"; fi
+command -v zoxide &> /dev/null && eval "$(zoxide init bash)"

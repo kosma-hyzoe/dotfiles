@@ -90,4 +90,4 @@ bindkey -s '^p' 'lfip\n'
 hl() { source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; }
 
 # zoxide setup
-if command -v zoxide &> /dev/null; then eval "$(zoxide init zsh)"; fi
+command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
