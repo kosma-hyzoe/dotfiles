@@ -31,24 +31,14 @@ if command -v bat &> /dev/null; then
         aat="bat -A" \
         less="cat" \
         bfzf="fzf" \
-        fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}'
+        fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
     export PAGER="bat --plain"
 fi
 tlr() { tldr "$1" | bat --plain -l="md"; }
 bh() { "$@" --help 2>&1 | bathelp; }
 
 
-# eza/ls
-if [[ $USE_LSD -eq 1 ]]; then
-    alias \
-        els="bls -hN --color=auto --group-directories-first" \
-        ls="lsd --group-directories-first" \
-        l="ls --icon never" \
-        la='ls -A' \
-        ll='ls -l' \
-        lal='lal -Al'
-    command -v eza >/dev/null && alias tree='eza --tree'
-elif command -v eza &> /dev/null; then
+if command -v eza &> /dev/null; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
         l='eza --group-directories-first' \
@@ -81,7 +71,8 @@ qcomp() {
     qcom "$@" && git push || \
         git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
 };
-alias gt="git status" \
+alias \
+    gt="git status" \
     gp="git pull" \
     gd="git diff" \
     gr="git restore" \
@@ -103,9 +94,11 @@ alias apt="apt-get" \
 
 
 # trash
-command -v trash &> /dev/null && \
-    alias rm="trash" || \
+if command -v trash &> /dev/null; then
+    alias rm="trash"
+else
     alias rm="rm -I"; alias vrm="rm -Iv"
+fi
 
 # yt-dlp
 alias \
@@ -207,7 +200,7 @@ back2caps() {
 
 lfip() { kitty _lfip "$@"; }
 lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
-if command -v zoxide &> /dev/null; then alias cdf="zi" cd="z"; fi
+command -v zoxide &> /dev/null && alias cd="z" cdf="zi"
 
 # tokyonight-night theme for fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
