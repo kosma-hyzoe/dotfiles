@@ -207,7 +207,7 @@ back2caps() {
 
 lfip() { kitty _lfip "$@"; }
 lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
-if command -v zoxide &> /dev/null; then alias cdf="zi"; fi
+if command -v zoxide &> /dev/null; then alias cdf="zi" cd="z"; fi
 
 # tokyonight-night theme for fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
