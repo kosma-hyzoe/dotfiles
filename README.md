@@ -16,8 +16,5 @@ My `nvim` config is moved to [`kosma-hyzoe/nvim-sane`](https://github.com/kosma-
 * to try:
   * `git-delta`
   * `duf`
-  * `dust1`
   * `procs`
   * `sd`
-  * `du`
-  * `bandwhich`

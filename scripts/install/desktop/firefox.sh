@@ -1,16 +1,17 @@
 #!/bin/bash
 
+sudo install -d -m 0755 /etc/apt/keyrings
 
-if ! ls firefox-*.tar.bz2 &> /dev/null; then
-    echo "you need to place this script next to a firefox *.tar.bz2 archive to run it."
-    exit 1
-fi
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
 
-tar xjf firefox-*.tar.bz2
-rm firefox-*.tar.bz2
-sudo mv firefox /opt
-sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop \
-  -P /usr/local/share/applications
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
 
-sudo apt install libdbus-glib-1-dev
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla 
+
+sudo apt-get update && sudo apt-get install firefox 

@@ -144,6 +144,12 @@ update_all() {
     pipx upgrade-all || pip upgrade-all
     echo -n -e "\n>CARGO\n"
     cargo install-update -a
+    if command -v fwupdmgr &>/dev/null; then
+        echo -n -e "\n>FWUPDMGR\n"
+        sudo fwupdmgr refresh
+        sudo fwupdmgr get-updates
+        sudo fwupdmgr update
+    fi
 }
 ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
 qm() { python3 <(echo "print($@)"); }

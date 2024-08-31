@@ -1,4 +1,3 @@
-FLATPAK="tidal keepassxc qbittorrent libreoffice bookworm foliate gnome-software-plugin-flatpak"
 
 # papirus
 wget -qO- https://git.io/papirus-icon-theme-install | sh
@@ -16,9 +15,8 @@ fi
 sudo flatpak remote-add --if-not-exists \
     flathub https://flathub.org/repo/flathub.flatpakrepo
 
-sudo apt install timeshift tlp exfatprogs chromium-browser vlc kitty  \
-    libavcodec-extra flatpak gnome-software-plugin-flatpak neofetch \
-    gnome-software-plugin-flatpak
-flatpak install "$FLATPAK"
+sudo apt install timeshift exfatprogs vlc kitty  \
+    libavcodec-extra flatpak gnome-software-plugin-flatpak
+flatpak install tidal keepassxc libreoffice
 
 

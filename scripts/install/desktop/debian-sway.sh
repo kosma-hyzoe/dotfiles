@@ -7,7 +7,7 @@ sudo apt install -y sway waybar swaylock swayidle swaybg
 sudo apt install -y gvfs-backends
 
 ### File manager (thunar)
-sudo apt install -y thunar thunar-archive-plugin thunar-volman file-roller
+# sudo apt install -y thunar thunar-archive-plugin thunar-volman file-roller
 
 ###
 sudo apt install -y mtools dosfstools acpi acpid avahi-daemon
