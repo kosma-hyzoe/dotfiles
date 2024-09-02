@@ -4,10 +4,11 @@
 
 ## TRYME
 
+* `bob-nvim`
 * `git-delta`
-* `procs`
+* `mprocs`
 * `sd`
-* `du`"
+* `du`
 * `bandwhich`
 * `porsmo`
 * `df-duf`
