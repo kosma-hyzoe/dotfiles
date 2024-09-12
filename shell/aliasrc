@@ -17,6 +17,7 @@ elif command -v vim &>/dev/null; then
         vi="vim" \
         vh="cd ~/.vim"
 fi
+alias vit="vi \$(mktemp)"
 alias vimdiff="vi -d"
 vimify() { ~/.dotfiles/vim/zip.sh > /tmp/vimrc; scp -r /tmp/vimrc $1:~/.vimrc; }
 
