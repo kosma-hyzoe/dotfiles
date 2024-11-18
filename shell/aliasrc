@@ -19,7 +19,6 @@ elif command -v vim &>/dev/null; then
 fi
 alias vit="vi /tmp/tmp.md"
 alias vidiff="vi -d"
-vimify() { ~/.dotfiles/vim/zip.sh > /tmp/vimrc; scp -r /tmp/vimrc $1:~/.vimrc; }
 
 # bat
 if command -v bat &> /dev/null; then
