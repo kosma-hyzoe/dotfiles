@@ -17,7 +17,8 @@ elif command -v vim &>/dev/null; then
         vi="vim" \
         vh="cd ~/.vim"
 fi
-alias vimdiff="vi -d"
+alias vit="vi /tmp/tmp.md"
+alias vidiff="vi -d"
 vimify() { ~/.dotfiles/vim/zip.sh > /tmp/vimrc; scp -r /tmp/vimrc $1:~/.vimrc; }
 
 # bat
