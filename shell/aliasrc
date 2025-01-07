@@ -174,8 +174,8 @@ alias \
     aliasrc="\${EDITOR} ~/.config/aliasrc" \
     locrc="\${EDITOR} ~/.config/localshrc"
 alias \
-    vivi="vi ~/notes/keymaps/vi.md" \
-    visu="vi ~/notes/keymaps/su.md"
+    vivi="vi ~/notes/cheatsheets/vi.md" \
+    visu="vi ~/notes/cheatsheets/su.md"
 alias \
     sshkg="ssh-keygen -t ed25519" \
     sshag='eval $(ssh-agent) && ssh-add'
