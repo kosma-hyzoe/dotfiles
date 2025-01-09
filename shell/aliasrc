@@ -161,7 +161,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias \
     c="xclip" \
     v="xclip -o" \
-    xc="xclip -selection clipboard"
+    vb="xclip -o -selection clipboard" \
+    cb="xclip -selection clipboard"
 alias \
     ua="update_all" \
     myip="curl ipinfo.io/ip" \
