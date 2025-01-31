@@ -1,0 +1,16 @@
+username: kosma
+core-packages:
+  - git
+  - curl
+  - vim
+  - tmux
+  - xclip
+  - zsh
+  - shellcheck
+  - python3
+  - progress
+  - trash-cli
+  - speedtest-cli
+  - lf
+
+

@@ -1,0 +1,6 @@
+---
+- hosts: rpi4rb
+  become: yes
+
+  tasks:
+    - import_tasks: tasks/base-setup.yml
