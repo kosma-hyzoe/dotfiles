@@ -27,6 +27,7 @@ fi
 # shell
 ln -f shell/bashrc "$HOME/.bashrc"
 ln -f shell/aliasrc "$HOME/.config"
+ln -f shell/st "$HOME/.local/scripts"
 command -v zsh >/dev/null && ln -f shell/zshrc "$HOME/.zshrc"
 
 # tmux
