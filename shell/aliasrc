@@ -57,7 +57,7 @@ else
         ll='l -l' \
         lal='l -Al'
 fi
-pree() { tree "$1" | cat; }
+eree() { tree "$1" | cat; }
 
 # git
 qcom() {
@@ -80,15 +80,6 @@ alias \
     gcm="git commit" \
     gclean="git clean -fdx"
 
-# apt
-lill () {
-  for prog in "${@}"; do
-    if ! command -v "${prog}" &>/dev/null; then
-      echo "Installing ${prog}"...
-      sudo apt-get install -y "${prog}"
-    fi
-  done
-}
 alias apt="apt-get" \
     whichv="apt-cache policy"
 
@@ -135,7 +126,6 @@ alias \
     bc="bc -ql"
 
 # shortcuts
-#
 update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
