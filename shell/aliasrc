@@ -146,6 +146,7 @@ qm() { python3 <(echo "print($@)"); }
 ts() { trans "$@" | less; }
 cht() { curl cheat.sh/"$1" | less; }
 dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
+mssh() { mkdir -p "$1";  sshfs -o auto_cache,reconnect,allow_other "$2"  "$1"; }
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
@@ -172,13 +173,10 @@ alias \
     sshag='eval $(ssh-agent) && ssh-add'
 
 
+
 # development-specific
 qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
-p4u() {
-    n=$1; shift;
-    [ -z "$1" ] && usage_mesg="usage: 'p4u <n> <flags>' where <n> - ttyUSB<N>"
-    picocom -b 115200 "/dev/ttyUSB${n}" "$@" || echo $usage_mesg
-}
+p4u() { picocom -b 115200 "/dev/ttyUSB${n}" "$@" }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
     make="make -j\$((\$(nproc) - 2))" \
