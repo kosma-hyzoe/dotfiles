@@ -9,7 +9,7 @@ CAN_SUDO=1
 
 APT="zsh git curl wget vim xclip tmux htop shellcheck python3 progress trash-cli speedtest-cli smartmontools"
 PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
-LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r33/lf-linux-${ARCH}.tar.gz"
+LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r34/lf-linux-${ARCH}.tar.gz"
 
 if [[ $CAN_SUDO -eq 1 ]]; then
     ill "$APT"
@@ -18,7 +18,7 @@ fi
 mkdir -p "$DEFAULT_BIN_PATH"
 
 # lf
-if ! command -v lf &>/dev/null; then
+if ! command -v lfffa &>/dev/null; then
     wget "$LF_DOWNLOAD_URL" >/dev/null
     tar -xvzf lf*.tar.gz -C "$DEFAULT_BIN_PATH"
     rm -f lf*.tar.gz

@@ -8,6 +8,7 @@ config.enable_tab_bar = false
 config.window_close_confirmation = "NeverPrompt"
 config.window_background_opacity = 0.90
 
-config.default_prog = { "ubuntu2204.exe" }
+-- config.default_prog = { "ubuntu2204.exe" }
 
 return config
+

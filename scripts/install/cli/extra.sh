@@ -2,7 +2,7 @@
 
 source "$(dirname "${0}")/../header"
 
-CARGO_PROGRAMS="bat exa zoxide ripgrep fd-find tree-sitter-cli"
+CARGO_PROGRAMS="bat eza zoxide ripgrep fd-find tree-sitter-cli"
 
 ill $DEPENDENCIES
 
@@ -23,8 +23,9 @@ if ! command -v npm &>/dev/null; then
             "\n\tcurl -fsSL https://deb.nodesource.com/setup_lts.x |" \
             "bash - && apt-get install -y nodejs"
     else
-        curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
-        sudo apt-get install -y nodejs
+        sudo apt-get install curl
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+
     fi
 fi
 
