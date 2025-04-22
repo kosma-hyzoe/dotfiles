@@ -176,7 +176,7 @@ alias \
 
 # development-specific
 qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
-p4u() { picocom -b 115200 "/dev/ttyUSB${n}" "$@" }
+p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
     make="make -j\$((\$(nproc) - 2))" \
