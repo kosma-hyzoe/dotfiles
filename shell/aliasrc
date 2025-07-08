@@ -180,6 +180,7 @@ p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
     make="make -j\$((\$(nproc) - 2))" \
     p3="python3" \
+    ipython="ipython3" \
     sven="source venv/bin/activate"
 
 # remap caps lock and escape on tty sessions
