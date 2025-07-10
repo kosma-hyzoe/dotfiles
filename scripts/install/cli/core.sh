@@ -7,7 +7,7 @@ source "$(dirname "$0")/../header"
 
 CAN_SUDO=1
 
-APT="zsh git curl wget vim xclip tmux htop shellcheck python3 progress trash-cli speedtest-cli smartmontools"
+APT="zsh git curl wget vim xclip tmux htop shellcheck python3 progress trash-cli speedtest-cli smartmontools exfatprogs "
 PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r34/lf-linux-${ARCH}.tar.gz"
 
@@ -33,3 +33,9 @@ if ! command -v fzf &>/dev/null; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
 fi
+
+# npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+nvm install --lts
+
+sudo rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED

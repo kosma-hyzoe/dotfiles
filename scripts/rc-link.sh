@@ -18,7 +18,7 @@ fi
 # lf
 if command -v lf >/dev/null; then
     mkdir -p "$HOME/.config/lf"
-    ln -f lf/lfrc "$HOME/.config/lf"
+    ln -f config/lfrc "$HOME/.config/lf"
     # ln -f lf/lf_kitty_preview "$HOME/.local/scripts"
     # ln -f lf/lf_kitty_clean "$HOME/.local/scripts"
     # ln -f lf/_lfip "$HOME/.local/scripts"
