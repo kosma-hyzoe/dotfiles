@@ -7,7 +7,7 @@ source "$(dirname "$0")/../header"
 
 CAN_SUDO=1
 
-APT="zsh git curl wget vim xclip tmux htop shellcheck python3 progress trash-cli speedtest-cli smartmontools exfatprogs "
+APT="zsh git curl wget vim xclip tmux htop shellcheck python3 python3-venv progress trash-cli speedtest-cli smartmontools exfatprogs"
 PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r34/lf-linux-${ARCH}.tar.gz"
 
@@ -18,7 +18,7 @@ fi
 mkdir -p "$DEFAULT_BIN_PATH"
 
 # lf
-if ! command -v lfffa &>/dev/null; then
+if ! command -v lf &>/dev/null; then
     wget "$LF_DOWNLOAD_URL" >/dev/null
     tar -xvzf lf*.tar.gz -C "$DEFAULT_BIN_PATH"
     rm -f lf*.tar.gz
