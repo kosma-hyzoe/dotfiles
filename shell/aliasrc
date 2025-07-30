@@ -120,7 +120,7 @@ alias \
     ip="ip -color=auto" \
     diff="diff --color=auto" \
     mv="mv -i" \
-    rsync="rsync -vrPlu" \
+    rsync="rsync -avP" \
     cp="cp -i" \
     ffmpeg="ffmpeg -hide_banner" \
     bc="bc -ql"
