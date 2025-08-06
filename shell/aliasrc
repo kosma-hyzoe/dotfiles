@@ -122,18 +122,26 @@ alias \
     mv="mv -i" \
     rsync="rsync -avP" \
     cp="cp -i" \
-    ffmpeg="ffmpeg -hide_banner" \
-    bc="bc -ql"
+    ffmpeg="ffmpeg -hide_banner"
 
 # shortcuts
+mms() {
+    [ -z "$MS_PATH" ] && MS_PATH="/mnt"
+    [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/ms
+    sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
+}
 update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
     sudo apt-get upgrade -y --allow-downgrades
-    echo -n -e "\n>PIP(X)\n"
-    pipx upgrade-all || pip upgrade-all
-    echo -n -e "\n>CARGO\n"
-    cargo install-update -a
+    if  command -v pip; then
+        echo -n -e "\n>PIP(X)\n"
+        pip upgrade-all
+    fi
+    if command -v cargo; then
+        echo -n -e "\n>CARGO\n"
+        cargo install-update -a
+    fi
     if command -v fwupdmgr &>/dev/null; then
         echo -n -e "\n>FWUPDMGR\n"
         sudo fwupdmgr refresh
@@ -162,8 +170,8 @@ alias \
     kas="tmux kill-ses -a" \
     whyclog="sudo du -ah --one-file-system . | sort -rh | head -n 20"
 alias \
-    resh="[[ \$0 == *"zsh"* ]] && source ~/.zshrc || source ~/.bashrc" \
-    shrc="[[ \$0 == *"zsh"* ]] && \${EDITOR} ~/.zshrc || \${EDITOR} ~/.bashrc" \
+    resh=" source ~/.zshrc" \
+    shrc="\${EDITOR} ~/.zshrc" \
     aliasrc="\${EDITOR} ~/.config/aliasrc" \
     locrc="\${EDITOR} ~/.config/localshrc"
 alias \
