@@ -130,14 +130,15 @@ mms() {
     [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/ms
     sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
 }
+pip_upgrade() {
+    pip --disable-pip-version-check list --outdated --format=json \
+    | python -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" \
+    | xargs -n1 pip install -U
+}
 update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
     sudo apt-get upgrade -y --allow-downgrades
-    if  command -v pip; then
-        echo -n -e "\n>PIP(X)\n"
-        pip upgrade-all
-    fi
     if command -v cargo; then
         echo -n -e "\n>CARGO\n"
         cargo install-update -a
@@ -149,8 +150,7 @@ update_all() {
         sudo fwupdmgr update
     fi
 }
-ct() { python3 <(echo "import random; ct=random.randint(0,1); s='heads' if ct else 'tails'; print(s)"); }
-qm() { python3 <(echo "print($@)"); }
+qm() { python3 <(echo "print($*)"); }
 ts() { trans "$@" | less; }
 cht() { curl cheat.sh/"$1" | less; }
 dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
@@ -158,7 +158,9 @@ mssh() { mkdir -p "$1";  sshfs -o auto_cache,reconnect,allow_other "$2"  "$1"; }
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
+    ans="ansible-playbook -i hosts.yaml run.yaml" \
     c="xclip" \
+    pipup="pip upgrade-all" \
     v="xclip -o" \
     vb="xclip -o -selection clipboard" \
     cb="xclip -selection clipboard"
