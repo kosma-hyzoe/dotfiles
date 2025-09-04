@@ -93,7 +93,7 @@ fi
 
 # yt-dlp
 alias \
-    yt="yt-dlp  -i -o '%(title)s.%(ext)s'" \
+    yt="yt-dlp  -i -o '%(title)s.%(ext)s' --no-overwrite" \
     yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
     yta="yt -x -f bestaudio/best --audio-format mp3"
 ytq() {
