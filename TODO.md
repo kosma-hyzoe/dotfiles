@@ -1,5 +1,6 @@
 # TODO
 
+* better npm/nvm
 * vscode vim spell highlight
 
 ## TRYME
@@ -8,9 +9,12 @@
 * `git-delta`
 * `mprocs`
 * `sd`
-* `du`
 * `bandwhich`
 * `porsmo`
 * `df-duf`
-* `dust`
 * `fcp`
+
+## Ansible
+
+* touch .hushlogin
+* ssh hardening
