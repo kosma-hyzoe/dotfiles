@@ -127,7 +127,8 @@ alias \
 # shortcuts
 mms() {
     [ -z "$MS_PATH" ] && MS_PATH="/mnt"
-    [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/ms
+    [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
+    mkdir -p "$MS_MOUNTPOINT"
     sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
 }
 pip_upgrade() {
