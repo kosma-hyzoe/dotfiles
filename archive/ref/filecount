@@ -1,0 +1,48 @@
+#!/bin/bash
+
+USAGE_MESG="Usage: filecount [-r] dir [type]
+Where 'type' can be either of:
+\tb\tblock (buffered) special
+\tc\tcharacter (unbuffered) special
+\td\tdirectory
+\tp\tnamed pipe (FIFO)
+\tf\tregular file
+\tl\tsymbolic link
+\ts\tsocket"
+IS_NOT_DIR_MESG="ERROR: First positional argument must be a valid path to an existing directory"
+WRONG_TYPE_MESG="Second positional argument must specify type, one of [b c d p f l s]"
+
+error_helper() { echo -ne "$@" > /dev/stderr; exit 1; }
+
+parse_args() {
+    (( $# < 1 || $# > 4 )) && error_helper "$USAGE_MESG"
+    if [[ "$1" == "-r" || "$1" == "--recursive" ]]; then
+        DIR_ARG=$2; TYPE_ARG=$3; RECURSIVE=1
+    else
+        DIR_ARG=$1; TYPE_ARG=$2
+    fi
+
+    if [[ $DIR_ARG == "*-*" ]]; then
+        error_helper "$USAGE_MESG"
+    elif [ ! -d "$DIR_ARG" ]; then
+        error_helper "$IS_NOT_DIR_MESG"
+    fi
+}
+
+main() {
+    if [ "$TYPE_ARG" ]; then
+        [[ ! ${#TYPE_ARG} -eq 1 || $TYPE_ARG != [bcdpfls] ]] \
+            && error_helper "$WRONG_TYPE_MESG"
+    fi
+    args=("$DIR_ARG" "-mindepth" 1)
+    [ "$RECURSIVE" ] || \
+        args+=("-maxdepth" 1)
+    [ "$TYPE_ARG" ] && \
+        args+=("-type" "$TYPE_ARG")
+    find "${args[@]}" | wc -l
+    exit "${PIPESTATUS[0]}"
+}
+
+parse_args "$@"
+main
+
