@@ -91,16 +91,34 @@ else
     alias rm="rm -I"; alias vrm="rm -Iv"
 fi
 
-# yt-dlp
-alias \
-    _yt="yt-dlp --embed-subs --embed-chapters -i --no-overwrite" \
-    yt="_yt -o '%(title)s.%(ext)s'" \
-    ytp="-o '%(playlist_index)s-%(title)s.%(ext)s'" \
-    yta="yt -x -f bestaudio/best --audio-format mp3" \
-    ytpa="ytp -x -f bestaudio/best --audio-format mp3"
-ytq() {
-    [ -z "$2" ] && QUAL="1080" || QUAL=$2
-    yt -f "bv*[height<=${QUAL}]+ba/b[height<=${QUAL}] / wv*+ba/w" "$1"
+# # yt-dlp
+# alias \
+#     _yt="yt-dlp --embed-subs --embed-chapters -i --no-overwrite" \
+#     yt="_yt -o '%(title)s.%(ext)s'" \
+#     ytp="_yt -o '%(playlist_index)s-%(title)s.%(ext)s'" \
+#     yta="yt -x -f bestaudio/best --audio-format mp3" \
+#     ytpa="ytp -x -f bestaudio/best --audio-format mp3"
+yt() {
+    help() {
+        echo -ne "Usage: yt \n\t[(-h)elp] \n\t[embed (-c)hapters] \n\t[embed (-s)ubs] \n\t[(-a)udio-only]"
+        echo -e "\n\t[keep (-p)laylist indexing] \n\t[(-r)esolution <1080|720|...>] \n\tLINK"
+    }
+    args=(--ignore-errors --no-overwrite)
+    while getopts "hcsapr:" flag; do
+        case "$flag" in
+            h) help; return 0;;
+            c) args+=(--embed-chapters);;
+            s) args+=(--embed-subs);;
+            a) args+=(-x -f bestaudio/best --audio-format mp3);;
+            p) P=1; args+=(-o '%(playlist_index)s-%(title)s.%(ext)s');;
+            r) args+=(-f "bv*[height<=${OPTARG}]+ba/b[height<=${OPTARG}] / wv*+ba/w");;
+            *) help >/dev/stderr; return 1;;
+        esac
+    done
+    shift $((OPTIND - 1))
+    [ "$P" ] || args+=(-o '%(title)s.%(ext)s')
+    args+=("$1")
+    yt-dlp "${args[@]}"
 }
 
 unarchive() {
