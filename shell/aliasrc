@@ -93,9 +93,11 @@ fi
 
 # yt-dlp
 alias \
-    yt="yt-dlp  -i -o '%(title)s.%(ext)s' --no-overwrite" \
-    yts="yt-dlp --embed-subs -i -o '%(title)s.%(ext)s'" \
-    yta="yt -x -f bestaudio/best --audio-format mp3"
+    _yt="yt-dlp --embed-subs --embed-chapters -i --no-overwrite" \
+    yt="_yt -o '%(title)s.%(ext)s'" \
+    ytp="-o '%(playlist_index)s-%(title)s.%(ext)s'" \
+    yta="yt -x -f bestaudio/best --audio-format mp3" \
+    ytpa="ytp -x -f bestaudio/best --audio-format mp3"
 ytq() {
     [ -z "$2" ] && QUAL="1080" || QUAL=$2
     yt -f "bv*[height<=${QUAL}]+ba/b[height<=${QUAL}] / wv*+ba/w" "$1"
