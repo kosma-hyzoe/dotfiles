@@ -50,4 +50,10 @@ if command -v zathura >/dev/null; then
     ln -f config/zathurarc "$HOME/.config/zathura/zathurarc"
 fi
 
+
+# mpv
+if command -v mpv >/dev/null; then
+    ln -f config/mpv.conf "$HOME/.config/mpv.conf"
+fi
+
 cd - > /dev/null || exit

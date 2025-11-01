@@ -67,3 +67,4 @@ bind '"\C-p":"lfcd\C-m"'
 
 # zoxide
 command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"

@@ -2,8 +2,7 @@
 
 export PATH="$PATH:$HOME/.cargo/bin:\
 $HOME/.local/bin:\
-$HOME/.local/scripts:\
-$HOME/.local/nvim-linux64/bin"
+$HOME/.local/scripts"
 
 # vim/nvim
 if command -v nvim &>/dev/null; then
@@ -91,24 +90,17 @@ else
     alias rm="rm -I"; alias vrm="rm -Iv"
 fi
 
-# # yt-dlp
-# alias \
-#     _yt="yt-dlp --embed-subs --embed-chapters -i --no-overwrite" \
-#     yt="_yt -o '%(title)s.%(ext)s'" \
-#     ytp="_yt -o '%(playlist_index)s-%(title)s.%(ext)s'" \
-#     yta="yt -x -f bestaudio/best --audio-format mp3" \
-#     ytpa="ytp -x -f bestaudio/best --audio-format mp3"
 yt() {
     help() {
-        echo -ne "Usage: yt \n\t[(-h)elp] \n\t[embed (-c)hapters] \n\t[embed (-s)ubs] \n\t[(-a)udio-only]"
+        echo -ne "Usage: yt \n\t[(-v)erbose] [(-h)elp] \n\t[embed (-c)hapters] [embed (-s)ubs] \n\t[(-a)udio-only]"
         echo -e "\n\t[keep (-p)laylist indexing] \n\t[(-r)esolution <1080|720|...>] \n\tLINK"
     }
+    yt-dlp --update > /dev/null
     args=(--ignore-errors --no-overwrite)
-    while getopts "hcsapr:" flag; do
+    while getopts "vhcsapr:" flag; do
         case "$flag" in
-            h) help; return 0;;
-            c) args+=(--embed-chapters);;
-            s) args+=(--embed-subs);;
+            h) help; return 0;; v) V=1;;
+            c) args+=(--embed-chapters);; s) args+=(--embed-subs);;
             a) args+=(-x -f bestaudio/best --audio-format mp3);;
             p) P=1; args+=(-o '%(playlist_index)s-%(title)s.%(ext)s');;
             r) args+=(-f "bv*[height<=${OPTARG}]+ba/b[height<=${OPTARG}] / wv*+ba/w");;
@@ -117,7 +109,8 @@ yt() {
     done
     shift $((OPTIND - 1))
     [ "$P" ] || args+=(-o '%(title)s.%(ext)s')
-    args+=("$1")
+    args+=(--exec "mv {} $(echo {} | tr ' ' '-' | tr '-' '_')" "$1")
+    [ "$V" ] && echo "${args[@]}"
     yt-dlp "${args[@]}"
 }
 
@@ -205,7 +198,15 @@ alias \
     sshag='eval $(ssh-agent) && ssh-add'
 
 # development-specific
-qcr() { gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null; };
+qcr() {
+    if [[ "$1" == *.cpp ]]; then
+        make -f ~/.dotfiles/cpp/Makefile
+        mv ~/.dotfiles/cpp/*.out . ; rm ~/.dotfiles/cpp/*.o
+        ./"${1/.cpp/.out}" "${@:2}"
+    else
+        gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null;
+    fi
+};
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
