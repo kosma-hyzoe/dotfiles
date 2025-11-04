@@ -1,5 +1,6 @@
 " Quick replace
 nmap Q :%s//g<Left><Left>
+
 " Perform dot commands over visual blocks
 vnoremap . :normal .<CR>
 
@@ -45,12 +46,13 @@ nnoremap <c-e> ge
 
 " Leader remaps
 
-let g:mapleader = ","
+let g:mapleader = " "
 nnoremap <leader>tn :set number!<CR>
 nnoremap <leader>tr :set relativenumber!<CR>
 nnoremap <leader>tw :set wrap!<CR>
 nnoremap <leader>ai z=
-nnoremap <leader>ex :Ex<CR>
+nnoremap <leader>er :Ex<CR>
+nnoremap <leader>aw :set formatoptions+=t<CR>
 
 " Add run permissions on currently open file
 nnoremap <leader>cx :!chmod +x %<CR>
@@ -59,7 +61,7 @@ nnoremap <leader>cx :!chmod +x %<CR>
 nnoremap <leader>di :w !diff % -<CR>
 
 " Close buffer
-nmap <leader>cb :bp<bar>sp<bar>bn<bar>bd<CR>
+nmap <leadset formatoptions+=ter>cb :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Exit terminal mode
 tmap <esc><esc> <c-\><c-n>
