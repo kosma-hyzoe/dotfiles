@@ -138,6 +138,10 @@ alias \
     ffmpeg="ffmpeg -hide_banner"
 
 # shortcuts
+sp() {
+    [ -z "$1" ] && p=. || p="$1"
+    realpath "$p" >> ~/paths
+}
 mms() {
     [ -z "$MS_PATH" ] && MS_PATH="/mnt"
     [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
@@ -184,6 +188,7 @@ alias \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
     hdi="howdoi" \
+    h8="python3 -m http.server --cgi 8088" \
     kas="tmux kill-ses -a" \
     whyclog="sudo du -ah --one-file-system . | sort -rh | head -n 20"
 alias \
