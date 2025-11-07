@@ -1,0 +1,196 @@
+" Indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set breakindent
+set textwidth=80
+
+" Interface
+set colorcolumn=81
+set nocursorline
+set mouse=a
+set smartcase
+set nonumber
+set ignorecase
+set splitbelow
+set splitright
+set nowrap
+set scrolloff=5
+set conceallevel=0
+
+" Spelling
+set wildmode=longest,list,full
+set spelllang=en_us
+set spell
+set spellsuggest=best,9
+
+" Timing
+set updatetime=250
+set updatetime=350
+
+" Neovim defaults
+set nocompatible
+set autoindent
+set showcmd
+set autoread
+set backspace=indent,eol,start
+set belloff=all
+set encoding=utf-8
+set ruler
+set ttimeoutlen=50
+set hlsearch
+set incsearch
+set history=10000
+set formatoptions=tcqj
+
+" Theme
+" colorscheme industry
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+hi Normal guibg=NONE ctermbg=none
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" Highlight bad spell as a grey underline, disable other suggests
+hi clear SpellBad
+hi clear SpellLocal
+hi clear SpellRare
+hi clear SpellCap
+hi SpellBad cterm=underline
+
+" Retain cursor position
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Delete all trailing white-space
+autocmd BufWritePre * let currPos = getpos(".")
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
+
+"""""""""""""""""""""""""""""""""""" REMAPS """""""""""""""""""""""""""""""""""""
+
+" Quick replace
+nmap Q :%s//g<Left><Left>
+
+" Perform dot commands over visual blocks
+vnoremap . :normal .<CR>
+
+" Indent
+vnoremap <s-tab> <<
+imap <s-tab> <c-d>
+
+" Split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Move selection up/down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Center cursor while searching and scrolling
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap { {zz
+nnoremap } }zz
+
+" Center cursor while searching
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Center cursor while joining lines
+nnoremap J mzJ`z
+
+" Ctrl remaps
+
+" Comfy copy, paste, cut and select all
+vnoremap <c-c> "+y
+map <c-v> "+p
+inoremap <c-v> <esc>"+pa
+vnoremap <c-x> "+d
+nnoremap <c-a> <Nop>
+map <c-a> ggVG
+
+nnoremap <c-i> <c-v>
+nnoremap <c-e> ge
+
+" Leader remaps
+
+let g:mapleader = " "
+nnoremap <leader>tn :set number!<CR>
+nnoremap <leader>tr :set relativenumber!<CR>
+nnoremap <leader>tw :set wrap!<CR>
+nnoremap <leader>ai z=
+nnoremap <leader>er :Ex<CR>
+nnoremap <leader>aw :set formatoptions+=t<CR>
+
+" Add run permissions on currently open file
+nnoremap <leader>cx :!chmod +x %<CR>
+
+" Show diff
+nnoremap <leader>di :w !diff % -<CR>
+
+" Close buffer
+nmap <leadset formatoptions+=ter>cb :bp<bar>sp<bar>bn<bar>bd<CR>
+
+" Exit terminal mode
+tmap <esc><esc> <c-\><c-n>
+
+" Change indent width, use tabs for t8
+nnoremap <leader>t2 :set tabstop=2 softtabstop=2 shiftwidth=2 expandtab<CR>
+nnoremap <leader>t4 :set tabstop=4 softtabstop=4 shiftwidth=4 expandtab<CR>
+nnoremap <leader>t8 :set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab<CR>
+
+" Disable commenting on new line  TODO: make this a reversible function
+nnoremap <leader>nc :set formatoptions-=c formatoptions-=r formatoptions-=o<CR>
+
+" Surround word/WORD
+nmap <leader>sw ysiw
+nmap <leader>sW ysiW
+
+" Neovim diff
+
+" Toggle highlight off
+nnoremap <leader>hl :nohl<CR>
+
+" Check file in shellcheck
+map <leader>sc :!clear && shellcheck -x %<CR>
+
+" Source vimrc
+noremap <leader>sv :source $MYVIMRC<CR>
+
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+set NERDTree
+set ideajoin
+set quickscope
+clipboard+=ideaput
+
+
+map <a-k> <Action>(MoveLineUp)
+map <a-j> <Action>(MoveLineDown)
+
+map \j <Action>(JoinLines)
+"" code diff
+nnoremap <a-s-h> <c-w>h
+nnoremap <a-s-l> <c-w>l
+nnoremap <a-s-j> <c-w>j
+nnoremap <a-s-k> <c-w>k
+
+"" editor navigation
+map <a--> <Action>(SplitHorizontally)
+map <a-\> <Action>(SplitVertically)
+sethandler <a-l> :ide
+
+map <c-s-i> <Action>(ReformatCode)
+
+map <leader>d <Action>(Debug)
+map <c-z> <Action>(ToggleDistractionFreeMode)
+map <leader>e <Action>(EditSourceInNewWindow)
+
+
