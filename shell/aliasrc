@@ -3,14 +3,15 @@
 export PATH="$PATH:$HOME/.cargo/bin:\
 $HOME/.local/bin:\
 $HOME/.local/scripts"
+installed() { command -v "$1" &>/dev/null; return "$?"; }
 
 # vim/nvim
-if command -v nvim &>/dev/null; then
+if installed nvim; then
     export EDITOR=nvim
     alias \
         vi="nvim" \
         vh="cd ~/.config/nvim"
-elif command -v vim &>/dev/null; then
+elif installed vim; then
     export EDITOR=vim
     alias \
         vi="vim" \
@@ -20,98 +21,79 @@ alias vit="vi /tmp/tmp.md"
 alias vidiff="vi -d"
 
 # bat
-if command -v bat &> /dev/null; then
+if installed bat; then
     alias \
-        vat="bat" \
-        cat="bat --style=plain" \
+        vat="bat" cat="bat --style=plain" \
         bathelp='bat --plain --language=help' \
-        sat="bat --paging=never --style=plain" \
-        gat="bat --style=changes" \
-        aat="bat -A" \
-        less="cat" \
-        bfzf="fzf" \
+        sat="bat --paging=never --style=plain" gat="bat --style=changes" \
+        aat="bat -A" less="cat" bfzf="fzf" \
         fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
     export PAGER="bat --plain"
+    installed tldr && tlr() { tldr "$1" | bat --plain -l="md"; }
 fi
-tlr() { tldr "$1" | bat --plain -l="md"; }
 bh() { "$@" --help 2>&1 | bathelp; }
 
-
-if command -v eza &> /dev/null; then
+if installed eza; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
-        l='eza --group-directories-first' \
-        ls="l -F" \
-        ls1="ls -1" \
-        la='l -a' \
-        ll='l -l' \
-        lal='l -al' \
-        tree='eza --tree'
+        l='eza --group-directories-first' ls="l -F" ls1="ls -1" la='l -a' ll='l -l' \
+        lal='l -al' tree='eza --tree'
 else
     alias \
-        l="ls -hN --color=auto --group-directories-first" \
-        ls='l -CF' \
-        ls1="ls -1" \
-        la='l -A' \
-        ll='l -l' \
-        lal='l -Al'
+        l="ls -hN --color=auto --group-directories-first" ls='l -CF' ls1="ls -1" \
+        la='l -A' ll='l -l' lal='l -Al'
 fi
 eree() { tree "$1" | cat; }
 
-# git
-qcom() {
-    if [ -z "$1" ]; then
-        git add . && git commit -m 'automated quick commit'
-    else
-        git add . && git commit -m "$1"
-    fi
-}
-qcomp() {
-    qcom "$@" && git push || \
-        git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
-};
-alias \
-    gt="git status" \
-    gp="git pull" \
-    gd="git diff" \
-    gr="git restore" \
-    gg="git grep" \
-    gcm="git commit" \
-    gclean="git clean -fdx"
-
-alias apt="apt-get" \
-    whichv="apt-cache policy"
-
-
-# trash
-if command -v trash &> /dev/null; then
-    alias rm="trash"
-else
-    alias rm="rm -I"; alias vrm="rm -Iv"
+if installed git >/dev/null; then
+    qcom() {
+        if [ -z "$1" ]; then
+            git add . && git commit -m 'automated quick commit'
+        else
+            git add . && git commit -m "$1"
+        fi
+    }
+    qcomp() {
+        if qcom "$@"; then
+            git push || \
+            git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
+        fi
+    };
+    alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
+            gg="git grep" gcm="git commit" gclean="git clean -fdx"
 fi
 
+if installed trash; then alias rm="trash"; else alias rm="rm -I" vrm="rm -Iv"; fi
+if installed matlab; then matrun() { matlab -nodesktop -nosplash -r "$1; exit;"; };
+    alias clilab="matlab -nodesktop -nosplash -r"; fi
+installed apt >/dev/null && alias apt="apt-get" whichv="apt-cache policy"
+
+# TODO: separate script
 yt() {
     help() {
-        echo -ne "Usage: yt \n\t[(-v)erbose] [(-h)elp] \n\t[embed (-c)hapters] [embed (-s)ubs] \n\t[(-a)udio-only]"
-        echo -e "\n\t[keep (-p)laylist indexing] \n\t[(-r)esolution <1080|720|...>] \n\tLINK"
+        echo -e "Usage: yt [OPTION]... LINK\nExample: yt -a -n 'https://youtu.be/xvFZjo5PgG0?si=mrA11tnWwDFAJTTY'"
+        echo -e "\t[(-v)erbose] [(-h)elp] [silent (-u)pdate]"
+        echo -e "\t[embed (-c)hapters] [embed (-s)ubs]"
+        echo -e "\t[keep (-p)laylist indexing] [(-n)o whitespace]"
+        echo -e "\t[(-a)udio-only]  [(-r)esolution <1080|720|...>]"
     }
-    yt-dlp --update > /dev/null
-    args=(--ignore-errors --no-overwrite)
-    while getopts "vhcsapr:" flag; do
+    args=(--ignore-errors --no-overwrite);
+    while getopts "vhucspnar:" flag; do
         case "$flag" in
-            h) help; return 0;; v) V=1;;
+            v) V=1;; h) help; return 0;; u) yt-dlp --update >/dev/null;;
             c) args+=(--embed-chapters);; s) args+=(--embed-subs);;
+            p) P=1; args+=(-o '%(playlist_index)s-%(title)s.%(ext)s');; n) N=1;;
             a) args+=(-x -f bestaudio/best --audio-format mp3);;
-            p) P=1; args+=(-o '%(playlist_index)s-%(title)s.%(ext)s');;
             r) args+=(-f "bv*[height<=${OPTARG}]+ba/b[height<=${OPTARG}] / wv*+ba/w");;
             *) help >/dev/stderr; return 1;;
         esac
     done
     shift $((OPTIND - 1))
+    if [ "$#" -eq 0 ]; then help; return 1; fi
     [ "$P" ] || args+=(-o '%(title)s.%(ext)s')
-    args+=(--exec "mv {} $(echo {} | tr ' ' '-' | tr '-' '_')" "$1")
+    [ "$N" ] && args+=(--replace-in-metadata title ' ' '_')
     [ "$V" ] && echo "${args[@]}"
-    yt-dlp "${args[@]}"
+    yt-dlp "${args[@]}" "$1"
 }
 
 unarchive() {
@@ -134,51 +116,54 @@ alias \
     diff="diff --color=auto" \
     mv="mv -i" \
     rsync="rsync -avP" \
-    cp="cp -i" \
-    ffmpeg="ffmpeg -hide_banner"
+    cp="cp -i"
 
 # shortcuts
-mms() {
-    [ -z "$MS_PATH" ] && MS_PATH="/mnt"
-    [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
-    mkdir -p "$MS_MOUNTPOINT"
-    sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
-}
-pip_upgrade() {
-    pip --disable-pip-version-check list --outdated --format=json \
-    | python -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" \
-    | xargs -n1 pip install -U
-}
+if installed sshfs; then
+    mms() {
+        [ -z "$MS_PATH" ] && MS_PATH="/mnt"
+        [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
+        mkdir -p "$MS_MOUNTPOINT"
+        sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
+    }
+fi
+if installed pip; then
+    pip_upgrade() {
+        pip --disable-pip-version-check list --outdated --format=json \
+        | python -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" \
+        | xargs -n1 pip install -U
+    }
+    alias pipup="pip upgrade-all"
+fi
 update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
     sudo apt-get upgrade -y --allow-downgrades
-    if command -v cargo; then
+    if installed cargo; then
         echo -n -e "\n>CARGO\n"
         cargo install-update -a
     fi
-    if command -v fwupdmgr &>/dev/null; then
+    if installed fwupdmgr; then
         echo -n -e "\n>FWUPDMGR\n"
         sudo fwupdmgr refresh
         sudo fwupdmgr get-updates
         sudo fwupdmgr update
     fi
 }
-qm() { python3 <(echo "print($*)"); }
-ts() { trans "$@" | less; }
+installed python3 && m() { python3 <(echo "print($*)"); }
+installed trans && ts() { trans "$@" | less; }
+installed sshfs && mssh() { mkdir -p "$1";  sshfs -o auto_cache,reconnect,allow_other "$2"  "$1"; }
+installed docker && dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
 cht() { curl cheat.sh/"$1" | less; }
-dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
-mssh() { mkdir -p "$1";  sshfs -o auto_cache,reconnect,allow_other "$2"  "$1"; }
 
+
+# cat COPY_ME > c; v > PASTE_TO_ME
+installed xclip && alias c="xclip" v="xclip -o" \
+    vb="xclip -o -selection clipboard" cb="xclip -selection clipboard"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias \
     sxf="sudo -E env XDG_SESSION_TYPE=x11" \
-    ans="ansible-playbook -i hosts.yaml run.yaml" \
-    c="xclip" \
-    pipup="pip upgrade-all" \
-    v="xclip -o" \
-    vb="xclip -o -selection clipboard" \
-    cb="xclip -selection clipboard"
+    ans="ansible-playbook -i hosts.yaml run.yaml"
 alias \
     ua="update_all" \
     myip="curl ipinfo.io/ip" \
@@ -227,7 +212,7 @@ back2caps() {
 }
 
 lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
-command -v zoxide &> /dev/null && alias cd="z" cdf="zi"
+installed zoxide &> /dev/null && alias cd="z" cdf="zi"
 
 # tokyonight-night theme for fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
