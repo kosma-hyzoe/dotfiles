@@ -31,7 +31,8 @@ ln -f shell/st "$HOME/.local/scripts"
 command -v zsh >/dev/null && ln -f shell/zshrc "$HOME/.zshrc"
 
 # tmux
-command -v tmux >/dev/null && ln -f tmux/tmux.conf "$HOME/.tmux.conf"
+command -v tmux >/dev/null && ! [ -f ~/.tmux.conf ] \
+    && cp -f tmux/tmux.conf "$HOME/.tmux.conf"
 
 # python
 mkdir -p "$HOME/.ipython/profile_default"

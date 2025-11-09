@@ -119,6 +119,7 @@ alias \
     cp="cp -i"
 
 # shortcuts
+sp() { [ -z "$1" ] && p=. || p="$1"; realpath "$p" >> ~/paths; }
 if installed sshfs; then
     mms() {
         [ -z "$MS_PATH" ] && MS_PATH="/mnt"
@@ -169,6 +170,7 @@ alias \
     myip="curl ipinfo.io/ip" \
     xo="xdg-open" \
     hdi="howdoi" \
+    h8="python3 -m http.server --cgi 8088" \
     kas="tmux kill-ses -a" \
     whyclog="sudo du -ah --one-file-system . | sort -rh | head -n 20"
 alias \
@@ -223,4 +225,5 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 export HOWDOI_SEARCH_ENGINE=duckduckgo
 export SYSTEMD_EDITOR=vim
 
+# TODO: other nvm
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
