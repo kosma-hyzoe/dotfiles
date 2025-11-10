@@ -1,8 +1,9 @@
 #!/bin/bash
 
 cd "$(dirname "$0")/.." || exit
-mkdir -p "$HOME/.local/scripts"
-mkdir  -p "$HOME/.config"
+mkdir -p "$HOME/.local/scripts" "$HOME/.config"
+
+[ "$1" == "cp" ] && alias ln="cp"
 
 # less
 ln -f config/lessrc "$HOME/.config"
@@ -51,10 +52,10 @@ if command -v zathura >/dev/null; then
     ln -f config/zathurarc "$HOME/.config/zathura/zathurarc"
 fi
 
-
 # mpv
 if command -v mpv >/dev/null; then
     ln -f config/mpv.conf "$HOME/.config/mpv.conf"
 fi
+[ "$1" == "cp" ] && unalias ln
 
 cd - > /dev/null || exit

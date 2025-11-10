@@ -3,9 +3,11 @@
 export PATH="$PATH:$HOME/.cargo/bin:\
 $HOME/.local/bin:\
 $HOME/.local/scripts"
-installed() { command -v "$1" &>/dev/null; return "$?"; }
 
-# vim/nvim
+installed() { command -v "$1" &>/dev/null; return "$?"; }
+if installed busybox; then BUSYBOX=1; fi
+
+# vim/neovim
 if installed nvim; then
     export EDITOR=nvim
     alias \
@@ -33,6 +35,7 @@ if installed bat; then
 fi
 bh() { "$@" --help 2>&1 | bathelp; }
 
+# eza
 if installed eza; then
     alias \
         els="bls -hN --color=auto --group-directories-first" \
@@ -45,30 +48,61 @@ else
 fi
 eree() { tree "$1" | cat; }
 
-if installed git >/dev/null; then
-    qcom() {
-        if [ -z "$1" ]; then
-            git add . && git commit -m 'automated quick commit'
-        else
-            git add . && git commit -m "$1"
-        fi
-    }
-    qcomp() {
-        if qcom "$@"; then
-            git push || \
-            git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
-        fi
-    };
-    alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
-            gg="git grep" gcm="git commit" gclean="git clean -fdx"
-fi
+# git
+qcom() {
+    if [ -z "$1" ]; then
+        git add . && git commit -m 'automated quick commit'
+    else
+        git add . && git commit -m "$1"
+    fi
+}
+qcomp() {
+    if qcom "$@"; then
+        git push || \
+        git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
+    fi
+};
+alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
+        gg="git grep" gcm="git commit" gclean="git clean -fdx"
 
+sp() { [ -z "$1" ] && p=. || p="$1"; realpath "$p" >> ~/paths; } # save path
+ts() { trans "$@" | cat; }; cht() { curl cheat.sh/"$1" | less; } # pipe to less
+
+
+# matlab
+matrun() { matlab -nodesktop -nosplash -r "$1; exit;"; };
+alias clilab="matlab -nodesktop -nosplash -r"
+
+# trash-cli
 if installed trash; then alias rm="trash"; else alias rm="rm -I" vrm="rm -Iv"; fi
-if installed matlab; then matrun() { matlab -nodesktop -nosplash -r "$1; exit;"; };
-    alias clilab="matlab -nodesktop -nosplash -r"; fi
-installed apt >/dev/null && alias apt="apt-get" whichv="apt-cache policy"
 
-# TODO: separate script
+# ssh, sshfs
+mms() {
+    [ -z "$MS_PATH" ] && MS_PATH="/mnt"
+    [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
+    mkdir -p "$MS_MOUNTPOINT"
+    sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
+}
+mssh() { mkdir -p "$1";  sshfs -o auto_cache,reconnect,allow_other "$2"  "$1"; }
+alias \
+    sshkg="ssh-keygen -t ed25519" \
+    sshag='eval $(ssh-agent) && ssh-add'
+
+# docker
+dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
+alias dockps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}"'
+
+# python, pip
+pip_upgrade() {
+    pip --disable-pip-version-check list --outdated --format=json \
+    | python -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" \
+    | xargs -n1 pip install -U
+}
+qm() { python3 <(echo "print($*)"); } # quick math
+alias p3="python3" ipython="ipython3" \
+    sven="source venv/bin/activate" h8="python3 -m http.server --cgi 8088"
+
+# yt-dlp TODO: separate script
 yt() {
     help() {
         echo -e "Usage: yt [OPTION]... LINK\nExample: yt -a -n 'https://youtu.be/xvFZjo5PgG0?si=mrA11tnWwDFAJTTY'"
@@ -96,6 +130,7 @@ yt() {
     yt-dlp "${args[@]}" "$1"
 }
 
+# zip
 unarchive() {
     case "$1" in
         *.zip) unzip "$1" ;;
@@ -107,35 +142,19 @@ unarchive() {
     esac
 }
 
-# sane defaults, i.e. colors and verbosity
-alias \
-    grep='grep --color=auto' \
-    fgrep='fgrep --color=auto' \
-    egrep='egrep --color=auto' \
-    ip="ip -color=auto" \
-    diff="diff --color=auto" \
-    mv="mv -i" \
-    rsync="rsync -avP" \
-    cp="cp -i"
+# xclip; cat COPY_ME > c; v > PASTE_TO_ME
+alias c="xclip" v="xclip -o" \
+    vb="xclip -o -selection clipboard" cb="xclip -selection clipboard"
 
-# shortcuts
-sp() { [ -z "$1" ] && p=. || p="$1"; realpath "$p" >> ~/paths; }
-if installed sshfs; then
-    mms() {
-        [ -z "$MS_PATH" ] && MS_PATH="/mnt"
-        [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
-        mkdir -p "$MS_MOUNTPOINT"
-        sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
-    }
-fi
-if installed pip; then
-    pip_upgrade() {
-        pip --disable-pip-version-check list --outdated --format=json \
-        | python -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" \
-        | xargs -n1 pip install -U
-    }
-    alias pipup="pip upgrade-all"
-fi
+# howdoi
+alias hdi="howdoi"
+export HOWDOI_SEARCH_ENGINE=duckduckgo
+
+# lf, zoxide
+lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
+installed zoxide &> /dev/null && alias cd="z" cdf="zi"
+
+# apt, pip, cargo, fwupdmgr
 update_all() {
     echo -n -e "\n>APT\n"
     sudo apt-get update
@@ -151,43 +170,11 @@ update_all() {
         sudo fwupdmgr update
     fi
 }
-installed python3 && m() { python3 <(echo "print($*)"); }
-installed trans && ts() { trans "$@" | less; }
-installed sshfs && mssh() { mkdir -p "$1";  sshfs -o auto_cache,reconnect,allow_other "$2"  "$1"; }
-installed docker && dock() { docker start "$1" &> /dev/null ; docker attach "$1"; }
-cht() { curl cheat.sh/"$1" | less; }
+alias ua="update_all"
 
-
-# cat COPY_ME > c; v > PASTE_TO_ME
-installed xclip && alias c="xclip" v="xclip -o" \
-    vb="xclip -o -selection clipboard" cb="xclip -selection clipboard"
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias \
-    sxf="sudo -E env XDG_SESSION_TYPE=x11" \
-    ans="ansible-playbook -i hosts.yaml run.yaml"
-alias \
-    ua="update_all" \
-    myip="curl ipinfo.io/ip" \
-    xo="xdg-open" \
-    hdi="howdoi" \
-    h8="python3 -m http.server --cgi 8088" \
-    kas="tmux kill-ses -a" \
-    whyclog="sudo du -ah --one-file-system . | sort -rh | head -n 20"
-alias \
-    resh=" source ~/.zshrc" \
-    shrc="\${EDITOR} ~/.zshrc" \
-    aliasrc="\${EDITOR} ~/.config/aliasrc" \
-    locrc="\${EDITOR} ~/.config/localshrc"
-alias \
-    vivi="vi ~/notes/cheatsheets/vi.md" \
-    visu="vi ~/notes/cheatsheets/su.md"
-alias \
-    sshkg="ssh-keygen -t ed25519" \
-    sshag='eval $(ssh-agent) && ssh-add'
-
-# development-specific
+# development-specific, gcc, picocom, make,
 qcr() {
-    if [[ "$1" == *.cpp ]]; then
+    if [[ "$1" == *.cpp ]]; then # TODO: improve for CPP
         make -f ~/.dotfiles/cpp/Makefile
         mv ~/.dotfiles/cpp/*.out . ; rm ~/.dotfiles/cpp/*.o
         ./"${1/.cpp/.out}" "${@:2}"
@@ -198,10 +185,7 @@ qcr() {
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
-    make="make -j\$((\$(nproc) - 2))" \
-    p3="python3" \
-    ipython="ipython3" \
-    sven="source venv/bin/activate"
+    make="make -j\$((\$(nproc) - 2))"
 
 # remap caps lock and escape on tty sessions
 caps2esc() {
@@ -213,8 +197,35 @@ back2caps() {
     sudo loadkeys /tmp/back2caps
 }
 
-lfcd() { cd "$(command lf -print-last-dir "$@")" || exit; }
-installed zoxide &> /dev/null && alias cd="z" cdf="zi"
+# sane defaults, i.e. colors and verbosity
+alias \
+    grep='grep --color=auto' fgrep='fgrep --color=auto' egrep='egrep --color=auto' \
+    mv="mv -i" cp="cp -i" rsync="rsync -avP" \
+    ip="ip -color=auto" diff="diff --color=auto" \
+    apt="apt-get" apc="apt-cache policy"
+
+# misc shortcuts
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error) $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias \
+    sxf="sudo -E env XDG_SESSION_TYPE=x11" \
+    ans="ansible-playbook -i hosts.yaml run.yaml"
+alias \
+    myip="curl ipinfo.io/ip" \
+    xo="xdg-open" \
+    kas="tmux kill-ses -a" \
+    whyclog="sudo du -ah --one-file-system . | sort -rh | head -n 20"
+
+# editing runtime configs
+alias \
+    resh=" source ~/.zshrc" \
+    shrc="\${EDITOR} ~/.zshrc" \
+    aliasrc="\${EDITOR} ~/.config/aliasrc" \
+    locrc="\${EDITOR} ~/.config/localshrc"
+
+# cheatsheets
+alias \
+    vivi="\${EDITOR} ~/notes/cheatsheets/vi.md" \
+    visu="\${EDITOR} ~/notes/cheatsheets/su.md"
 
 # tokyonight-night theme for fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -222,8 +233,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
 --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
 
-export HOWDOI_SEARCH_ENGINE=duckduckgo
-export SYSTEMD_EDITOR=vim
-
-# TODO: other nvm
+# TODO: other np supplier
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
+
+# TODO: chatgpt-cli
