@@ -8,7 +8,7 @@ source "$(dirname "$0")/../header"
 CAN_SUDO=1
 
 APT="zsh git curl wget vim xclip tmux htop shellcheck python3 python3-venv progress trash-cli speedtest-cli smartmontools exfatprogs"
-PURE_REPO_URL="https://github.com/kosma-hyzoe/pure.git"
+PURE_REPO_URL="https://github.com/sindresorhus/pure.git"
 LF_DOWNLOAD_URL="https://github.com/gokcehan/lf/releases/download/r38/lf-linux-${ARCH}.tar.gz"
 
 if [[ $CAN_SUDO -eq 1 ]]; then
