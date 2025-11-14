@@ -15,7 +15,8 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # vi mode
-bindkey -v
+[ -z "$JETBRAINS" ] && bindkey -v
+
 
 # Change cursor shape for different vi modes
 function zle-keymap-select {
