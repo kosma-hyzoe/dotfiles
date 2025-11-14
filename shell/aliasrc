@@ -67,7 +67,6 @@ qcomp() {
 alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
         gg="git grep" gcm="git commit" gclean="git clean -fdx"
 
-sp() { [ -z "$1" ] && p=. || p="$1"; realpath "$p" >> ~/paths; } # save path
 ts() { trans "$@" | cat; }; cht() { curl cheat.sh/"$1" | less; } # pipe to less
 
 
@@ -198,6 +197,16 @@ back2caps() {
     echo -e "keycode 58 = Caps_Lock \nkeycode 1 = Escape" > /tmp/back2caps
     sudo loadkeys /tmp/back2caps
 }
+
+# save shortcuts
+ssc() {
+    [ -z "$1" ] && exit 1;
+    [ -z "$2" ] && tag="$(basename "$(realpath "$1")")" || tag="$2"
+    echo "[$tag]($(realpath "$1"))" >> ~/.shortcuts.md
+};
+csc() { mv -f ~/.shortcuts.md ~/.shortcuts.md.old; };
+alias sc="\$EDITOR ~/.shortcuts.md"
+
 
 # sane defaults, i.e. colors and verbosity
 alias \
