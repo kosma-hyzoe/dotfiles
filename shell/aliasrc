@@ -244,11 +244,24 @@ alias \
     vivi="\${EDITOR} ~/notes/cheatsheets/vi.md" \
     visu="\${EDITOR} ~/notes/cheatsheets/su.md"
 
-# tokyonight-night theme for fzf
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
---color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
---color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
---color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
+# TODO: opts instead of default opts, day troubleshoot for highlights
+if [ -z "$LIGHTMODE" ]; then
+    # tokyonight-night theme for fzf
+    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+    --color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
+    --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
+    --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
+else
+    # tokyonight-day theme for fzf, with transparent background
+    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+      --highlight-line --info=inline-right --ansi --layout=reverse --border=none \
+      --color=border:#4094a3 --color=bg+:#b7c1e3 --color=fg:#3760bf \
+      --color=gutter:#d0d5e3 --color=header:#b15c00 --color=hl+:#188092 \
+      --color=hl:#188092 --color=info:#8990b3 --color=marker:#d20065 \
+      --color=pointer:#d20065 --color=prompt:#188092 --color=query:#3760bf:regular \
+      --color=scrollbar:#4094a3 --color=separator:#b15c00 --color=spinner:#d20065 \
+    "
+fi
 
 # TODO: other np supplier
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
