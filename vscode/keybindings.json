@@ -92,9 +92,9 @@
     },
 
     /* lang specific */
-    {
-        "key": "alt+i",  // do i really need this?
-        "command": "C_Cpp.RunCodeAnalysisOnActiveFile"
+    //{
+    //    "key": "alt+i",  // do i really need this?
+    //   "command": "C_Cpp.RunCodeAnalysisOnActiveFile"
     },
     {
         "key": "ctrl+q",
@@ -120,52 +120,52 @@
     },
 
     /* fn to alt */
-    {
-        "key": "alt+2",
-        "command": "editor.action.rename",
-        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+5",
-        "command": "workbench.action.debug.continue",
-        "when": "debugState == 'stopped'"
-    },
-    {
-        "key": "alt+5",
-        "command": "workbench.action.debug.start",
-        "when": "debuggersAvailable && debugState == 'inactive'"
-    },
-    {
-        "key": "alt+5",
-        "command": "workbench.action.debug.continue",
-        "when": "debugState == 'stopped'"
-    },
-    {
-        "key": "alt+5",
-        "command": "workbench.action.debug.continue",
-        "when": "debugState == 'stopped'"
-    },
-    {
-        "key": "alt+5",
-        "command": "workbench.action.debug.start",
-        "when": "debuggersAvailable && debugState == 'inactive'"
-    },
-    {
-        "key": "alt+4",
-        "command": "workbench.action.debug.run",
-        "when": "debuggersAvailable && debugState != 'initializing'"
-    },
-    {
-        "key": "alt+3",
-        "command": "workbench.action.debug.stop",
-        "when": "inDebugMode && !focusedSessionIsAttach"
-    },
+    // {
+    //     "key": "alt+2",
+    //     "command": "editor.action.rename",
+    //     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.continue",
+    //     "when": "debugState == 'stopped'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.start",
+    //     "when": "debuggersAvailable && debugState == 'inactive'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.continue",
+    //     "when": "debugState == 'stopped'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.continue",
+    //     "when": "debugState == 'stopped'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.start",
+    //     "when": "debuggersAvailable && debugState == 'inactive'"
+    // },
+    // {
+    //     "key": "alt+4",
+    //     "command": "workbench.action.debug.run",
+    //     "when": "debuggersAvailable && debugState != 'initializing'"
+    // },
+    // {
+    //     "key": "alt+3",
+    //     "command": "workbench.action.debug.stop",
+    //     "when": "inDebugMode && !focusedSessionIsAttach"
+    // },
 
-    {
-        "key": "alt+2",
-        "command": "renameFile",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
+    // {
+    //     "key": "alt+2",
+    //     "command": "renameFile",
+    //     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    // },
 
     /* disables */
     {
