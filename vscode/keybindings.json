@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaults
 [
     /* move code selection */
     {
@@ -90,12 +89,6 @@
         "key": "alt+left",
         "command": "workbench.action.previousEditor"
     },
-
-    /* lang specific */
-    //{
-    //    "key": "alt+i",  // do i really need this?
-    //   "command": "C_Cpp.RunCodeAnalysisOnActiveFile"
-    },
     {
         "key": "ctrl+q",
         "command": "-workbench.action.quit"
@@ -118,54 +111,6 @@
         "key": "ctrl+b",
         "command": "-workbench.action.toggleSidebarVisibility"
     },
-
-    /* fn to alt */
-    // {
-    //     "key": "alt+2",
-    //     "command": "editor.action.rename",
-    //     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-    // },
-    // {
-    //     "key": "alt+5",
-    //     "command": "workbench.action.debug.continue",
-    //     "when": "debugState == 'stopped'"
-    // },
-    // {
-    //     "key": "alt+5",
-    //     "command": "workbench.action.debug.start",
-    //     "when": "debuggersAvailable && debugState == 'inactive'"
-    // },
-    // {
-    //     "key": "alt+5",
-    //     "command": "workbench.action.debug.continue",
-    //     "when": "debugState == 'stopped'"
-    // },
-    // {
-    //     "key": "alt+5",
-    //     "command": "workbench.action.debug.continue",
-    //     "when": "debugState == 'stopped'"
-    // },
-    // {
-    //     "key": "alt+5",
-    //     "command": "workbench.action.debug.start",
-    //     "when": "debuggersAvailable && debugState == 'inactive'"
-    // },
-    // {
-    //     "key": "alt+4",
-    //     "command": "workbench.action.debug.run",
-    //     "when": "debuggersAvailable && debugState != 'initializing'"
-    // },
-    // {
-    //     "key": "alt+3",
-    //     "command": "workbench.action.debug.stop",
-    //     "when": "inDebugMode && !focusedSessionIsAttach"
-    // },
-
-    // {
-    //     "key": "alt+2",
-    //     "command": "renameFile",
-    //     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    // },
 
     /* disables */
     {
@@ -288,25 +233,4 @@
         "key": "alt+y",
         "command": "workbench.action.quickOpenTerm"
     },
-    // {
-    //     "key": "ctrl+c",
-    //     "command": "vscode-neovim.send",
-    //     "when": "editorTextFocus",
-    //     "args": "<c-c>"
-    // },
-    // {
-    //     "key": "ctrl+w",
-    //     "command": "-vscode-neovim.send-cmdline",
-    //     "when": "neovim.init && neovim.mode == 'cmdline'"
-    // },
-    // {
-    //     "key": "ctrl+w",
-    //     "command": "-vscode-neovim.send",
-    //     "when": "editorTextFocus && neovim.ctrlKeysInsert.w && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-    // },
-    // {
-    //     "key": "ctrl+w",
-    //     "command": "-vscode-neovim.send",
-    //     "when": "editorTextFocus && neovim.ctrlKeysNormal.w && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-    // }
 ]

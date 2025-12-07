@@ -68,12 +68,13 @@ alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
         gg="git grep" gcm="git commit" gclean="git clean -fdx"
 
 ts() { trans "$@" | cat; }; cht() { curl cheat.sh/"$1" | less; } # pipe to less
-md2pdf() { pandoc "$1" -o "${1%.*}.pdf" --pdf-engine=xelatex; }
+md2pdf() { pandoc "$1" -o "${1%.*}.pdf" --pdf-engine=xelatex \
+    -V geometry:top=0.1in,bottom=0.11in,left=0.1in,right=0.1in ; }
 
 
 # matlab
 matrun() { matlab -nodesktop -nosplash -r "$1; exit;"; };
-alias clilab="matlab -nodesktop -nosplash -r"
+alias clilab="matlab -nodesktop -nosplash"
 
 # trash-cli
 if installed trash; then alias rm="trash"; else alias rm="rm -I" vrm="rm -Iv"; fi

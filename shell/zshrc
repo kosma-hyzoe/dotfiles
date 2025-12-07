@@ -15,8 +15,7 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # vi mode
-[ -z "$JETBRAINS" ] && bindkey -v
-
+# [ -z "$JETBRAINS" ] &&  [ -z "$VSCODE_SHELL_INTEGRATION" ] &&  bindkey -v
 
 # Change cursor shape for different vi modes
 function zle-keymap-select {
@@ -96,3 +95,10 @@ command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    . "$(code --locate-shell-integration-path zsh)"
+else
+    bindkey -v
+fi
+

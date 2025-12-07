@@ -49,13 +49,6 @@
         "<C-t>": false,
     },
 
-    /* vscode-neovim */
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 0
-    },
-    "vscode-neovim.neovimExecutablePaths.linux": "/home/m.hyzorek/.local/nvim-linux64/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "/home/kosma/.config/nvim/init.lua",
-
     /* language-specific settings */
     "[markdown]": { "editor.defaultFormatter": "DavidAnson.vscode-markdownlint" },
     "[shellscript]":{ "editor.indentSize": 2 },
@@ -80,7 +73,8 @@
         },
 
     /* misc plugins and utils*/
-    // "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.env.linux": { "CODE": 1 },
     "terminal.integrated.defaultProfile.windows": "cmd",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.stickyScroll.enabled": false,
@@ -114,4 +108,5 @@
         "ms-vscode-remote.remote-ssh",
         "ms-vscode-remote.remote-ssh-edit"
     ],
+}
 
