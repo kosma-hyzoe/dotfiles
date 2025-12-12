@@ -34,14 +34,12 @@ nnoremap J mzJ`z
 " Ctrl remaps
 
 " Comfy copy, paste, cut and select all
-vnoremap <c-c> "+y
 map <c-v> "+p
 inoremap <c-v> <esc>"+pa
 vnoremap <c-x> "+d
 nnoremap <c-a> <Nop>
 map <c-a> ggVG
 
-nnoremap <c-i> <c-v>
 nnoremap <c-e> ge
 
 " Leader remaps
