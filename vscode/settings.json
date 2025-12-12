@@ -23,7 +23,6 @@
 
     /*  vscode-vim */
     "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.remaps.vim",
     "vim.hlsearch": true,
     "vim.highlightedyank.duration": 150,
     "vim.overrideCopy": true,
@@ -43,7 +42,6 @@
         "<C-q>": false,
         "<C-o>": true,
         "<C-b>": false,
-        "<C-i>": true,
         "<C-f>": false,
         "<C-w>": false,
         "<C-t>": false,
@@ -74,7 +72,7 @@
 
     /* misc plugins and utils*/
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.env.linux": { "CODE": 1 },
+    "terminal.integrated.env.linux": { "CODE": "1" },
     "terminal.integrated.defaultProfile.windows": "cmd",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.stickyScroll.enabled": false,
@@ -82,23 +80,22 @@
 
     /* prevent shell from capturing some of the keybindings */
     "terminal.integrated.commandsToSkipShell": [
-        // ide
         "workbench.action.toggleSidebarVisibility",
         "workbench.action.toggleActivityBarVisibility",
         "workbench.explorer.fileView.focus",
         "workbench.action.quickOpenTerm",
         "workbench.action.terminal.rename",
-        // editor
         "workbench.action.nextEditor",
         "workbench.action.previousEditor",
         "workbench.action.increaseViewSize",
         "workbench.action.decreaseViewSize",
-        // debugger
         "workbench.action.debug.start",
         "workbench.action.debug.run",
         "workbench.action.debug.restart",
         "workbench.action.debug.stop",
         "workbench.action.debug.disconnect",
+        "workbench.action.debug.notebook.cell.output.selectAll",
+        "matlab.interrupt"
     ],
 
     /* extensions */
@@ -108,5 +105,10 @@
         "ms-vscode-remote.remote-ssh",
         "ms-vscode-remote.remote-ssh-edit"
     ],
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "matlab": true
 }
-

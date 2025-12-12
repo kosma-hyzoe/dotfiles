@@ -34,8 +34,8 @@ nnoremap J mzJ`z
 " Ctrl remaps
 
 " Comfy copy, paste, cut and select all
-vnoremap <c-c> "+y
-map <c-v> "+p
+" VSCODE DIFF vnoremap <c-c> "+y
+" VSCODE DIFF map <c-v> "+p
 inoremap <c-v> <esc>"+pa
 vnoremap <c-x> "+d
 nnoremap <c-a> <Nop>

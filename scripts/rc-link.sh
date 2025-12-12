@@ -14,6 +14,7 @@ if command -v vim >/dev/null; then
     ln -f vim/vimrc "$HOME/.vim"
     ln -f vim/remaps.vim "$HOME/.vim"
     ln -f vim/plugins.vim "$HOME/.vim"
+    ln -f vim/remaps.vim "$HOME/.remaps.vim"
 fi
 
 # lf
