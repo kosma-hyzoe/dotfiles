@@ -19,11 +19,10 @@
     "editor.autoClosingQuotes": "never",
     "files.trimTrailingWhitespace": true,
     "vim.autoindent": true,
+    "vim.leader": " ",
 
     /*  vscode-vim */
     "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.vim/remaps.vim",
-    "vim.incsearch": true,
     "vim.hlsearch": true,
     "vim.highlightedyank.duration": 150,
     "vim.overrideCopy": true,
@@ -37,94 +36,66 @@
     "vim.camelCaseMotion.enable": true,
     "vim.changeWordIncludesWhitespace": false,
     "vim.foldfix": true,
-
-    // bindings
-    "vim.leader": ",",
     "vim.mouseSelectionGoesIntoVisualMode": true,
     "vim.handleKeys": {
         "<C-k>": false,
         "<C-q>": false,
         "<C-o>": true,
         "<C-b>": false,
-        "<C-i>": true,
         "<C-f>": false,
         "<C-w>": false,
         "<C-t>": false,
     },
 
-    /* vscode-neovim */
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 0
-    },
-    "vscode-neovim.neovimExecutablePaths.linux": "/home/m.hyzorek/.local/nvim-linux64/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "/home/kosma/.config/nvim/init.lua",
-
     /* language-specific settings */
-    "[markdown]": {
-        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-    },
-    "[shellscript]":{
-        "editor.indentSize": 2
-    },
-    "[c]": {
-        "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}",
-    },
+    "[markdown]": { "editor.defaultFormatter": "DavidAnson.vscode-markdownlint" },
+    "[shellscript]":{ "editor.indentSize": 2 },
 
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "[c]": { "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}", },
 
     /* appearance */
+    "workbench.colorTheme": "Visual Studio Light - C++",
     "editor.lineNumbers": "on",
-    "workbench.colorTheme": "Tokyo Night",
     "editor.minimap.enabled": false,
-    "editor.rulers": [80, 100],
+    "editor.rulers": [80, 100, 120],
     "editor.tokenColorCustomizations": {
             "textMateRules": [
-            {
-                "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#0366d6",
-                    "fontStyle": "bold",
-                }
-            },
-            {
-                "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#5a32a3",
-                }
-            },
-            {
-                "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#0598bc",
-                }
-            }
+            { "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
+                "settings": { "foreground": "#0366d6", "fontStyle": "bold", } },
+            { "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
+                "settings": { "foreground": "#5a32a3", } },
+            { "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
+                "settings": { "foreground": "#0598bc", } }
             ]
         },
 
     /* misc plugins and utils*/
     "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.env.linux": { "CODE": "1" },
     "terminal.integrated.defaultProfile.windows": "cmd",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "terminal.integrated.stickyScroll.enabled": false,
     "explorer.confirmDragAndDrop": false,
 
     /* prevent shell from capturing some of the keybindings */
     "terminal.integrated.commandsToSkipShell": [
-        // ide
         "workbench.action.toggleSidebarVisibility",
         "workbench.action.toggleActivityBarVisibility",
         "workbench.explorer.fileView.focus",
         "workbench.action.quickOpenTerm",
         "workbench.action.terminal.rename",
-        // editor
         "workbench.action.nextEditor",
         "workbench.action.previousEditor",
         "workbench.action.increaseViewSize",
         "workbench.action.decreaseViewSize",
-        // debugger
         "workbench.action.debug.start",
         "workbench.action.debug.run",
         "workbench.action.debug.restart",
         "workbench.action.debug.stop",
         "workbench.action.debug.disconnect",
+        "workbench.action.debug.notebook.cell.output.selectAll",
+        "matlab.interrupt"
     ],
 
     /* extensions */
@@ -134,7 +105,10 @@
         "ms-vscode-remote.remote-ssh",
         "ms-vscode-remote.remote-ssh-edit"
     ],
-
-    /* new, unsorted stuff stuff starts here */
-    "workbench.editor.empty.hint": "hidden",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "matlab": true
 }

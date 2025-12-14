@@ -1,0 +1,88 @@
+{
+    /* vscode-neovim */
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 0
+    },
+    "vscode-neovim.neovimExecutablePaths.linux": "/home/m.hyzorek/.local/nvim-linux64/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/kosma/.config/nvim/init.lua",
+
+    /* language-specific settings */
+    "[markdown]": { "editor.defaultFormatter": "DavidAnson.vscode-markdownlint" },
+    "[shellscript]":{ "editor.indentSize": 2 },
+
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "[c]": { "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}", },
+
+
+    // {
+    //     "key": "ctrl+c",
+    //     "command": "vscode-neovim.send",
+    //     "when": "editorTextFocus",
+    //     "args": "<c-c>"
+    // },
+    // {
+    //     "key": "ctrl+w",
+    //     "command": "-vscode-neovim.send-cmdline",
+    //     "when": "neovim.init && neovim.mode == 'cmdline'"
+    // },
+    // {
+    //     "key": "ctrl+w",
+    //     "command": "-vscode-neovim.send",
+    //     "when": "editorTextFocus && neovim.ctrlKeysInsert.w && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    // },
+    // {
+    //     "key": "ctrl+w",
+    //     "command": "-vscode-neovim.send",
+    //     "when": "editorTextFocus && neovim.ctrlKeysNormal.w && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    // }
+
+}
+
+
+    /* fn to alt */
+    // {
+    //     "key": "alt+2",
+    //     "command": "editor.action.rename",
+    //     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.continue",
+    //     "when": "debugState == 'stopped'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.start",
+    //     "when": "debuggersAvailable && debugState == 'inactive'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.continue",
+    //     "when": "debugState == 'stopped'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.continue",
+    //     "when": "debugState == 'stopped'"
+    // },
+    // {
+    //     "key": "alt+5",
+    //     "command": "workbench.action.debug.start",
+    //     "when": "debuggersAvailable && debugState == 'inactive'"
+    // },
+    // {
+    //     "key": "alt+4",
+    //     "command": "workbench.action.debug.run",
+    //     "when": "debuggersAvailable && debugState != 'initializing'"
+    // },
+    // {
+    //     "key": "alt+3",
+    //     "command": "workbench.action.debug.stop",
+    //     "when": "inDebugMode && !focusedSessionIsAttach"
+    // },
+
+    // {
+    //     "key": "alt+2",
+    //     "command": "renameFile",
+    //     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    // },
