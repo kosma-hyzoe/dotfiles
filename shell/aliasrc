@@ -76,6 +76,13 @@ md2pdf() { pandoc "$1" -o "${1%.*}.pdf" --pdf-engine=xelatex \
 matrun() { matlab -nodesktop -nosplash -r "$1; exit;"; };
 alias clilab="matlab -nodesktop -nosplash"
 
+compress() {
+    ffmpeg -i "$1" -map 0:v:0 -map '0:a?' \
+        -c:v libx265 -preset slow -crf 28 \
+        -c:a aac -b:a 96k \
+        -movflags +faststart output.mp4
+}
+
 # trash-cli
 if installed trash; then alias rm="trash"; else alias rm="rm -I" vrm="rm -Iv"; fi
 
