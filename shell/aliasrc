@@ -186,15 +186,10 @@ update_all() {
 }
 alias ua="update_all"
 
-# development-specific, gcc, picocom, make,
+# development-specific, gcc, picocom, make
 qcr() {
-    if [[ "$1" == *.cpp ]]; then # TODO: improve for CPP
-        make -f ~/.dotfiles/cpp/Makefile
-        mv ~/.dotfiles/cpp/*.out . ; rm ~/.dotfiles/cpp/*.o
-        ./"${1/.cpp/.out}" "${@:2}"
-    else
-        gcc "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null;
-    fi
+    [[ "$1" == *.cpp ]] && COMP=g++ || COMP=gcc
+    $COMP "$@" -o tmp.out && ./tmp.out ; rm tmp.out > /dev/null;
 };
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
