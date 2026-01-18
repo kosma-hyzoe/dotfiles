@@ -116,34 +116,6 @@ qm() {
 alias p3="python3" ipython="ipython3" \
     sven="source venv/bin/activate" h8="python3 -m http.server --cgi 8088"
 
-# yt-dlp TODO: separate script
-yt() {
-    help() {
-        echo -e "Usage: yt [OPTION]... LINK\nExample: yt -a -n 'https://youtu.be/xvFZjo5PgG0?si=mrA11tnWwDFAJTTY'"
-        echo -e "\t[(-v)erbose] [(-h)elp] [silent (-u)pdate]"
-        echo -e "\t[embed (-c)hapters] [embed (-s)ubs]"
-        echo -e "\t[keep (-p)laylist indexing] [(-n)o whitespace]"
-        echo -e "\t[(-a)udio-only]  [(-r)esolution <1080|720|...>]"
-    }
-    args=(--ignore-errors --no-overwrite);
-    while getopts "vhucspnar:" flag; do
-        case "$flag" in
-            v) V=1;; h) help; return 0;; u) yt-dlp --update >/dev/null;;
-            c) args+=(--embed-chapters);; s) args+=(--embed-subs);;
-            p) P=1; args+=(-o '%(playlist_index)s-%(title)s.%(ext)s');; n) N=1;;
-            a) args+=(-x -f bestaudio/best --audio-format mp3);;
-            r) args+=(-f "bv*[height<=${OPTARG}]+ba/b[height<=${OPTARG}] / wv*+ba/w");;
-            *) help >/dev/stderr; return 1;;
-        esac
-    done
-    shift $((OPTIND - 1))
-    if [ "$#" -eq 0 ]; then help; return 1; fi
-    [ "$P" ] || args+=(-o '%(title)s.%(ext)s')
-    [ "$N" ] && args+=(--replace-in-metadata title ' ' '_')
-    [ "$V" ] && echo "${args[@]}"
-    yt-dlp "${args[@]}" "$1"
-}
-
 # zip
 unarchive() {
     case "$1" in
