@@ -110,7 +110,7 @@ pip_upgrade() {
 }
 qm() {
     python3 <(cat \
-        <(echo "from math import sqrt, log, log10, pow, sin, cos, tan, exp") \
+        <(echo "from math import sqrt, log, log10, pow, sin, cos, tan, exp, pi") \
         <(echo "print($*)") )
 }
 alias p3="python3" ipython="ipython3" \
