@@ -66,6 +66,7 @@ qcomp() {
 };
 alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
         gg="git grep" gcm="git commit" gclean="git clean -fdx"
+alias vgd="GIT_EDITOR='vi -d' git diff"
 
 ts() { trans "$@" | cat; }; cht() { curl cheat.sh/"$1" | less; } # pipe to less
 md2pdf() { pandoc "$1" -o "${1%.*}.pdf" --pdf-engine=xelatex \
@@ -110,15 +111,11 @@ pip_upgrade() {
 }
 qm() {
     python3 <(cat \
-        <(echo "from math import sqrt, log, log10, pow, sin, cos, tan, exp, pi") \
+        <(echo "from math import sqrt, log, log10, pow, sin, cos, tan, exp") \
         <(echo "print($*)") )
 }
-h8() {
-    [ -z "$1" ] && port=8000 || port="$1"
-    python3 -m http.server --cgi "$port"
-}
 alias p3="python3" ipython="ipython3" \
-    sven="source venv/bin/activate"
+    sven="source venv/bin/activate" h8="python3 -m http.server --cgi 8088"
 
 # zip
 unarchive() {
