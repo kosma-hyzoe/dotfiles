@@ -8,6 +8,12 @@ mkdir -p "$HOME/.local/scripts" "$HOME/.config"
 # less
 ln -f config/lessrc "$HOME/.config"
 
+# clang-format
+if command -v nvim && command -v clang-format; then
+    cp config/clang-format ~/.clang-format
+fi
+
+
 # vim
 if command -v vim >/dev/null; then
     mkdir -p "$HOME/.vim"
