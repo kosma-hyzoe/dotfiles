@@ -84,3 +84,5 @@ map <c-v> $code "$f"
 map gD cd ~/media/documents
 map gd cd ~/downloads
 map gt cd ~/.local/share/Trash/files
+
+map U clear
