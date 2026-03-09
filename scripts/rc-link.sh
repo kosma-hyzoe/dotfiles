@@ -9,7 +9,7 @@ mkdir -p "$HOME/.local/scripts" "$HOME/.config"
 ln -f config/lessrc "$HOME/.config"
 
 # clang-format
-if command -v nvim && command -v clang-format; then
+if command -v nvim >/dev/null && command -v clang-format >/dev/null; then
     cp config/clang-format ~/.clang-format
 fi
 
