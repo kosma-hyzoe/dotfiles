@@ -1,24 +1,5 @@
+// Place your key bindings in this file to override the defaults
 [
-    /* move code selection */
-    {
-        "key": "alt+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+alt+h",
-        "command": "editor.action.moveCarretLeftAction"
-    },
-    {
-        "key": "ctrl+alt+l",
-        "command": "editor.action.moveCarretRightAction"
-    },
-
     /* 'IDE' navigation */
     {
         "key": "alt+t",
@@ -30,7 +11,6 @@
         "command": "workbench.action.terminal.new",
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
     },
-
     {
         "key": "alt+n",
         "command": "workbench.action.decreaseViewSize"
@@ -79,7 +59,7 @@
     },
     {
         "key": "alt+h",
-       "command": "workbench.action.previousEditor"
+        "command": "workbench.action.previousEditor"
     },
     {
         "key": "alt+right",
@@ -213,6 +193,20 @@
         "command": "-markdown.extension.editing.toggleStrikethrough",
         "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
     },
+    {
+        "key": "alt+j",
+        "command": "-editor.action.moveLinesDownAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "-editor.action.moveLinesUpAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
 
     /* new */
     {
@@ -228,4 +222,5 @@
         "key": "alt+y",
         "command": "workbench.action.quickOpenTerm"
     },
-]
+  ]
+

@@ -1,13 +1,19 @@
 {
-    /* non-editor settings, disable annoying features and do the 'denoobing' */
+    /* basic fixes and disables */
+    "update.mode": "none", // disable automatic updates
+    "github.copilot.enable": { "*": false, },
     "telemetry.telemetryLevel": "off",
     "git.openRepositoryInParentFolders": "never",
     "security.workspace.trust.untrustedFiles": "open",
-    "files.autoSave": "afterDelay",
     "debug.openDebug": "neverOpen",
     "debug.internalConsoleOptions": "neverOpen",
     "git.confirmSync": false,
     "explorer.confirmDelete": false,
+    "editor.mouseWheelZoom": true,
+    "editor.wordWrap": "off",
+    "editor.accessibilitySupport": "off",
+    "terminal.integrated.mouseWheelZoom": true,
+    "C_Cpp.intelliSenseEngine": "disabled",
 
     /* disable the menu bar */
     "window.customMenuBarAltFocus": false,
@@ -15,18 +21,16 @@
     "window.menuBarVisibility": "compact",
 
     /* code autocomplete */
-    "editor.autoClosingBrackets": "never",
-    "editor.autoClosingQuotes": "never",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
     "files.trimTrailingWhitespace": true,
-    "vim.autoindent": true,
-    "vim.leader": " ",
 
     /*  vscode-vim */
+    "vim.autoindent": true,
+    "vim.leader": " ",
     "vim.vimrc.enable": true,
     "vim.hlsearch": true,
-    "vim.highlightedyank.duration": 150,
     "vim.overrideCopy": true,
-    "keyboard.dispatch": "keyCode", // to fix esc/caps-lock remap
 
     // plugins
     "vim.easymotion": true,
@@ -39,36 +43,48 @@
     "vim.mouseSelectionGoesIntoVisualMode": true,
     "vim.handleKeys": {
         "<C-k>": false,
-        "<C-q>": false,
+        "<C-p>": false,
         "<C-o>": true,
         "<C-b>": false,
         "<C-f>": false,
         "<C-w>": false,
         "<C-t>": false,
+        "<C-q>": true,
     },
 
     /* language-specific settings */
     "[markdown]": { "editor.defaultFormatter": "DavidAnson.vscode-markdownlint" },
-    "[shellscript]":{ "editor.indentSize": 2 },
-
-    "C_Cpp.intelliSenseEngine": "disabled",
-    "[c]": { "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}", },
+    "[c]": {
+        "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}",
+    },
+    "testMate.cpp.debug.configTemplate": {
+    "type": "cppvsdbg",
+    "linux": { "type": "cppdbg", "MIMode": "gdb" },
+    "darwin": { "type": "cppdbg", "MIMode": "lldb" },
+    "win32": { "type": "cppvsdbg" },
+    "program": "${exec}",
+    "args": "${argsArray}",
+    "cwd": "${cwd}",
+    "env": "${envObj}",
+    "environment": "${envObjArray}",
+    "sourceFileMap": "${sourceFileMapObj}",
+    },
 
     /* appearance */
-    "workbench.colorTheme": "Visual Studio Light - C++",
-    "editor.lineNumbers": "on",
-    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Visual Studio 2017 Light - C++",
+    "cline-sr.viewScale": "75%",
     "editor.rulers": [80, 100, 120],
+    "editor.minimap.enabled": false,
     "editor.tokenColorCustomizations": {
-            "textMateRules": [
-            { "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
-                "settings": { "foreground": "#0366d6", "fontStyle": "bold", } },
-            { "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
-                "settings": { "foreground": "#5a32a3", } },
-            { "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
-                "settings": { "foreground": "#0598bc", } }
-            ]
-        },
+        "textMateRules": [
+        { "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
+            "settings": { "foreground": "#0366d6", "fontStyle": "bold", } },
+        { "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
+            "settings": { "foreground": "#5a32a3", } },
+        { "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
+            "settings": { "foreground": "#0598bc", } }
+        ]
+    },
 
     /* misc plugins and utils*/
     "terminal.integrated.defaultProfile.linux": "zsh",
@@ -105,10 +121,19 @@
         "ms-vscode-remote.remote-ssh",
         "ms-vscode-remote.remote-ssh-edit"
     ],
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "matlab": true
+    "editor.inlayHints.enabled": "offUnlessPressed", // ctrl-alt to show hints
+    "C_Cpp.clang_format_fallbackStyle": "LLVM",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.fontSize": 12,
+    "editor.fontSize": 11,
+
+    /* SSH */
+    "remote.SSH.path": "C:\\Windows\\System32\\OpenSSH\\ssh.exe",
+    "remote.SSH.remotePlatform": {
+        "106.120.250.186": "linux",
+        "106.120.77.92": "linux"
+    },
+
+    /* new */
 }

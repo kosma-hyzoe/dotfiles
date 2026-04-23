@@ -14,8 +14,11 @@ HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
-# vi mode
-# [ -z "$JETBRAINS" ] &&  [ -z "$VSCODE_SHELL_INTEGRATION" ] &&  bindkey -v
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    . "$(code --locate-shell-integration-path zsh)"
+else
+    bindkey -v
+fi
 
 # Change cursor shape for different vi modes
 function zle-keymap-select {
@@ -54,16 +57,15 @@ prompt pure
 PURE_PROMPT_SYMBOL='$'
 PURE_PROMPT_VICMD_SYMBOL='%%'
 PURE_SUSPENDED_JOBS_SYMBOL='&'
-# zstyle :prompt:pure:prompt:success color '#FFAA00'
-# zstyle :prompt:pure:prompt:error color '#A13D2D'
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 zstyle :prompt:pure:suspended_jobs color '#808080'
 
 # Reverse search with ctrl+r
 bindkey '^R' history-incremental-search-backward
 
-# Edit line in $EDITOR with ctrl+e
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
 
 # shift+hjkl navigates autocompletion menu (after pressing tab)
 bindkey -M menuselect "\H" vi-backward-char
@@ -82,12 +84,7 @@ bindkey "^[[1;5D" backward-word
 [ -f "$HOME/.config/lessrc" ] && source "$HOME/.config/lessrc"
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
-bindkey -s '^k' 'exit\n'
 bindkey -s '^o' 'lfcd\n'
-bindkey -s '^p' 'lfip\n'
-
-# enable syntax highlighting
-hl() { source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; }
 
 # zoxide setup
 command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
@@ -96,9 +93,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-    . "$(code --locate-shell-integration-path zsh)"
-else
-    bindkey -v
-fi
+
 

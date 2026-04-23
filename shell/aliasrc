@@ -239,7 +239,7 @@ else
     "
 fi
 
-# TODO: other np supplier
+# TODO: other nvm supplier
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
 
 # TODO: chatgpt-cli

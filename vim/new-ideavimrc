@@ -5,26 +5,18 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set breakindent
-set textwidth=80
 
 " Interface
-set colorcolumn=81
-set nocursorline
+set colorcolumn=80,100
+set cursorline
 set mouse=a
 set smartcase
-set nonumber
 set ignorecase
 set splitbelow
 set splitright
 set nowrap
 set scrolloff=5
 set conceallevel=0
-
-" Spelling
-set wildmode=longest,list,full
-set spelllang=en_us
-set spell
-set spellsuggest=best,9
 
 " Timing
 set updatetime=250
@@ -46,41 +38,7 @@ set history=10000
 set formatoptions=tcqj
 
 
-
-" Retain cursor position
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
-" Delete all trailing white-space
-autocmd BufWritePre * let currPos = getpos(".")
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
-
-"""""""""""""""""""""""""""""""""""" REMAPS """""""""""""""""""""""""""""""""""""
-
-" Quick replace
-nmap Q :%s//g<Left><Left>
-
-" Perform dot commands over visual blocks
-vnoremap . :normal .<CR>
-
-" Indent
-vnoremap <s-tab> <<
-imap <s-tab> <c-d>
-
-" Split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" Move selection up/down
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" Center cursor while searching and scrolling
+" scrolling
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap { {zz
@@ -88,7 +46,7 @@ nnoremap } }zz
 
 " Center cursor while searching
 nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremkap N Nzzzv
 
 " Center cursor while joining lines
 nnoremap J mzJ`z
@@ -103,7 +61,6 @@ vnoremap <c-x> "+d
 nnoremap <c-a> <Nop>
 map <c-a> ggVG
 
-nnoremap <c-i> <c-v>
 nnoremap <c-e> ge
 
 " Leader remaps
@@ -140,10 +97,10 @@ nnoremap <leader>nc :set formatoptions-=c formatoptions-=r formatoptions-=o<CR>
 nmap <leader>sw ysiw
 nmap <leader>sW ysiW
 
-" Neovim diff
-
 " Toggle highlight off
-nnoremap <leader>hl :nohl<CR>
+nnoremap <Esc> :nohlsearch<CR>
+
+" Neovim diff
 
 " Check file in shellcheck
 map <leader>sc :!clear && shellcheck -x %<CR>
@@ -151,34 +108,7 @@ map <leader>sc :!clear && shellcheck -x %<CR>
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<CR>
 
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-set NERDTree
-set ideajoin
-set quickscope
-clipboard+=ideaput
 
-
-map <a-k> <Action>(MoveLineUp)
-map <a-j> <Action>(MoveLineDown)
-
-map \j <Action>(JoinLines)
-"" code diff
-nnoremap <a-s-h> <c-w>h
-nnoremap <a-s-l> <c-w>l
-nnoremap <a-s-j> <c-w>j
-nnoremap <a-s-k> <c-w>k
-
-"" editor navigation
-map <a--> <Action>(SplitHorizontally)
-map <a-\> <Action>(SplitVertically)
-sethandler <a-l> :ide
-
-map <c-s-i> <Action>(ReformatCode)
-
-map <leader>d <Action>(Debug)
-map <c-z> <Action>(ToggleDistractionFreeMode)
-map <leader>e <Action>(EditSourceInNewWindow)
-
-
+" Hacks
+nmap u <Action>($Undo)
+nmap <C-r> <Action>($Redo)
