@@ -88,6 +88,10 @@ compress() {
 if installed trash; then alias rm="trash"; else alias rm="rm -I" vrm="rm -Iv"; fi
 
 # ssh, sshfs
+umms() {
+    [ -z "$MOUNTPOINT" ] && MOUNTPOINT="$HOME/server"
+    fusermount -u -z "$MOUNTPOINT"
+}
 mms() {
     [ -z "$MS_PATH" ] && MS_PATH="/mnt"
     [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
