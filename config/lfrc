@@ -7,6 +7,15 @@ cmd quitcd ${{
 # Basic Settings
 set ignorecase true
 
+cmd open ${{
+    if [ "$TERM_PROGRAM" = "vscode" ]; then
+        exec code "$f"
+    fi
+
+    exec "${EDITOR:-vi}" "$f"
+}}
+map e :open
+
 # Custom Functions
 cmd mkdir ${{
   printf "Directory Name: "
@@ -86,3 +95,4 @@ map gd cd ~/downloads
 map gt cd ~/.local/share/Trash/files
 
 map U clear
+
