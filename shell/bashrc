@@ -65,5 +65,5 @@ bind '"\C-q":"exit\C-m"'
 bind '"\C-o":"lfcd\C-m"'
 bind '"\C-p":"lfcd\C-m"'
 
-command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
-command -v cargo && . "$HOME/.cargo/env"
+command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
+command -v cargo &>/dev/null && . "$HOME/.cargo/env"

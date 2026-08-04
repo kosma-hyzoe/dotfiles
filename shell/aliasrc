@@ -27,9 +27,11 @@ alias vidiff="vi -d"
 # bat
 if installed bat; then
     alias \
-        vat="bat" cat="bat --style=plain" \
-        bathelp='bat --plain --language=help' \
-        sat="bat --paging=never --style=plain" gat="bat --style=changes" \
+        vat="bat" \
+        fat="bat --style=plain" \
+        bathelp='fat --language=help' \
+        cat="fat --paging=never" \
+        gat="bat --style=changes" \
         aat="bat -A" less="cat" bfzf="fzf" \
         fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
     export PAGER="bat --plain"
@@ -91,12 +93,12 @@ if installed trash; then alias rm="trash"; else alias rm="rm -I" vrm="rm -Iv"; f
 
 # ssh, sshfs
 umms() {
-    [ -z "$MOUNTPOINT" ] && MOUNTPOINT="$HOME/server"
+    local MOUNTPOINT; [ -z "$MOUNTPOINT" ] && MOUNTPOINT="$HOME/server"
     fusermount -u -z "$MOUNTPOINT"
 }
 mms() {
-    [ -z "$MS_PATH" ] && MS_PATH="/mnt"
-    [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
+    local MS_PATH; [ -z "$MS_PATH" ] && MS_PATH="/mnt"
+    local MS_MOUNTPOINT; [ -z "$MS_MOUNTPOINT" ] && MS_MOUNTPOINT=~/server
     mkdir -p "$MS_MOUNTPOINT"
     sshfs -o auto_cache,reconnect,allow_other "main-server:/$MS_PATH" "$MS_MOUNTPOINT"
 }
@@ -248,7 +250,10 @@ else
       --color=scrollbar:#4094a3 --color=separator:#b15c00 --color=spinner:#d20065 \
     "
 fi
-
+fe() {
+    local f; f=$(fd -t f | fzf --query "$1") || return
+    "${EDITOR:-vi}" "$f"
+}
 # TODO: other nvm supplier
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
 
