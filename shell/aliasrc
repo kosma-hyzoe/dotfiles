@@ -2,6 +2,7 @@
 
 export PATH="$PATH:$HOME/.cargo/bin:\
 $HOME/.local/bin:\
+$HOME/.opencode/bin:\
 $HOME/.local/scripts"
 
 installed() { command -v "$1" &>/dev/null; return "$?"; }
@@ -179,7 +180,7 @@ qcr() {
 p4u() { picocom -b 115200 "/dev/ttyUSB${1}"; }
 p4a() { picocom -b 115200 "/dev/ttyACM${1}"; }
 alias \
-    make="make -j\$((\$(nproc) - 2))"
+    make="nice -n 19 make -j\$((\$(nproc) / 2))"
 
 # remap caps lock and escape on tty sessions
 caps2esc() {
@@ -257,4 +258,4 @@ fe() {
 # TODO: other nvm supplier
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
 
-# TODO: chatgpt-cli
+export OPENCODE_CONFIG="$HOME/.opencode/config.json"
