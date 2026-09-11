@@ -43,13 +43,14 @@ bh() { "$@" --help 2>&1 | bathelp; }
 # eza
 if installed eza; then
     alias \
-        els="bls -hN --color=auto --group-directories-first" \
+        els="\ls -hN --color=auto --group-directories-first" \
         l='eza --group-directories-first' \
-        ls="l -F" ls1="ls -1" la='l -a' ll='l -l' \
+        ls="l -F always" \
+        ls1="ls -1" la='l -a' ll='l -l' \
         lal='l -al' tree='eza --tree'
 elif [ -z "$BUSYBOX" ]; then
     alias \
-        l="ls -hN --color=auto --group-directories-first" \
+        l="\ls -hN --color=auto --group-directories-first" \
         ls='l -CF' ls1="ls -1" \
         la='l -A' ll='l -l' lal='l -Al'
 fi
