@@ -60,7 +60,7 @@ nnoremap <leader>cx :!chmod +x %<CR>
 nnoremap <leader>di :w !diff % -<CR>
 
 " Close buffer
-nmap <leadset formatoptions+=ter>cb :bp<bar>sp<bar>bn<bar>bd<CR>
+nmap <leader>cb :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Exit terminal mode
 tmap <esc><esc> <c-\><c-n>
