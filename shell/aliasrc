@@ -28,8 +28,8 @@ alias vidiff="vi -d"
 # bat
 if installed bat; then
     alias \
-        vat="bat" \
-        fat="bat --style=plain" \
+        vat="bat --theme ansi" \
+        fat="vat --style=plain" \
         bathelp='fat --language=help' \
         cat="fat --paging=never" \
         gat="bat --style=changes" \
@@ -70,9 +70,12 @@ qcomp() {
         git  push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)";
     fi
 };
-alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" \
-        gg="git grep" gcm="git commit" gclean="git clean -fdx"
-alias vgd="GIT_EDITOR='vi -d' git diff"
+alias  gt="git status" gp="git pull" gd="git diff" gr="git restore" gl="git log" \
+        gca="git commit --amend" \
+        gg="git grep" \
+        gcm="git commit" \
+        gclean="git clean -fdx" \
+        vgd="GIT_EDITOR='vi -d' git diff"
 
 ts() { trans "$@" | cat; }; cht() { curl cheat.sh/"$1" | less; } # pipe to less
 md2pdf() { pandoc "$1" -o "${1%.*}.pdf" --pdf-engine=xelatex \
@@ -258,5 +261,3 @@ fe() {
 }
 # TODO: other nvm supplier
 [ -s "$HOME/.nvm/nvm.sh" ] && "$HOME/.nvm/nvm.sh"  # This loads nvm
-
-export OPENCODE_CONFIG="$HOME/.opencode/config.json"
