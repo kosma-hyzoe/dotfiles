@@ -229,17 +229,17 @@ alias \
 # editing runtime configs
 alias \
     resh=" source ~/.zshrc" \
-    shrc="\${EDITOR} ~/.zshrc" \
     aliasrc="\${EDITOR} ~/.config/aliasrc" \
     locrc="\${EDITOR} ~/.config/localshrc"
 
-# cheatsheets
+# everyday files
 alias \
+    vidra="\${EDITOR} ~/backpack/draft.md" \
     vivi="\${EDITOR} ~/notes/cheatsheets/vi.md" \
     visu="\${EDITOR} ~/notes/cheatsheets/su.md"
 
 # TODO: opts instead of default opts, day troubleshoot for highlights
-if [ -z "$LIGHTMODE" ]; then
+if [ -n "$DARKMODE" ]; then
     # tokyonight-night theme for fzf
     export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
