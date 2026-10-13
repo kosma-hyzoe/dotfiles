@@ -76,6 +76,7 @@ alias  gp="git pull" gd="git diff" gr="git restore" gl="git log" \
         gcm="git commit" \
         gclean="git clean -fdx" \
         vgd="GIT_EDITOR='vi -d' git diff" \
+        grc="git rebase --continue" \
         gt="git status"
 
 ts() { trans "$@" | cat; }; cht() { curl cheat.sh/"$1" | less; } # pipe to less
