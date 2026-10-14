@@ -1,0 +1,71 @@
+#!/bin/python3
+
+from argparse import ArgumentParser
+from os import open, fdopen, O_WRONLY, O_CREAT, O_APPEND, O_NONBLOCK
+from time import sleep
+from datetime import datetime
+
+from pms7003 import Pms7003Sensor, PmsSensorException
+
+
+def get_status(t):
+    pm25 = t['pm2_5']
+    pm10 = t['pm10']
+
+    if pm25 > 35 or pm10 > 50:
+        return "BAD"
+    if pm25 > 12 or pm10 > 20:
+        return "MOD"
+    return "OK"
+
+
+def parse_args():
+    parser = ArgumentParser()
+    parser.add_argument("-i", "--interval", nargs="?", type=int, default=1800)
+    parser.add_argument("-d", "--devpath", nargs="?", default="/dev/serial0")
+    parser.add_argument("-l", "--logpath", nargs="?", default="./pm.log")
+
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    base_interval = args.interval
+    devpath = args.devpath
+    logpath = args.logpath
+
+    sensor = Pms7003Sensor(devpath)
+
+    fd = open(logpath, O_WRONLY | O_CREAT | O_APPEND | O_NONBLOCK, 0o644)
+    log = fdopen(fd, "a", buffering=1)   # line-buffered
+
+    interval = base_interval
+    while True:
+        try:
+            t = sensor.read()
+            ts = datetime.now().strftime('%d/%m %H:%M:%S')
+            s = get_status(t)
+
+            interval = 300 if s != "OK" else base_interval
+
+            line = (
+                f"{s:3}\t{ts}\t"
+                f"PM1.0\t{t['pm1_0']:3}\tPM2.5\t{t['pm2_5']:3}\t"
+                f"PM10\t{t['pm10']:3}\n")
+
+            log.write(line)
+            print(line)
+            log.flush()
+
+            sleep(interval)
+        except PmsSensorException:
+            print("Connection issue...")
+            log.write("Connection issue...")
+            quit(1)
+
+        except (EOFError, KeyboardInterrupt):
+            print("\npm-sensor: Exiting gracefully...")
+            sensor.close()
+            log.close()
+            quit(0)
+
